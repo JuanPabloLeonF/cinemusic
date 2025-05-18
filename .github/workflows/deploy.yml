@@ -1,4 +1,4 @@
-name: Angular CI/CD
+name: cinemusic-frontend CI/CD
 
 on:
   push:
