@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cinemusic",
+            "outputPath": "dist/cinemusic-frontend",
             "baseHref": "/cinemusic-frontend/",
             "index": "src/index.html",
             "browser": "src/main.ts",
