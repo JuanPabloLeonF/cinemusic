@@ -29,9 +29,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: dist/cinemusic-frontend
+          folder: dist/cinemusic
 
       - name: Clean up
         run: |
-          rm -rf dist/cinemusic-frontend
+          rm -rf dist/cinemusic
           npm cache clean --force
