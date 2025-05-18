@@ -1,4 +1,4 @@
-name: cinemusic-frontend CI/CD
+name: cinemusic CI/CD
 
 on:
   push:
