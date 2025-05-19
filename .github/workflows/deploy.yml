@@ -26,10 +26,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: npm run deploy
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: dist/cinemusic
 
       - name: Clean up
         run: |
