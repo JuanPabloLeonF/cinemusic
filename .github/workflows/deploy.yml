@@ -22,16 +22,16 @@ jobs:
         run: npm install
 
       - name: Build Angular
-        run: npm run build -- --base-href=/cinemusic/
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: dist/cinemusic
+          folder: dist
 
       - name: Clean up
         run: |
-          rm -rf dist/cinemusic
+          rm -rf dist
           npm cache clean --force
