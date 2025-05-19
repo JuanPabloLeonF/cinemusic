@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        run: ng deploy --base-href=/cinemusic/
+        run: npm run deploy
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
