@@ -30,10 +30,9 @@ jobs:
           git config --global user.name "Juan Pablo Leon"
 
       - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run deploy
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
 
       - name: Clean up
         run: |
