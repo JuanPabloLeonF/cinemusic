@@ -1,19 +1,12 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
-import { TranslateServiceUtils } from './domain/services/translate.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TranslatePipe],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  protected translateServicesUtils:TranslateServiceUtils = inject(TranslateServiceUtils);
-
-  ngOnInit(): void {
-    this.translateServicesUtils.changeLanguage("es");
-  }
 }

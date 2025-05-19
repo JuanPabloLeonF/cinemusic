@@ -1,0 +1,14 @@
+:host-context {
+    display: contents;
+}
+
+.main-music {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: stretch;
+    background-color: transparent;
+    backdrop-filter: var(--blur-bg);
+}
