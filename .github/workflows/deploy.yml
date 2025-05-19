@@ -24,13 +24,13 @@ jobs:
       - name: Build Angular
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        run: npm run deploy
-
       - name: Configurar identidad de Git y token
         run: |
           git config --global user.email "fonseca123papo@gmail.com"
           git config --global user.name "Juan Pablo Leon"
+
+      - name: Deploy to GitHub Pages
+        run: npm run deploy
 
       - name: Clean up
         run: |
