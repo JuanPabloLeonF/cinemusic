@@ -36,7 +36,7 @@ body {
     height: 100vh;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
-    background-image: url("/images/f3.webp");
+    background-image: url("../public/images/f3.webp");
     background-size: cover;
     background-position: center;
 }
