@@ -1,34 +1,16 @@
-export const listDataMusicData: any[] = [
+import { Song } from "../../models/music/songs";
+
+export const listDataMusicData: Song[] = [
     {
-        "name": "nothing else matthers",
-        "image": "images/f3.webp",
-    },
-    {
-        "name": "shape of you",
-        "image": "images/bg-hero.webp",
-    },
-    {
-        "name": "otra cancion",
-        "image": "images/bg-hero2.webp",
-    },
-    {
-        "name": "otra cancion 2",
-        "image": "images/bg-hero3.webp",
-    },
-    {
-        "name": "nothing else matthers",
-        "image": "images/f3.webp",
-    },
-    {
-        "name": "shape of you",
-        "image": "images/bg-hero.webp",
-    },
-    {
-        "name": "otra cancion",
-        "image": "images/bg-hero2.webp",
-    },
-    {
-        "name": "otra cancion 2",
-        "image": "images/bg-hero3.webp",
-    },
+        name: "a sky full start",
+        image: "images/music/song1.jpg",
+        album: "album",
+        artist: "artist",
+        year: 2020,
+        genre: "pop",
+        duration: "4:13",
+        rating: 5,
+        description: "description",
+        audio: "images/music/song1.mp3"
+    }
 ];

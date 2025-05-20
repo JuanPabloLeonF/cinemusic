@@ -1,0 +1,33 @@
+<aside class="music-player">
+    <div class="container-information-music-player">
+        <div class="contaner-img-player">
+            <img [src]="this.inputSong().image" [alt]="this.inputSong().name">
+        </div>
+        <div class="container-information">
+            <h2>{{this.inputSong().name}}</h2>
+            <p>{{this.inputSong().artist}}</p>
+        </div>
+        <i class="fa-solid fa-heart"></i>
+    </div>
+    <div class="container-controls">
+        <i class="fa-solid fa-shuffle"></i>
+        <i class="fa-solid fa-backward"></i>
+        @if (this.audioState) {
+            <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
+        } @else {
+            <i (click)="playAudio()" class="fa-solid fa-play"></i>
+        }
+        <i class="fa-solid fa-forward"></i>
+        <i class="fa-solid fa-repeat"></i>
+    </div>
+    <div class="container-time-volume">
+        <div class="container-time">
+            <p>0:00 / {{this.inputSong().duration}}</p>
+        </div>
+        <div class="container-volume">
+            <i class="fa-solid fa-volume-high"></i>
+            <audio id="audio" #audioPlayer [src]="this.inputSong().audio" controls></audio>
+            <input id="volumeRange" #volumeRange type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.changeVolume()">
+        </div>
+    </div>
+</aside>

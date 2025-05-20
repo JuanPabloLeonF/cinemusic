@@ -5,17 +5,9 @@
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Buscar">
         </div>
-        <button class="button-play">
-            <i class="fa-solid fa-play"></i>
-            <span>Escuchar</span>
-        </button>
         <div class="container-information">
-            <h2>Nombre de la cancion, artista o album</h2>
-            <p>
-                descripcion de la cancion, artista o album, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum temporibus asperiores harum. Temporibus vitae recusandae accusantium rerum totam minus impedit sit, sunt nobis animi perferendis molestiae nisi, aperiam a officia?
-                descripcion de la cancion, artista o album, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum temporibus asperiores harum. Temporibus vitae recusandae accusantium rerum totam minus impedit sit, sunt nobis animi perferendis molestiae nisi, aperiam a officia?
-                descripcion de la cancion, artista o album, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum temporibus asperiores harum. Temporibus vitae recusandae accusantium rerum totam minus impedit sit, sunt nobis animi perferendis molestiae nisi, aperiam a officia?
-            </p>
+            <h2>{{this.songSelected.name}}</h2>
+            <p>{{this.songSelected.description}}</p>
         </div>
         <div class="container-caroussel" #containerCaroussel>
             @for (data of this.listdataMusic; track $index) {
