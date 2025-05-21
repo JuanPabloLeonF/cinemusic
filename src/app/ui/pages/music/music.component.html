@@ -1,5 +1,5 @@
 <section class="main-music">
     <app-nav-music />
-    <app-section-main-music />
+    <app-section-main-music (songSelectedOutput)="this.songSelected = $event" />
     <app-music-player [inputSong]="this.songSelected" />
 </section>

@@ -7,6 +7,7 @@ export interface Song {
     album: string;
     year: number;
     genre: string;
-    duration: string;
     rating: number;
+    isFavorite: boolean;
+    isPlaying: boolean;
 }

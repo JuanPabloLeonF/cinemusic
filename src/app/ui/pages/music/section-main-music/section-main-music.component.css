@@ -3,9 +3,9 @@
 }
 
 .section-main-music {
-    background-image: url("../../../../../../public/images/music/song1.jpg");
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     width: 80%;
     height: 100%;
     position: relative;
@@ -47,6 +47,9 @@
     gap: 0.5rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 .section-show-music .container-search > input {
@@ -74,18 +77,18 @@
 
 .section-show-music .container-information {
     width: 60%;
-    height: auto;
+    height: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    gap: 1rem;
 }
 
 .section-show-music .container-information > h2 {
     width: 100%;
-    height: auto;
+    height: 5rem;
     font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: bold;
 }
 
 .section-show-music .container-information > p {
@@ -142,6 +145,7 @@
     z-index: 1;
 }
 
+.section-show-music .container-caroussel .item-caroussel .container-item-hover.activate-item,
 .section-show-music .container-caroussel .item-caroussel:hover .container-item-hover {
     transform: translateY(0);
 }
@@ -176,23 +180,24 @@
 
 .section-show-music > i {
     position: absolute;
-    bottom: 25%;
+    bottom: 30%;
     cursor: pointer;
     font-size: 0.7rem;
-    border: 2px solid var(--white-color);
     padding: 0.3rem;
     border-radius: 50%;
-    transition: color 0.3s ease-out, border-color 0.3s ease-out;
+    background-color: var(--bg-color-music-white);
+    backdrop-filter: var(--blur-bg);
+    transition: color 0.3s ease-out;
 }
 
 .section-show-music > i:nth-child(4) {
     left: 1%;
-    transform: translate(-1%, -25%);
+    transform: translate(-1%, -30%);
 }
 
 .section-show-music > i:nth-child(5) {
     right: 1%;
-    transform: translate(-1%, -25%);
+    transform: translate(-1%, -30%);
 }
 
 .section-show-music > i:hover {

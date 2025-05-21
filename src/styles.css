@@ -4,7 +4,7 @@
     --max-width: 1280px;
     --blur-bg: blur(10px);
     --white-color: rgb(255, 255, 255);
-    --primary-color-music: rgb(214, 125, 41);
+    --primary-color-music: rgb(185, 37, 37);
     --bg-color-music: rgba(0, 0, 0, 0);
     --bg-color-music-white: rgba(255, 255, 255, 0.123);
 }
@@ -36,7 +36,9 @@ body {
     height: 100vh;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
-    background: -webkit-linear-gradient(90deg,#858a86,#a6aab9,#ededed); /* Chrome 10-25, Safari 5.1-6 */ background: linear-gradient(90deg,#858a86,#a6aab9,#ededed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: url("../public/images/f3.webp");
+    background-size: cover;
+    background-position: center;
 }
 
 ::-webkit-scrollbar {

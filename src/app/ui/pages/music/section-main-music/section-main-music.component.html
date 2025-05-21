@@ -1,4 +1,4 @@
-<section class="section-main-music">
+<section class="section-main-music"style="background-image: url('{{this.songSelected.image}}');">
     <div class="mask-bg"></div>
     <div class="section-show-music">
         <div class="container-search">
@@ -11,8 +11,8 @@
         </div>
         <div class="container-caroussel" #containerCaroussel>
             @for (data of this.listdataMusic; track $index) {
-                <div class="item-caroussel">
-                    <div class="container-item-hover">
+                <div class="item-caroussel" (click)="this.getSong(data)">
+                    <div class="container-item-hover" [ngClass]="{'activate-item' : data == this.songSelected}">
                         <i class="fa-solid fa-play"></i>
                     </div>
                     <img src="{{data.image}}" alt="{{data.name}}">

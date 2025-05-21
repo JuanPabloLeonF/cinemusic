@@ -7,10 +7,10 @@
             <h2>{{this.inputSong().name}}</h2>
             <p>{{this.inputSong().artist}}</p>
         </div>
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart" [ngClass]="{'activate-item' : this.inputSong().isFavorite}"></i>
     </div>
     <div class="container-controls">
-        <i class="fa-solid fa-shuffle"></i>
+        <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
         <i class="fa-solid fa-backward"></i>
         @if (this.audioState) {
             <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
@@ -18,16 +18,21 @@
             <i (click)="playAudio()" class="fa-solid fa-play"></i>
         }
         <i class="fa-solid fa-forward"></i>
-        <i class="fa-solid fa-repeat"></i>
+        <i (click)="this.typePlay('repeat')" class="fa-solid fa-repeat" [ngClass]="{'activate-item' : this.audioPlayCurrent.repeat}"></i>
     </div>
     <div class="container-time-volume">
         <div class="container-time">
-            <p>0:00 / {{this.inputSong().duration}}</p>
+            <p>{{this.currentTime}} / {{this.totalDuration}}</p>
         </div>
         <div class="container-volume">
-            <i class="fa-solid fa-volume-high"></i>
-            <audio id="audio" #audioPlayer [src]="this.inputSong().audio" controls></audio>
+            @if (this.audioPlayCurrent.volumeState) {
+                <i (click)="this.changeVolumeNull()" class="fa-solid fa-volume-high"></i>
+            } @else {
+                <i (click)="this.changeVolumeNormal()" class="fa-solid fa-volume-xmark"></i>
+            }
+            <audio id="audio" #audioPlayer [src]="this.inputSong().audio"></audio>
             <input id="volumeRange" #volumeRange type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.changeVolume()">
+            <input id="timeRange" #timeRange type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.changeTime()">
         </div>
     </div>
 </aside>

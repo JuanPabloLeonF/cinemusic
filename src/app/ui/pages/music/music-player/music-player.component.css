@@ -30,20 +30,31 @@
 
 .music-player .container-information-music-player .container-information {
     width: 70%;
-    height: 100%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    gap: 0.5rem;
+    gap: 0.3rem;
+    overflow: hidden;
 }
 
 .music-player .container-information-music-player .container-information > h2 {
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    text-transform: uppercase;
+    color: var(--primary-color-music);
 }
 
 .music-player .container-information-music-player .container-information > p {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
 }
 
 .music-player .container-information-music-player > i {
@@ -53,6 +64,7 @@
     transition: color 0.3s ease-out;
 }
 
+.music-player .container-controls > i.activate-item,
 .music-player .container-information-music-player > i.activate-item,
 .music-player .container-information-music-player > i:hover {
     color: var(--primary-color-music);
@@ -83,6 +95,13 @@
 .music-player .container-controls > i {
     cursor: pointer;
     transition: color 0.3s ease-out;
+}
+
+.music-player .container-controls > i:nth-child(3) {
+    width: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .music-player .container-controls > i:hover {
@@ -121,7 +140,6 @@
 .music-player .container-time-volume .container-volume > i:hover {
     color: var(--primary-color-music);
 }
-
 
 .music-player .container-time-volume .container-volume > input[type="range"] {
     -webkit-appearance: none;
@@ -182,6 +200,16 @@
     background: transparent;
 }
 
+#timeRange {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 0;
+    height: 1px;
+}
+
 #audio {
     display: none;
 }
+
