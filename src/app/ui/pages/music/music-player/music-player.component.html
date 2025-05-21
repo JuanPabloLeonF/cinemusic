@@ -11,13 +11,13 @@
     </div>
     <div class="container-controls">
         <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
-        <i class="fa-solid fa-backward"></i>
+        <i (click)="this.changeSong('back')" class="fa-solid fa-backward"></i>
         @if (this.audioState) {
             <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
         } @else {
             <i (click)="playAudio()" class="fa-solid fa-play"></i>
         }
-        <i class="fa-solid fa-forward"></i>
+        <i (click)="this.changeSong('next')" class="fa-solid fa-forward"></i>
         <i (click)="this.typePlay('repeat')" class="fa-solid fa-repeat" [ngClass]="{'activate-item' : this.audioPlayCurrent.repeat}"></i>
     </div>
     <div class="container-time-volume">
@@ -30,7 +30,7 @@
             } @else {
                 <i (click)="this.changeVolumeNormal()" class="fa-solid fa-volume-xmark"></i>
             }
-            <audio id="audio" #audioPlayer [src]="this.inputSong().audio"></audio>
+            <audio id="audio" #audioPlayer [src]="this.inputSong().audio" [autoplay]="this.audioPlayCurrent.shuffle"></audio>
             <input id="volumeRange" #volumeRange type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.changeVolume()">
             <input id="timeRange" #timeRange type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.changeTime()">
         </div>

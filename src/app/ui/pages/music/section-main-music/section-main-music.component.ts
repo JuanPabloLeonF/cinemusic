@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, output, OutputEmitterRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, InputSignal, linkedSignal, OnInit, output, OutputEmitterRef, ViewChild, WritableSignal } from '@angular/core';
 import { listDataMusicData } from '../../../../domain/utils/data/music';
 import { Song } from '../../../../domain/models/music/songs';
 import { NgClass } from '@angular/common';
@@ -11,21 +11,21 @@ import { NgClass } from '@angular/common';
 })
 export class SectionMainMusicComponent implements OnInit {
 
+  public songSelected: InputSignal<Song> = input<Song>(listDataMusicData[0]);
+  private linkedSongSelected: WritableSignal<Song> = linkedSignal(this.songSelected);
   public songSelectedOutput: OutputEmitterRef<Song> = output<Song>();
 
   @ViewChild('containerCaroussel') containerCarousselRef!: ElementRef;
   private scrollAmount: number = 240;
   protected listdataMusic: Song[] = listDataMusicData;
-  protected songSelected: Song = {} as Song;
 
   ngOnInit(): void {
-    this.songSelected = this.listdataMusic[0];
-    this.songSelectedOutput.emit(this.songSelected);
+    this.songSelectedOutput.emit(this.listdataMusic[0]);
   }
 
   protected getSong(song: Song): void {
-    this.songSelected = song;
     this.songSelectedOutput.emit(song);
+    this.linkedSongSelected.set(song)
   }
 
   scrollLeft(): void {

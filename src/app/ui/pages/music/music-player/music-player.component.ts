@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, InputSignal, input, SimpleChanges, OnChanges, } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, InputSignal, input, SimpleChanges, OnChanges, output, OutputEmitterRef, } from '@angular/core';
 import { Song } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
@@ -12,6 +12,8 @@ import { NgClass } from '@angular/common';
 export class MusicPlayerComponent implements AfterViewInit, OnChanges {
 
   public inputSong:InputSignal<Song> = input<Song>({} as Song);
+  public ouputSong: OutputEmitterRef<boolean> = output<boolean>();
+  public ouputChangeSong: OutputEmitterRef<string> = output<string>();
 
   @ViewChild('volumeRange') volumeRangeRef!: ElementRef<HTMLInputElement>;
   @ViewChild('audioPlayer') audioRef!: ElementRef<HTMLAudioElement>;
@@ -28,9 +30,15 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
   protected totalDuration: string = '0:00';
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['inputSong'] && this.audioRef) {;
-      this.audioState = false;
+    if (changes['inputSong'] && this.audioRef) {
+      if (this.audioPlayCurrent.shuffle) {
+        this.audioState = true;
+        this.playAudio();
+      } else {
+        this.audioState = false;
+      }
     }
+
   }
 
   ngAfterViewInit(): void {
@@ -38,13 +46,13 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
       this.audioRef.nativeElement.volume = this.volumeValue / 100;
       this.updateRangeBackgroundVolume();
       this.updateRangeBackgroundTime();
+
       this.audioRef.nativeElement.addEventListener('ended', () => {
         this.currentTime = "0:00";
-        this.audioState = false;
         if (this.audioPlayCurrent.repeat) {
           this.playAudio();
         } else if (this.audioPlayCurrent.shuffle) {
-          this.stopAudio();
+          this.ouputSong.emit(true);
         }
       });
 
@@ -66,6 +74,14 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
           this.audioPlayCurrent.volumeState = true;
         }
       });
+    }
+  }
+
+  protected changeSong(value: string): void {
+    if (this.audioPlayCurrent.repeat) {
+      this.ouputChangeSong.emit(value);
+    } else if (this.audioPlayCurrent.shuffle) {
+      this.ouputSong.emit(true);
     }
   }
 

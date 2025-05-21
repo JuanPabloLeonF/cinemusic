@@ -4,7 +4,7 @@
     --max-width: 1280px;
     --blur-bg: blur(10px);
     --white-color: rgb(255, 255, 255);
-    --primary-color-music: rgb(185, 37, 37);
+    --primary-color-music: rgb(255, 23, 23);
     --bg-color-music: rgba(0, 0, 0, 0);
     --bg-color-music-white: rgba(255, 255, 255, 0.123);
 }
@@ -36,9 +36,10 @@ body {
     height: 100vh;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
-    background-image: url("../public/images/f3.webp");
+    background-image: url("../public/images/bg-music.png");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 ::-webkit-scrollbar {

@@ -1,18 +1,18 @@
-<section class="section-main-music"style="background-image: url('{{this.songSelected.image}}');">
-    <div class="mask-bg"></div>
-    <div class="section-show-music">
+<section class="section-main-music">
+    <div class="section-show-music" style="background-image: url('{{this.songSelected().image}}');">
+        <div class="mask-bg"></div> 
         <div class="container-search">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Buscar">
         </div>
         <div class="container-information">
-            <h2>{{this.songSelected.name}}</h2>
-            <p>{{this.songSelected.description}}</p>
+            <h2>{{this.songSelected().name}}</h2>
+            <p>{{this.songSelected().description}}</p>
         </div>
         <div class="container-caroussel" #containerCaroussel>
             @for (data of this.listdataMusic; track $index) {
                 <div class="item-caroussel" (click)="this.getSong(data)">
-                    <div class="container-item-hover" [ngClass]="{'activate-item' : data == this.songSelected}">
+                    <div class="container-item-hover" [ngClass]="{'activate-item' : data == this.songSelected()}">
                         <i class="fa-solid fa-play"></i>
                     </div>
                     <img src="{{data.image}}" alt="{{data.name}}">
