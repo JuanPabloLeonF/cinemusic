@@ -78,5 +78,18 @@ export const listDataMusicData: Song[] = [
         audio: "images/music/song6.mp3",
         isFavorite: false,
         isPlaying: false
+    },
+    {
+        name: "go go go",
+        image: "images/music/song7.jpg",
+        album: "album",
+        artist: "no me acuerdo",
+        year: 2020,
+        genre: "electronica",
+        rating: 10,
+        description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta minus rerum ratione, aliquid fugiat consectetur culpa, blanditiis sapiente recusandae suscipit exercitationem ullam ex unde assumenda. Dolorum dicta rerum voluptate ab!",
+        audio: "images/music/song7.mp4",
+        isFavorite: false,
+        isPlaying: false
     }
 ];

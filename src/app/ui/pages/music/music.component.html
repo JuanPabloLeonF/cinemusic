@@ -2,4 +2,5 @@
     <app-nav-music />
     <app-section-main-music (songSelectedOutput)="this.songSelected.set($event)" [songSelected]="this.songSelected()" />
     <app-music-player [inputSong]="this.songSelected()" (ouputSong)="this.selectedNewSong($event)" (ouputChangeSong)="this.changeSong($event)" />
+    
 </section>
