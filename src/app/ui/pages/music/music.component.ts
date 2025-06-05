@@ -4,13 +4,15 @@ import { SectionMainMusicComponent } from './section-main-music/section-main-mus
 import { MusicPlayerComponent } from './music-player/music-player.component';
 import { Song } from '../../../domain/models/music/songs';
 import { listDataMusicData } from '../../../domain/utils/data/music';
+import { ListMusicPlayerComponent } from './list-music-player/list-music-player.component';
 
 @Component({
   selector: 'app-music',
   imports: [
     NavMusicComponent,
     SectionMainMusicComponent,
-    MusicPlayerComponent
+    MusicPlayerComponent,
+    ListMusicPlayerComponent
   ],
   templateUrl: './music.component.html',
   styleUrl: './music.component.css'

@@ -1,0 +1,102 @@
+:host-context {
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.container-list-music-player {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    background-color: var(--bg-color-list-music-player);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container-list-music-player .container-list-songs {
+    width: 70%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem 0.5rem;
+    padding-bottom: 4.5rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.container-list-music-player .container-filters-songs {
+    width: 30%;
+    height: 100%;
+}
+
+.container-item {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.container-item-selected {
+    background-color: var(--bg-color-selected-song);
+}
+
+.container-item-selected > i {
+    color: var(--primary-color-music);
+}
+
+.container-item .container-info  .container-img-item {
+    width: 2.5rem;
+    height: 2.2rem;
+}
+
+.container-item .container-info  .container-img-item > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-item .container-info {
+    width: 45%;
+    height: 100%;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.container-item .container-info .container-names {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.1rem;
+    font-size: 0.9rem;
+    overflow: hidden;
+    max-width: 25rem;
+}
+
+.container-item .container-info .container-names > p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.container-item .container-info .container-names > p:nth-child(2) {
+    color: var(--white-color-opacity);
+}

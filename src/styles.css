@@ -4,9 +4,12 @@
     --max-width: 1280px;
     --blur-bg: blur(10px);
     --white-color: rgb(255, 255, 255);
-    --primary-color-music: rgb(255, 23, 23);
+    --white-color-opacity: rgba(255, 255, 255, 0.123);
+    --primary-color-music: rgb(137, 0, 250);
     --bg-color-music: rgba(0, 0, 0, 0);
+    --bg-color-selected-song: rgba(255, 255, 255, 0.075);
     --bg-color-music-white: rgba(255, 255, 255, 0.123);
+    --bg-color-list-music-player: rgba(8, 8, 8, 0.863);
 }
 
 /* Reset */

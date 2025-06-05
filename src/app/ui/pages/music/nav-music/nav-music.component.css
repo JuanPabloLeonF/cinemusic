@@ -1,9 +1,11 @@
 :host-context {
-    display: contents;
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 1/3;
 }
 
 .nav-music {
-    width: 20%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
