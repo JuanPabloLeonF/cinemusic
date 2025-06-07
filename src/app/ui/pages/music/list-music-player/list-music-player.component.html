@@ -17,8 +17,38 @@
         </div>
     }
     </div>
-
     <div class="container-filters-songs">
-        filtro de canciones
+        <button [ngClass]="{'button-selected' : true}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>Todas</span>
+            <i class="fa-solid fa-music"></i>
+        </button>
+        <button [ngClass]="{'button-selected' : false}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>Favoritas</span>
+            <i class="fa-solid fa-heart"></i>
+        </button>
+        <button [ngClass]="{'button-selected' : false}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>Recientes</span>
+            <i class="fa-solid fa-clock"></i>
+        </button>
+        <button [ngClass]="{'button-selected' : false}">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>Albumes</span>
+            <i class="fa-solid fa-music"></i>
+        </button>
     </div>
 </section>
