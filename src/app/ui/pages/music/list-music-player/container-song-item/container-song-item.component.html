@@ -1,0 +1,21 @@
+<div class="container-item">
+    @if (true) {
+        <i appWobble class="fa-solid fa-music"></i>
+    } @else {
+        <i class="fa-solid fa-play"></i>
+    }
+    <div class="container-info">
+        <div class="container-img-item">
+            <img src="{{this.inputSong().image}}" alt="{{this.inputSong().name}}">
+        </div>
+        <div class="container-names">
+            <p>{{this.inputSong().name}}</p>
+            <p>{{this.inputSong().artist}}</p>
+        </div>
+    </div>
+    <p>13:45</p>
+    <i class="fa-solid fa-ellipsis" (click)="toogleCardOptions()"></i>
+    @if (this.showCardOptions) {
+        <app-card-options />
+    }
+</div>

@@ -1,0 +1,50 @@
+:host-context {
+    display: contents;
+    position: relative;
+}
+
+.container-options {
+    position: absolute;
+    top: 0%;
+    right: 3%;
+    background-color: var(--bg-color-music-white);
+    backdrop-filter: var(--blur-bg);
+    width: 10rem;
+    height: 9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    z-index: 1;
+}
+.container-options .container-item {
+    width: 100%;
+    height: 2.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container-options .container-item > p {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.container-options .container-item > i {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-options .container-item:hover {
+    background-color: var(--primary-color-music);
+    color: var(--white-color);
+}

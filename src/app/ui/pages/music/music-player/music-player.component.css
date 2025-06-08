@@ -3,6 +3,7 @@
 }
 
 .music-player {
+    z-index: 10;
     background-color: transparent;
     backdrop-filter: var(--blur-bg);
     position: absolute;

@@ -1,21 +1,8 @@
 <section class="container-list-music-player">
     <div class="container-list-songs">
         @for (song of this.songs; track $index) {
-            <div class="container-item" [ngClass]="{'container-item-selected' : song == this.songSelected}">
-                <i class="fa-solid fa-play"></i>
-                <div class="container-info">
-                <div class="container-img-item">
-                    <img src="{{song.image}}" alt="{{song.name}}">
-                </div>
-                <div class="container-names">
-                    <p>{{song.name}}</p>
-                    <p>{{song.artist}}</p>
-                </div>
-            </div>
-            <p>13:45</p>
-            <i class="fa-solid fa-ellipsis"></i>
-        </div>
-    }
+            <app-container-song-item [inputSong]="song" [ngClass]="{'container-item-selected' : this.songSelected === song}" />
+        }
     </div>
     <div class="container-filters-songs">
         <button [ngClass]="{'button-selected' : true}">
