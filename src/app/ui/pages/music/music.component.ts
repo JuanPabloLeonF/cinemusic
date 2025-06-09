@@ -22,6 +22,12 @@ export class MusicComponent {
     protected listSongs: Song[] = listDataMusicData;
     protected songSelected: WritableSignal<Song> = signal<Song>({} as Song);
 
+    protected songSelectedEvent(song: Song) {
+      this.songSelected().isPlaying = false;
+      this.songSelected.set(song);
+      this.songSelected().isPlaying = true;
+    }
+
     protected selectedNewSong(value: boolean): void {
       if (value) {
         this.songSelected.set(this.listSongs[Math.floor(Math.random() * this.listSongs.length)]);

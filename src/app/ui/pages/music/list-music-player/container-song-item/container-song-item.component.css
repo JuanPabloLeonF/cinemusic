@@ -15,6 +15,14 @@
     position: relative;
 }
 
+.container-item-selected {
+    background-color: var(--bg-color-selected-song);
+}
+
+.container-item-selected > i {
+    color: var(--primary-color-music);
+}
+
 .container-item:hover {
     background-color: var(--bg-color-selected-song);
 }

@@ -98,6 +98,7 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
   protected playAudio(): void {
     this.audioRef.nativeElement.play();
     this.audioState = true;
+    this.inputSong().isPlaying = true;
   }
 
   protected stopAudio(): void {

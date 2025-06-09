@@ -1,4 +1,5 @@
 export interface Song {
+    id: string
     name: string;
     image: string;
     description: string;
@@ -6,7 +7,7 @@ export interface Song {
     artist: string;
     album: string;
     year: number;
-    genre: string;
+    gender: string;
     rating: number;
     isFavorite: boolean;
     isPlaying: boolean;
