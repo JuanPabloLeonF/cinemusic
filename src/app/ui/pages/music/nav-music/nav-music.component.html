@@ -1,14 +1,28 @@
 <nav class="nav-music">
-    <div [class]="{'item-menu' : true, 'activate-item' : true}" >
+     <h4>Menu</h4>
+    <div class="item-menu"  [ngClass]="{'activate-item' : typeSection === 'songs'}" (click)="getOption('songs')">
          <i class="fa-solid fa-music"></i>
          <p>Canciones</p>
     </div>
-    <div [class]="{'item-menu' : true, 'activate-item' : false}">
+    <div class="item-menu"  [ngClass]="{'activate-item' : typeSection === 'albums'}" (click)="getOption('albums')">
          <i class="fa-solid fa-music"></i>
          <p>Albumes</p>
     </div>
-    <div [class]="{'item-menu' : true, 'activate-item' : false}">
+    <div class="item-menu"  [ngClass]="{'activate-item' : typeSection === 'artists'}" (click)="getOption('artists')">
          <i class="fa-solid fa-music"></i>
          <p>Artistas</p>
     </div>
+    <h4>Otras opciones</h4>
+    <div class="item-menu"  [ngClass]="{'activate-item' : typeSection === '1'}" (click)="getOption('1')" >
+         <i class="fa-solid fa-music"></i>
+         <p>opcion 1</p>
+    </div>
+     <div class="item-menu"  [ngClass]="{'activate-item' : typeSection === '2'}" (click)="getOption('2')">
+          <i class="fa-solid fa-music"></i>
+          <p>opcion 2</p>
+     </div>
+     <div class="item-menu"  [ngClass]="{'activate-item' : typeSection === '3'}" (click)="getOption('3')">
+          <i class="fa-solid fa-music"></i>
+          <p>opcion 3</p>
+     </div>
  </nav>

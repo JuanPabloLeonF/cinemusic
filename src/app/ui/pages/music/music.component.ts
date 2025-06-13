@@ -29,18 +29,24 @@ export class MusicComponent {
     }
 
     protected selectedNewSong(value: boolean): void {
+      this.songSelected().isPlaying = false;
       if (value) {
         this.songSelected.set(this.listSongs[Math.floor(Math.random() * this.listSongs.length)]);
+        this.songSelected().isPlaying = true;
       } else {
         this.songSelected.set(this.listSongs[0]);
+        this.songSelected().isPlaying = true;
       }
     }
 
     protected changeSong(value: string): void {
+      this.songSelected().isPlaying = false;
       if (value === 'back') {
         this.songSelected.set(this.listSongs[this.listSongs.indexOf(this.songSelected()) - 1]);
+        this.songSelected().isPlaying = true;
       } else if (value === 'next') {
         this.songSelected.set(this.listSongs[this.listSongs.indexOf(this.songSelected()) + 1]);
+        this.songSelected().isPlaying = true;
       }
     }
 }

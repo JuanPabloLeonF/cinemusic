@@ -12,3 +12,10 @@ export interface Song {
     isFavorite: boolean;
     isPlaying: boolean;
 }
+
+export enum CardOptionsConst {
+    SHARE = "share",
+    FAVORITE = "favorite",
+    PLAYLIST = "playlist",
+    DELETE = "delete",
+}

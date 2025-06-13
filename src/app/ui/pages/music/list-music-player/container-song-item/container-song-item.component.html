@@ -16,6 +16,6 @@
     <p>13:45</p>
     <i class="fa-solid fa-ellipsis" (click)="toogleCardOptions()"></i>
     @if (this.showCardOptions) {
-        <app-card-options />
+        <app-card-options (ouputOptionCard)="optionSelected($event)" />
     }
 </div>

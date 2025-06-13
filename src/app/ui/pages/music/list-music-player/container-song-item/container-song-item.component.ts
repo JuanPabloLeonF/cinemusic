@@ -1,6 +1,6 @@
 import { Component, HostListener, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 import { CardOptionsComponent } from "./card-options/card-options.component";
-import { Song } from '../../../../../domain/models/music/songs';
+import { CardOptionsConst, Song } from '../../../../../domain/models/music/songs';
 import { NgClass } from '@angular/common';
 import { WobbleDirective } from '../../../../animations/wobble/wobble.directive';
 
@@ -27,6 +27,26 @@ export class ContainerSongItemComponent {
 
   protected playSong() {
     this.songOuputSelected.emit(this.inputSongSelected());
+  }
+
+  protected optionSelected(value: string): void {
+    switch (value) {
+      case CardOptionsConst.SHARE:
+        alert("Compartiendo cancion..." + this.inputSongSelected());
+        break;
+      case CardOptionsConst.FAVORITE:
+        this.inputSongSelected().isFavorite = true;
+        alert("Agregando a favoritos..." + this.inputSongSelected());
+        break;
+      case CardOptionsConst.PLAYLIST:
+        alert("Agregando a una lista..." + this.inputSongSelected());
+        break;
+      case CardOptionsConst.DELETE:
+        alert("Eliminando cancion..." + this.inputSongSelected());
+        break;      
+    }
+
+    this.showCardOptions = false;
   }
 
   @HostListener('document:click', ['$event'])
