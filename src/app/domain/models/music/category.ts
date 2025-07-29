@@ -2,10 +2,11 @@ export interface Category {
     name: string;
 }
 
-export enum Categories {
+export enum CategoriesEnum {
+    ALL = "ALL",
     POP = "POP",
     ROCK = "ROCK",
-    HIP_HOP = "HIP_HOP",
+    HIP_HOP = "HIP HOP",
     ELECTRONIC = "ELECTRONIC",
     RAP = "RAP",
     JAZZ = "JAZZ",

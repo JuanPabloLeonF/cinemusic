@@ -3,7 +3,7 @@ import { Category } from "../../models/music/category";
 
 export const listDataCategories: Category[] = [
     {
-        name: "TODAS"
+        name: "ALL"
     },
     {
         name: "POP"

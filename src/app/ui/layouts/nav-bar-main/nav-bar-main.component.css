@@ -40,7 +40,8 @@
     border-bottom: 1px solid transparent;
 }
 
-.nav-bar-main .container-enlaces > a:hover {
+.nav-bar-main .container-enlaces > a:hover,
+.nav-bar-main .container-enlaces > a.active-link {
     color: var(--primary-color);
     border-bottom: 1px solid var(--primary-color);
 }

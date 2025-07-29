@@ -3,12 +3,19 @@ import { listDataMusicData } from '../../../../domain/utils/data/music';
 import { Song } from '../../../../domain/models/music/songs';
 import { InputSearchGenericComponent } from '../../../components/input-search-generic/input-search-generic.component';
 import { ButtonFilterGenericComponent } from "../../../components/button-filter-generic/button-filter-generic.component";
-import { Category } from '../../../../domain/models/music/category';
+import { CategoriesEnum, Category } from '../../../../domain/models/music/category';
 import { listDataCategories } from '../../../../domain/utils/data/categories';
+import { NgClass } from '@angular/common';
+import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
 
 @Component({
   selector: 'app-section-main-music',
-  imports: [InputSearchGenericComponent, ButtonFilterGenericComponent],
+  imports: [
+    InputSearchGenericComponent, 
+    ButtonFilterGenericComponent,
+    NgClass,
+    WobbleDirective
+  ],
   templateUrl: './section-main-music.component.html',
   styleUrl: './section-main-music.component.css'
 })
@@ -26,7 +33,11 @@ export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestr
   private currentScrollIndex: number = 0;
 
   ngOnInit(): void {
-    this.songSelectedOutput.emit(this.listdataMusic[0]);
+    if (this.listdataMusic.length > 0) {
+      this.listdataMusic[0].isPlaying = true;
+      this.songSelectedOutput.emit(this.listdataMusic[0]);
+      this.linkedSongSelected.set(this.listdataMusic[0]);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -39,16 +50,23 @@ export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestr
 
 
   protected getSong(song: Song): void {
+    const currentActiveSong = this.listdataMusic.find(s => s.isPlaying);
+    if (currentActiveSong && currentActiveSong !== song) {
+      currentActiveSong.isPlaying = false;
+    }
+    song.isPlaying = true;
     this.songSelectedOutput.emit(song);
-    this.linkedSongSelected.set(song)
-  }
+    this.linkedSongSelected.set(song);
 
-  protected onChangeInputData(value: string): void {
-    console.log("tengo el valor del input: " + value);
   }
 
   protected filterSongs(category: String): void {
-    alert("tengo la categoria: " + category);
+    console.log(category)
+    if (category == CategoriesEnum.ALL) {
+      this.listdataMusic = listDataMusicData;
+    } else {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender == category);
+    }
   }
 
   private startCarousel(): void {

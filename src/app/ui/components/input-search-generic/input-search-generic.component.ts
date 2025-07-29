@@ -9,7 +9,7 @@ import { Component, input, InputSignal, output, OutputEmitterRef } from '@angula
 export class InputSearchGenericComponent {
 
   public placeholder: InputSignal<string> = input<string>("placeholder");
-  public onChangeInputData: OutputEmitterRef<string> = output<string>();
+  public onChangeInputData: OutputEmitterRef<String> = output<String>();
 
   protected onChangeInput(event: Event): void {
     const target = event.target as HTMLInputElement;

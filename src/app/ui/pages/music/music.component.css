@@ -15,7 +15,7 @@
 
 .navbar-music {
     width: 100%;
-    height: 7rem;
+    height: 5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,7 +25,12 @@
 
 .navbar-music > h2 {
     font-size: 2rem;
-    font-weight: bold;
+    font-family: var(--font-secondary);
+    background: var(--linear-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .container-filter-type {
@@ -46,7 +51,7 @@
     justify-content: start;
     align-items: center;
     border-radius: 0.5rem;
-    border: 1px solid var(--color-gray-800);
+    border: 1px solid var(--color-gray-secondary);
     padding-left: 1rem;
     gap: 1rem;
 }

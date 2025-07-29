@@ -5,11 +5,14 @@
                 <app-button-filter-generic [buttonText]="category.name" (actionClick)="this.filterSongs($event)" />
             }
         </div>
-        <app-input-search-generic placeholder="Buscar canciones, artistas.." (onChangeInputData)="this.onChangeInputData($event)" />
+        <app-input-search-generic placeholder="Buscar canciones, artistas.." (onChangeInputData)="this.filterSongs($event)" />
     </div>
     <div class="container-list-songs">
         @for (song of listdataMusic; track $index) {
-            <div class="container-item-song">
+            <div [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
+                <div class="mask-activate">
+                    <i class="fa-solid fa-music" appWobble [appWobbleActive]="song.isPlaying" ></i>
+                </div>
                 <div class="container-img-song">
                     <img src="{{song.image}}" alt="{{song.name}}">
                 </div>
@@ -19,6 +22,10 @@
                     <p>{{song.gender}}</p>
                 </div>
             </div>
+        } @empty {
+            <p class="container-item-song-empty">
+                ¡Ups! 🎶 Parece que no hay canciones en este momento. ¡Añade algunas para que empiece la fiesta! 🎉
+            </p>
         }
     </div>
 </section>
