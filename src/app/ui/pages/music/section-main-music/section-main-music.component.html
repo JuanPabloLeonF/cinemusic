@@ -1,26 +1,24 @@
 <section class="section-main-music">
-    <div class="section-show-music" style="background-image: url('{{this.songSelected().image}}');">
-        <div class="mask-bg"></div> 
-        <div class="container-search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Buscar">
-        </div>
-        <div class="container-information">
-            <h2>{{this.songSelected().name}}</h2>
-            <p>{{this.songSelected().description}}</p>
-        </div>
-        <div class="container-caroussel" #containerCaroussel>
-            @for (data of this.listdataMusic; track $index) {
-                <div class="item-caroussel" (click)="this.getSong(data)">
-                    <div class="container-item-hover" [ngClass]="{'activate-item' : data == this.songSelected()}">
-                        <i class="fa-solid fa-play"></i>
-                    </div>
-                    <img src="{{data.image}}" alt="{{data.name}}">
-                    <p>{{data.name}}</p>
-                </div>
+    <div class="container-filter-search">
+        <div class="container-filters-button" #filterContainer>
+            @for (category of listCategories; track $index) {
+                <app-button-filter-generic [buttonText]="category.name" (actionClick)="this.filterSongs($event)" />
             }
         </div>
-        <i (click)="scrollLeft()" class="fa-solid fa-arrow-left"></i>
-        <i (click)="scrollRight()" class="fa-solid fa-arrow-right"></i>
+        <app-input-search-generic placeholder="Buscar canciones, artistas.." (onChangeInputData)="this.onChangeInputData($event)" />
+    </div>
+    <div class="container-list-songs">
+        @for (song of listdataMusic; track $index) {
+            <div class="container-item-song">
+                <div class="container-img-song">
+                    <img src="{{song.image}}" alt="{{song.name}}">
+                </div>
+                <div class="container-information-song">
+                    <h2>{{song.name}}</h2>
+                    <p>{{song.artist}}</p>
+                    <p>{{song.gender}}</p>
+                </div>
+            </div>
+        }
     </div>
 </section>

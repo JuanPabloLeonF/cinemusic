@@ -1,6 +1,31 @@
 <section class="main-music">
-    <app-nav-music />
+    <div class="navbar-music">
+        <h2>Musica</h2>
+        <app-button-generic buttonText="Crear lista" [actionClick]="this.addList"/>
+    </div>
+    <div class="container-filter-type">
+        <div class="container-item-filter">
+            <i class="fa-solid fa-music"></i>
+            <div class="container-information-filter">
+                <h3>Canciones</h3>
+                <p>35 canciones</p>
+            </div>
+        </div>
+        <div class="container-item-filter">
+            <i class="fa-solid fa-user"></i>
+            <div class="container-information-filter">
+                <h3>Artistas</h3>
+                <p>15 artistas</p>
+            </div>
+        </div>
+        <div class="container-item-filter">
+            <i class="fa-solid fa-list"></i>
+            <div class="container-information-filter">
+                <h3>Albumnes</h3>
+                <p>5 albumnes</p>
+            </div>
+        </div>
+    </div>
     <app-section-main-music (songSelectedOutput)="songSelectedEvent($event)" [songSelected]="this.songSelected()" />
     <app-music-player [inputSong]="this.songSelected()" (ouputSong)="this.selectedNewSong($event)" (ouputChangeSong)="this.changeSong($event)" />
-    <app-list-music-player (songOuputSelected)="songSelectedEvent($event)" />
 </section>

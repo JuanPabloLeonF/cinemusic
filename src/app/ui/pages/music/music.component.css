@@ -5,10 +5,79 @@
 .main-music {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 60% 40%;
-    background-color: var(--bg-color-music);
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    background-color: var(--bg-color-web);
     backdrop-filter: var(--blur-bg);
-    position: relative;
+}
+
+.navbar-music {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.navbar-music > h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.container-filter-type {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-filter-type .container-item-filter {
+    background-color: var(--secondary-color);
+    width: 30%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-gray-800);
+    padding-left: 1rem;
+    gap: 1rem;
+}
+
+.container-filter-type .container-item-filter > i {
+    width: 15%;
+    height: 50%;    
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-color);
+}
+
+.container-filter-type .container-item-filter > .container-information-filter {
+    width: 85%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.container-filter-type .container-item-filter > .container-information-filter > h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.container-filter-type .container-item-filter > .container-information-filter > p {
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--color-gray-400);
 }

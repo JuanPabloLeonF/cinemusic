@@ -1,0 +1,24 @@
+:host-context {
+    display: contents;
+}
+
+.input-search {
+    width: 15rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    border: 1px solid var(--color-gray-500);
+    background-color: var(--color-gray-800);
+    padding: 0 0.7rem;
+    color: var(--white-color);
+    transition: border 0.3s ease-out;
+}
+
+.input-search::placeholder {
+    color: var(--color-gray-500);
+}
+
+.input-search:focus {
+    border: 1px solid var(--color-purple-700);
+}

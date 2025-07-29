@@ -6,7 +6,7 @@
     z-index: 10;
     background-color: transparent;
     backdrop-filter: var(--blur-bg);
-    position: absolute;
+    position: sticky;
     bottom: 0%;
     left: 0;
     width: 100%;
@@ -68,7 +68,7 @@
 .music-player .container-controls > i.activate-item,
 .music-player .container-information-music-player > i.activate-item,
 .music-player .container-information-music-player > i:hover {
-    color: var(--primary-color-music);
+    color: var(--primary-color);
 }
 
 .music-player .container-information-music-player .contaner-img-player {
@@ -106,7 +106,7 @@
 }
 
 .music-player .container-controls > i:hover {
-    color: var(--primary-color-music);
+    color: var(--primary-color);
 }
 
 .music-player .container-time-volume {
@@ -139,7 +139,7 @@
 }
 
 .music-player .container-time-volume .container-volume > i:hover {
-    color: var(--primary-color-music);
+    color: var(--primary-color);
 }
 
 .music-player .container-time-volume .container-volume > input[type="range"] {
@@ -153,7 +153,7 @@
     padding: 0;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    --range-fill-color: var(--primary-color-music);
+    --range-fill-color: var(--primary-color);
     --range-track-color: #555;
     --range-progress: 100%;
     background: linear-gradient(to right, var(--range-fill-color) var(--range-progress), var(--range-track-color) var(--range-progress));
@@ -164,7 +164,7 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 100%;
-    background: var(--primary-color-music);
+    background: var(--primary-color);
     border: none;
     margin-top: calc(-0.3rem / 2 + 5px / 2);
     opacity: 0;
@@ -179,7 +179,7 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 100%;
-    background: var(--primary-color-music);
+    background: var(--primary-color);
     border: none;
     margin-top: calc(-0.5rem / 2 + 5px / 2);
     opacity: 0;
