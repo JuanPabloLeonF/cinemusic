@@ -1,5 +1,15 @@
 export interface Category {
-    name: string;
+    name: String;
+}
+
+export interface TypeSearch {
+    type: String;
+    value: String;
+}
+
+export enum TypeSearchEnum {
+    CATEGORY = "CATEGORY",
+    SEARCH = "SEARCH"
 }
 
 export enum CategoriesEnum {

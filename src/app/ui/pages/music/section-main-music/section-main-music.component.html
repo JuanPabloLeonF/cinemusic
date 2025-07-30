@@ -5,7 +5,7 @@
                 <app-button-filter-generic [buttonText]="category.name" (actionClick)="this.filterSongs($event)" />
             }
         </div>
-        <app-input-search-generic placeholder="Buscar canciones, artistas.." (onChangeInputData)="this.filterSongs($event)" />
+        <app-input-search-generic placeholder="Buscar canciones..." (onChangeInputData)="this.filterSongs($event)" />
     </div>
     <div class="container-list-songs">
         @for (song of listdataMusic; track $index) {

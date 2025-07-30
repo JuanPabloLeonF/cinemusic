@@ -1,4 +1,5 @@
 import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { TypeSearch, TypeSearchEnum } from '../../../domain/models/music/category';
 
 @Component({
   selector: 'app-button-filter-generic',
@@ -9,9 +10,9 @@ import { Component, input, InputSignal, output, OutputEmitterRef } from '@angula
 export class ButtonFilterGenericComponent {
 
   public buttonText: InputSignal<String> = input<String>("Filtrar");
-  public actionClick: OutputEmitterRef<String> = output<String>();
+  public actionClick: OutputEmitterRef<TypeSearch> = output<TypeSearch>();
 
   protected onClick(): void {
-    this.actionClick.emit(this.buttonText());
+    this.actionClick.emit({type: TypeSearchEnum.CATEGORY, value: this.buttonText()});
   }
 }

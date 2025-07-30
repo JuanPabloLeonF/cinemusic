@@ -13,6 +13,7 @@
     padding: 0 0.7rem;
     color: var(--white-color);
     transition: border 0.3s ease-out;
+    text-transform: uppercase;
 }
 
 .input-search::placeholder {

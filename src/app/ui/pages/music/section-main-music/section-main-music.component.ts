@@ -3,7 +3,7 @@ import { listDataMusicData } from '../../../../domain/utils/data/music';
 import { Song } from '../../../../domain/models/music/songs';
 import { InputSearchGenericComponent } from '../../../components/input-search-generic/input-search-generic.component';
 import { ButtonFilterGenericComponent } from "../../../components/button-filter-generic/button-filter-generic.component";
-import { CategoriesEnum, Category } from '../../../../domain/models/music/category';
+import { CategoriesEnum, Category, TypeSearch, TypeSearchEnum } from '../../../../domain/models/music/category';
 import { listDataCategories } from '../../../../domain/utils/data/categories';
 import { NgClass } from '@angular/common';
 import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
@@ -60,12 +60,47 @@ export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestr
 
   }
 
-  protected filterSongs(category: String): void {
-    console.log(category)
-    if (category == CategoriesEnum.ALL) {
+  protected filterSongs(data: TypeSearch): void {
+    switch (data.type) {
+      case TypeSearchEnum.CATEGORY:
+        this.filterByCategory(data.value);
+        break;
+      case TypeSearchEnum.SEARCH:
+        this.filterBySearch(data.value);
+        break;
+    }
+  }
+
+  private filterBySearch(search: String): void {
+    
+    this.listdataMusic = listDataMusicData.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
+  }
+
+  private filterByCategory(category: String): void {
+    if (category === CategoriesEnum.ALL) {
       this.listdataMusic = listDataMusicData;
-    } else {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender == category);
+    } else if (category === CategoriesEnum.POP) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.POP);
+    } else if (category === CategoriesEnum.ROCK) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.ROCK);
+    } else if (category === CategoriesEnum.HIP_HOP) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.HIP_HOP);
+    } else if (category === CategoriesEnum.ELECTRONIC) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.ELECTRONIC);
+    } else if (category === CategoriesEnum.RAP) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.RAP);
+    } else if (category === CategoriesEnum.JAZZ) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.JAZZ);
+    } else if (category === CategoriesEnum.BLUES) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.BLUES);
+    } else if (category === CategoriesEnum.COUNTRY) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.COUNTRY);
+    } else if (category === CategoriesEnum.RNB) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.RNB);
+    } else if (category === CategoriesEnum.REGGAE) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.REGGAE);
+    } else if (category === CategoriesEnum.METAL) {
+      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.METAL);
     }
   }
 

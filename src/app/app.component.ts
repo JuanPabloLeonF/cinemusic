@@ -10,4 +10,9 @@ import { NavBarMainComponent } from "./ui/layouts/nav-bar-main/nav-bar-main.comp
 })
 export class AppComponent {
 
+  protected activateMenu: boolean = true;
+
+  protected switchMenu(value: boolean): void {
+    this.activateMenu = value;
+  }
 }

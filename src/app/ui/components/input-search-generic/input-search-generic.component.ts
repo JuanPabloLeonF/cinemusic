@@ -1,4 +1,5 @@
 import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { TypeSearch, TypeSearchEnum } from '../../../domain/models/music/category';
 
 @Component({
   selector: 'app-input-search-generic',
@@ -9,11 +10,11 @@ import { Component, input, InputSignal, output, OutputEmitterRef } from '@angula
 export class InputSearchGenericComponent {
 
   public placeholder: InputSignal<string> = input<string>("placeholder");
-  public onChangeInputData: OutputEmitterRef<String> = output<String>();
+  public onChangeInputData: OutputEmitterRef<TypeSearch> = output<TypeSearch>();
 
   protected onChangeInput(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.onChangeInputData.emit(target.value);
+    this.onChangeInputData.emit({type: TypeSearchEnum.SEARCH, value: target.value.toUpperCase()});
   }
 
 }
