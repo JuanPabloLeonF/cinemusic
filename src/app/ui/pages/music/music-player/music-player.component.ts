@@ -206,7 +206,7 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges, OnDestroy
       () => this.playAudio(),
       () => this.stopAudio(),
       () => this.changeSong('next'),
-      () => this.changeSong('previous')
+      () => this.changeSong('back')
     );
   }
 
