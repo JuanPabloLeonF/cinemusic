@@ -1,7 +1,8 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, InputSignal, input, SimpleChanges, OnChanges, output, OutputEmitterRef, } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, InputSignal, input, SimpleChanges, OnChanges, output, OutputEmitterRef, inject, OnDestroy } from '@angular/core';
 import { Song } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { DevicesConfigurationServiceService } from '../../../../domain/services/devices-configuration-service.service';
 
 @Component({
   selector: 'app-music-player',
@@ -9,11 +10,12 @@ import { NgClass } from '@angular/common';
   templateUrl: './music-player.component.html',
   styleUrl: './music-player.component.css'
 })
-export class MusicPlayerComponent implements AfterViewInit, OnChanges {
+export class MusicPlayerComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   public inputSong:InputSignal<Song> = input<Song>({} as Song);
   public ouputSong: OutputEmitterRef<boolean> = output<boolean>();
   public ouputChangeSong: OutputEmitterRef<string> = output<string>();
+  private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
 
   @ViewChild('volumeRange') volumeRangeRef!: ElementRef<HTMLInputElement>;
   @ViewChild('audioPlayer') audioRef!: ElementRef<HTMLAudioElement>;
@@ -30,7 +32,8 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
   protected totalDuration: string = '0:00';
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['inputSong'] && this.audioRef) {
+    if (changes['inputSong']) {
+      this.updateMediaSessionMetadata();
       if (this.audioPlayCurrent.shuffle) {
         this.audioState = true;
         this.playAudio();
@@ -38,7 +41,6 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
         this.audioState = false;
       }
     }
-
   }
 
   ngAfterViewInit(): void {
@@ -54,11 +56,15 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
         } else if (this.audioPlayCurrent.shuffle) {
           this.ouputSong.emit(true);
         }
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'paused';
+        }
       });
 
 
       this.audioRef.nativeElement.addEventListener('loadedmetadata', () => {
         this.totalDuration = this.formatTime(this.audioRef.nativeElement.duration);
+        this.updateMediaSessionMetadata();
       });
 
       this.audioRef.nativeElement.addEventListener('timeupdate', () => {
@@ -74,15 +80,12 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
           this.audioPlayCurrent.volumeState = true;
         }
       });
+      this.setupMediaSessionHandlers();
     }
   }
 
   protected changeSong(value: string): void {
-    if (this.audioPlayCurrent.repeat) {
-      this.ouputChangeSong.emit(value);
-    } else if (this.audioPlayCurrent.shuffle) {
-      this.ouputSong.emit(true);
-    }
+    this.ouputChangeSong.emit(value);
   }
 
   protected typePlay(type: string): void {
@@ -99,12 +102,19 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
     this.audioRef.nativeElement.play();
     this.audioState = true;
     this.inputSong().isPlaying = true;
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.playbackState = 'playing';
+    }
   }
 
   protected stopAudio(): void {
     this.audioRef.nativeElement.pause();
     this.audioState = false;
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.playbackState = 'paused';
+    }
   }
+
 
   protected changeVolume(): void {
     if (this.audioRef && this.volumeRangeRef) {
@@ -176,5 +186,31 @@ export class MusicPlayerComponent implements AfterViewInit, OnChanges {
         this.audioRef.nativeElement.currentTime = (this.timeValue / 100) * duration;
       }
     }
+  }
+
+  private updateMediaSessionMetadata(): void {
+    const song = this.inputSong();
+    if (song && song.name && song.artist) {
+      const artwork: string[] = song.image ? [song.image] : [];
+      this.devicesConfigService.setMediaSessionMetadata(
+        song.name,
+        song.artist,
+        song.album,
+        artwork
+      );
+    }
+  }
+
+  private setupMediaSessionHandlers(): void {
+    this.devicesConfigService.setMediaSessionHandlers(
+      () => this.playAudio(),
+      () => this.stopAudio(),
+      () => this.changeSong('next'),
+      () => this.changeSong('previous')
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.devicesConfigService.clearMediaSessionHandlers();
   }
 }
