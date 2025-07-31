@@ -1,23 +1,23 @@
 <aside class="music-player">
     <div class="container-information-music-player">
         <div class="contaner-img-player">
-            <img [src]="this.inputSong().image" [alt]="this.inputSong().name">
+            <img [src]="this.songSelected().image" [alt]="this.songSelected().name">
         </div>
         <div class="container-information">
-            <h2>{{this.inputSong().name}}</h2>
-            <p>{{this.inputSong().artist}}</p>
+            <h2>{{this.songSelected().name}}</h2>
+            <p>{{this.songSelected().artist}}</p>
         </div>
-        <i class="fa-solid fa-heart" [ngClass]="{'activate-item' : this.inputSong().isFavorite}"></i>
+        <i class="fa-solid fa-heart" [ngClass]="{'activate-item' : this.songSelected().isFavorite}"></i>
     </div>
     <div class="container-controls">
         <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
-        <i (click)="this.changeSong('back')" class="fa-solid fa-backward"></i>
-        @if (this.audioState) {
+        <i (click)="this.changeSongBack()" class="fa-solid fa-backward"></i>
+        @if (this.songSelected().isPlaying) {
             <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
         } @else {
             <i (click)="playAudio()" class="fa-solid fa-play"></i>
         }
-        <i (click)="this.changeSong('next')" class="fa-solid fa-forward"></i>
+        <i (click)="this.changeSongNext()" class="fa-solid fa-forward"></i>
         <i (click)="this.typePlay('repeat')" class="fa-solid fa-repeat" [ngClass]="{'activate-item' : this.audioPlayCurrent.repeat}"></i>
     </div>
     <div class="container-time-volume">
@@ -30,7 +30,7 @@
             } @else {
                 <i (click)="this.changeVolumeNormal()" class="fa-solid fa-volume-xmark"></i>
             }
-            <audio id="audio" #audioPlayer [src]="this.inputSong().audio" [autoplay]="this.audioPlayCurrent.shuffle"></audio>
+            <audio id="audio" #audioPlayer [src]="this.songSelected().audio" [autoplay]="this.songSelected().isPlaying"></audio>
             <input id="volumeRange" #volumeRange type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.changeVolume()">
             <input id="timeRange" #timeRange type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.changeTime()">
         </div>
