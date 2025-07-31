@@ -18,6 +18,18 @@ export class DevicesConfigurationServiceService {
     }
   }
 
+  public playBackState(): void {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.playbackState = 'playing';
+    }
+  }
+
+  public stopBackState(): void {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.playbackState = 'paused';
+    }
+  }
+
   public setMediaSessionHandlers(
     playHandler: () => void,
     pauseHandler: () => void,

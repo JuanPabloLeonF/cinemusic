@@ -27,5 +27,5 @@
         </div>
     </div>
     <app-section-main-music (songSelectedOutput)="songSelectedEvent($event)" [songSelected]="this.songSelected()" />
-    <app-music-player [inputSong]="this.songSelected()" (ouputSong)="this.selectedNewSong($event)" (ouputChangeSong)="this.changeSong($event)" />
+    <app-music-player />
 </section>

@@ -1,6 +1,6 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { MusicService } from '../services/music.service';
-import { Song } from '../models/music/songs';
+import { Song, TypePlayEnum } from '../models/music/songs';
 import { DevicesConfigurationServiceService } from '../services/devices-configuration-service.service';
 
 @Injectable({
@@ -16,51 +16,100 @@ export class StateMusicService {
     constructor() {
         this.listSongs = this.musicService.getAll();
         this.songSelected.set(this.listSongs[0]);
+        this.updateMediaSessionMetadata()
+        this.setupMediaSessionHandlers();
     }
 
-    public changeSongNext(): void {
-        const currentIndex = this.listSongs.indexOf(this.songSelected());
-        let nextIndex = 0;
+    public changeSongNext(typePlay: String): void {
+      const currentIndex = this.listSongs.indexOf(this.songSelected());
+      let nextIndex = 0;
+      const currentSong = this.songSelected();
     
-        if (currentIndex < this.listSongs.length - 1) {
+      if (currentSong) {
+        currentSong.isPlaying = false;
+      }
+    
+      switch (typePlay) {
+        case TypePlayEnum.SHUFFLE:
+          let randomIndex = 0;
+          do {
+            randomIndex = Math.floor(Math.random() * this.listSongs.length);
+          } while (randomIndex === currentIndex);
+    
+          nextIndex = randomIndex;
+          break;
+    
+        case TypePlayEnum.REPEAT:
+          if (currentIndex < this.listSongs.length - 1) {
             nextIndex = currentIndex + 1;
-        }
+          } else {
+            nextIndex = 0;
+          }
+          break;
     
-        const currentSong = this.songSelected();
-        if (currentSong) {
-            currentSong.isPlaying = false;
-        }
+        default:
+          if (currentIndex < this.listSongs.length - 1) {
+            nextIndex = currentIndex + 1;
+          } else {
+            nextIndex = 0;
+          }
+          break;
+      }
     
-        this.songSelected.set(this.listSongs[nextIndex]);
-        this.songSelected().isPlaying = true;
+      this.songSelected.set(this.listSongs[nextIndex]);
+      this.songSelected().isPlaying = true;
+      this.updateMediaSessionMetadata();
     }
 
-    public changeSongBack(): void {
-        const currentIndex = this.listSongs.indexOf(this.songSelected());
-        let previousIndex: number;
+    public changeSongBack(typePlay: String): void {
+      const currentIndex = this.listSongs.indexOf(this.songSelected());
+      let previousIndex: number;
+      const currentSong = this.songSelected();
     
-        if (currentIndex === 0) {
+      if (currentSong) {
+        currentSong.isPlaying = false;
+      }
+    
+      switch (typePlay) {
+        case TypePlayEnum.SHUFFLE:
+          let randomIndex = 0;
+          do {
+            randomIndex = Math.floor(Math.random() * this.listSongs.length);
+          } while (randomIndex === currentIndex);
+    
+          previousIndex = randomIndex;
+          break;
+    
+        case TypePlayEnum.REPEAT:
+          if (currentIndex === 0) {
             previousIndex = this.listSongs.length - 1;
-        } else {
+          } else {
             previousIndex = currentIndex - 1;
-        }
+          }
+          break;
     
-        const currentSong = this.songSelected();
-       
-        if (currentSong) {
-            currentSong.isPlaying = false;
-        }
+        default:
+          if (currentIndex === 0) {
+            previousIndex = this.listSongs.length - 1;
+          } else {
+            previousIndex = currentIndex - 1;
+          }
+          break;
+      }
     
-        this.songSelected.set(this.listSongs[previousIndex]);
-        this.songSelected().isPlaying = true;
+      this.songSelected.set(this.listSongs[previousIndex]);
+      this.songSelected().isPlaying = true;
+      this.updateMediaSessionMetadata();
     }
 
     public playAudio(): void {
-
+      this.songSelected().isPlaying = true;
+      this.devicesConfigService.playBackState();
     }
 
     public stopAudio(): void {
-        
+      this.songSelected().isPlaying = false;
+      this.devicesConfigService.stopBackState();
     }
 
     private updateMediaSessionMetadata(): void {
@@ -80,8 +129,8 @@ export class StateMusicService {
         this.devicesConfigService.setMediaSessionHandlers(
           () => this.playAudio(),
           () => this.stopAudio(),
-          () => this.changeSongNext(),
-          () => this.changeSongBack()
+          () => this.changeSongNext(""),
+          () => this.changeSongBack("")
         );
       }
 }

@@ -19,3 +19,8 @@ export enum CardOptionsConst {
     PLAYLIST = "playlist",
     DELETE = "delete",
 }
+
+export enum TypePlayEnum {
+   SHUFFLE = "shuffle",
+   REPEAT = "repeat"
+}

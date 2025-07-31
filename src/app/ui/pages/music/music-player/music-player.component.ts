@@ -1,9 +1,14 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, output, OutputEmitterRef, inject, WritableSignal } from '@angular/core';
-import { Song } from '../../../../domain/models/music/songs';
+import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal } from '@angular/core';
+import { Song, TypePlayEnum } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { DevicesConfigurationServiceService } from '../../../../domain/services/devices-configuration-service.service';
 import { StateMusicService } from '../../../../domain/states/state-music.service';
+
+interface AudioPlayCurrent {
+  repeat: boolean,
+  shuffle: boolean,
+  volumeState: boolean,
+} 
 
 @Component({
   selector: 'app-music-player',
@@ -13,15 +18,14 @@ import { StateMusicService } from '../../../../domain/states/state-music.service
 })
 export class MusicPlayerComponent implements AfterViewInit {
 
-  public ouputSong: OutputEmitterRef<boolean> = output<boolean>();
-  public ouputChangeSong: OutputEmitterRef<string> = output<string>();
-
+  private stateMusicService: StateMusicService = inject(StateMusicService);
+  protected songSelected: WritableSignal<Song> = this.stateMusicService.songSelected;
   @ViewChild('volumeRange') volumeRangeRef!: ElementRef<HTMLInputElement>;
   @ViewChild('audioPlayer') audioRef!: ElementRef<HTMLAudioElement>;
   @ViewChild('timeRange') timeRangeRef!: ElementRef<HTMLInputElement>;
-  protected audioPlayCurrent: any = {
-    repeat: true,
-    shuffle: false,
+  protected audioPlayCurrent: AudioPlayCurrent = {
+    repeat: false,
+    shuffle: true,
     volumeState: true,
   };
   protected audioState: boolean = false;
@@ -30,16 +34,25 @@ export class MusicPlayerComponent implements AfterViewInit {
   protected currentTime: string = '0:00';
   protected totalDuration: string = '0:00';
 
-  // Nueva configuracion con el servicio de estado:
-  private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected songSelected: WritableSignal<Song> = this.stateMusicService.songSelected;
+  public playAudio(): void {
+    this.stateMusicService.playAudio();
+    this.audioRef.nativeElement.play();
+  }
 
   public changeSongNext(): void {
-    this.stateMusicService.changeSongNext();
+    if (this.audioPlayCurrent.shuffle) {
+      this.stateMusicService.changeSongNext(TypePlayEnum.SHUFFLE);
+    } else if (this.audioPlayCurrent.repeat) {
+      this.stateMusicService.changeSongNext(TypePlayEnum.REPEAT)
+    }
   }
 
   public changeSongBack(): void {
-    this.stateMusicService.changeSongBack();
+    if (this.audioPlayCurrent.shuffle) {
+      this.stateMusicService.changeSongBack(TypePlayEnum.SHUFFLE);
+    } else if (this.audioPlayCurrent.repeat) {
+      this.stateMusicService.changeSongBack(TypePlayEnum.REPEAT)
+    }
   }
 
   ngAfterViewInit(): void {
@@ -53,10 +66,7 @@ export class MusicPlayerComponent implements AfterViewInit {
         if (this.audioPlayCurrent.repeat) {
           this.playAudio();
         } else if (this.audioPlayCurrent.shuffle) {
-          this.ouputSong.emit(true);
-        }
-        if ('mediaSession' in navigator) {
-            navigator.mediaSession.playbackState = 'paused';
+          this.changeSongNext();
         }
       });
 
@@ -88,14 +98,6 @@ export class MusicPlayerComponent implements AfterViewInit {
     } else if (type === 'repeat') {
       this.audioPlayCurrent.repeat = true;
       this.audioPlayCurrent.shuffle = false;
-    }
-  }
-
-  protected playAudio(): void {
-    this.audioRef.nativeElement.play();
-    this.audioState = true;
-    if ('mediaSession' in navigator) {
-      navigator.mediaSession.playbackState = 'playing';
     }
   }
 
