@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, input, InputSignal, linkedSignal, OnDestroy, OnInit, output, OutputEmitterRef, ViewChild, WritableSignal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, input, InputSignal, linkedSignal, OnDestroy, OnInit, output, OutputEmitterRef, ViewChild, WritableSignal } from '@angular/core';
 import { listDataMusicData } from '../../../../domain/utils/data/music';
 import { Song } from '../../../../domain/models/music/songs';
 import { InputSearchGenericComponent } from '../../../components/input-search-generic/input-search-generic.component';
@@ -7,6 +7,7 @@ import { CategoriesEnum, Category, TypeSearch, TypeSearchEnum } from '../../../.
 import { listDataCategories } from '../../../../domain/utils/data/categories';
 import { NgClass } from '@angular/common';
 import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
+import { StateMusicService } from '../../../../domain/states/state-music.service';
 
 @Component({
   selector: 'app-section-main-music',
@@ -21,22 +22,18 @@ import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
 })
 export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  public songSelected: InputSignal<Song> = input<Song>(listDataMusicData[0]);
-  private linkedSongSelected: WritableSignal<Song> = linkedSignal(this.songSelected);
-  public songSelectedOutput: OutputEmitterRef<Song> = output<Song>();
+  private stateMusicService: StateMusicService = inject(StateMusicService);
   protected listCategories: Category[] = listDataCategories;
   @ViewChild('filterContainer') filterContainer!: ElementRef<HTMLDivElement>;
 
-  protected listdataMusic: Song[] = listDataMusicData;
+  protected listdataMusic: WritableSignal<Song[]> = this.stateMusicService.listSongs;
 
   private carouselInterval: any;
   private currentScrollIndex: number = 0;
 
   ngOnInit(): void {
-    if (this.listdataMusic.length > 0) {
-      this.listdataMusic[0].isPlaying = true;
-      this.songSelectedOutput.emit(this.listdataMusic[0]);
-      this.linkedSongSelected.set(this.listdataMusic[0]);
+    if (this.listdataMusic().length > 0) {
+      this.listdataMusic()[0].isPlaying = true;
     }
   }
 
@@ -50,14 +47,7 @@ export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestr
 
 
   protected getSong(song: Song): void {
-    const currentActiveSong = this.listdataMusic.find(s => s.isPlaying);
-    if (currentActiveSong && currentActiveSong !== song) {
-      currentActiveSong.isPlaying = false;
-    }
-    song.isPlaying = true;
-    this.songSelectedOutput.emit(song);
-    this.linkedSongSelected.set(song);
-
+    this.stateMusicService.setSongSelected(song);
   }
 
   protected filterSongs(data: TypeSearch): void {
@@ -72,35 +62,34 @@ export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestr
   }
 
   private filterBySearch(search: String): void {
-    
-    this.listdataMusic = listDataMusicData.filter(s => s.name.toLowerCase().includes(search.toLowerCase()));
+    this.listdataMusic.set(listDataMusicData.filter(s => s.name.toLowerCase().includes(search.toLowerCase())));
   }
 
   private filterByCategory(category: String): void {
     if (category === CategoriesEnum.ALL) {
-      this.listdataMusic = listDataMusicData;
+      this.listdataMusic.set(listDataMusicData);
     } else if (category === CategoriesEnum.POP) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.POP);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.POP));
     } else if (category === CategoriesEnum.ROCK) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.ROCK);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.ROCK));
     } else if (category === CategoriesEnum.HIP_HOP) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.HIP_HOP);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.HIP_HOP));
     } else if (category === CategoriesEnum.ELECTRONIC) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.ELECTRONIC);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.ELECTRONIC));
     } else if (category === CategoriesEnum.RAP) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.RAP);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.RAP));
     } else if (category === CategoriesEnum.JAZZ) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.JAZZ);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.JAZZ));
     } else if (category === CategoriesEnum.BLUES) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.BLUES);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.BLUES));
     } else if (category === CategoriesEnum.COUNTRY) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.COUNTRY);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.COUNTRY));
     } else if (category === CategoriesEnum.RNB) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.RNB);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.RNB));
     } else if (category === CategoriesEnum.REGGAE) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.REGGAE);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.REGGAE));
     } else if (category === CategoriesEnum.METAL) {
-      this.listdataMusic = listDataMusicData.filter(s => s.gender === CategoriesEnum.METAL);
+      this.listdataMusic.set(listDataMusicData.filter(s => s.gender === CategoriesEnum.METAL));
     }
   }
 

@@ -10,13 +10,20 @@ export class StateMusicService {
 
   private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
   private musicService: MusicService = inject(MusicService);
-  private listSongs: Song[] = [];
+  public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
   public songSelected: WritableSignal<Song> = signal<Song>({} as Song);
   private currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
 
   constructor() {
-    this.listSongs = this.musicService.getAll();
-    this.songSelected.set(this.listSongs[0]);
+    this.listSongs.set(this.musicService.getAll());
+    this.songSelected.set(this.listSongs()[0]);
+    this.updateMediaSessionMetadata();
+  }
+
+  public setSongSelected(song: Song): void {
+    this.songSelected().isPlaying = false;
+    this.songSelected.set(song);
+    this.songSelected().isPlaying = true;
     this.updateMediaSessionMetadata();
   }
 
@@ -26,7 +33,7 @@ export class StateMusicService {
 
   public changeSongNext(): void {
     const typePlay = this.currentTypePlay();
-    const currentIndex = this.listSongs.indexOf(this.songSelected());
+    const currentIndex = this.listSongs().indexOf(this.songSelected());
     let nextIndex = 0;
     const currentSong = this.songSelected();
 
@@ -38,14 +45,14 @@ export class StateMusicService {
       case TypePlayEnum.SHUFFLE:
         let randomIndex = 0;
         do {
-          randomIndex = Math.floor(Math.random() * this.listSongs.length);
+          randomIndex = Math.floor(Math.random() * this.listSongs().length);
         } while (randomIndex === currentIndex);
   
         nextIndex = randomIndex;
         break;
   
       case TypePlayEnum.REPEAT:
-        if (currentIndex < this.listSongs.length - 1) {
+        if (currentIndex < this.listSongs().length - 1) {
           nextIndex = currentIndex + 1;
         } else {
           nextIndex = 0;
@@ -53,7 +60,7 @@ export class StateMusicService {
         break;
   
       default:
-        if (currentIndex < this.listSongs.length - 1) {
+        if (currentIndex < this.listSongs().length - 1) {
           nextIndex = currentIndex + 1;
         } else {
           nextIndex = 0;
@@ -61,14 +68,14 @@ export class StateMusicService {
         break;
     }
   
-    this.songSelected.set(this.listSongs[nextIndex]);
+    this.songSelected.set(this.listSongs()[nextIndex]);
     this.songSelected().isPlaying = true;
     this.updateMediaSessionMetadata();
   }
 
   public changeSongBack(): void {
     const typePlay = this.currentTypePlay();
-    const currentIndex = this.listSongs.indexOf(this.songSelected());
+    const currentIndex = this.listSongs().indexOf(this.songSelected());
     let previousIndex: number;
     const currentSong = this.songSelected();
 
@@ -80,7 +87,7 @@ export class StateMusicService {
       case TypePlayEnum.SHUFFLE:
         let randomIndex = 0;
         do {
-          randomIndex = Math.floor(Math.random() * this.listSongs.length);
+          randomIndex = Math.floor(Math.random() * this.listSongs().length);
         } while (randomIndex === currentIndex);
 
         previousIndex = randomIndex;
@@ -88,7 +95,7 @@ export class StateMusicService {
 
       case TypePlayEnum.REPEAT:
         if (currentIndex === 0) {
-          previousIndex = this.listSongs.length - 1;
+          previousIndex = this.listSongs().length - 1;
         } else {
           previousIndex = currentIndex - 1;
         }
@@ -96,14 +103,14 @@ export class StateMusicService {
 
       default:
         if (currentIndex === 0) {
-          previousIndex = this.listSongs.length - 1;
+          previousIndex = this.listSongs().length - 1;
         } else {
           previousIndex = currentIndex - 1;
         }
         break;
     }
 
-    this.songSelected.set(this.listSongs[previousIndex]);
+    this.songSelected.set(this.listSongs()[previousIndex]);
     this.songSelected().isPlaying = true;
     this.updateMediaSessionMetadata();
   }

@@ -8,7 +8,7 @@
         <app-input-search-generic placeholder="Buscar canciones..." (onChangeInputData)="this.filterSongs($event)" />
     </div>
     <div class="container-list-songs">
-        @for (song of listdataMusic; track $index) {
+        @for (song of this.listdataMusic(); track $index) {
             <div [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
                 <div class="mask-activate">
                     <i class="fa-solid fa-music" appWobble [appWobbleActive]="song.isPlaying" ></i>

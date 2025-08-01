@@ -3,7 +3,7 @@
 }
 
 .music-player {
-    z-index: 10;
+    z-index: 3;
     background-color: transparent;
     backdrop-filter: var(--blur-bg);
     position: sticky;
@@ -218,3 +218,121 @@
     display: none;
 }
 
+@media screen and (width <= 768px) {
+    .music-player {
+        overflow: hidden;
+        background-color: transparent;
+        backdrop-filter: var(--blur-bg);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+    }
+
+    .music-player .container-information-music-player,
+    .music-player .container-controls,
+    .music-player .container-time-volume {
+        display: none;
+    }
+
+    .music-player .container-mobile {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+    }
+
+    .music-player .container-mobile .container-header-mobile {
+        width: 100%;
+        height: 8%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.5rem;
+        font-size: 1.5rem;
+        background-color: red;
+    }
+
+    .music-player .container-mobile .container-body-mobile {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding: 0 1.5rem;
+        background-color: green;
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-information {
+        width: 100%;
+        height: 33.3%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: blue;
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-information .container-names {
+        width: 80%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        background-color: yellow;
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-information .container-names > h2 {
+        font-size: 1.5rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+        text-transform: uppercase;
+        background: var(--linear-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-information .container-names > p {
+        font-size: 1rem;
+        color: var(--white-color);
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-information > i {
+        font-size: 1.5rem;
+        color: var(--white-color);
+        cursor: pointer;
+        transition: color 0.3s ease-out;
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-information > i:hover {
+        color: var(--primary-color);
+    }
+
+    .music-player .container-mobile .container-body-mobile .container-controls-mobile {
+        width: 100%;
+        height: 33.3%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: purple;
+        font-size: 1.5rem;
+    }
+}

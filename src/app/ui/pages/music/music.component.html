@@ -8,24 +8,24 @@
             <i class="fa-solid fa-music"></i>
             <div class="container-information-filter">
                 <h3>Canciones</h3>
-                <p>35 canciones</p>
+                <p>35</p>
             </div>
         </div>
         <div class="container-item-filter">
             <i class="fa-solid fa-user"></i>
             <div class="container-information-filter">
                 <h3>Artistas</h3>
-                <p>15 artistas</p>
+                <p>15</p>
             </div>
         </div>
         <div class="container-item-filter">
             <i class="fa-solid fa-list"></i>
             <div class="container-information-filter">
                 <h3>Albumnes</h3>
-                <p>5 albumnes</p>
+                <p>5</p>
             </div>
         </div>
     </div>
-    <app-section-main-music (songSelectedOutput)="songSelectedEvent($event)" [songSelected]="this.songSelected()" />
+    <app-section-main-music />
     <app-music-player />
 </section>

@@ -30,9 +30,35 @@
             } @else {
                 <i (click)="this.changeVolumeNormal()" class="fa-solid fa-volume-xmark"></i>
             }
-            <audio id="audio" #audioPlayer [src]="this.songSelected().audio" [autoplay]="this.songSelected().isPlaying"></audio>
+            <audio id="audio" #audioPlayer [src]="this.songSelected().audio"></audio>
             <input id="volumeRange" #volumeRange type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.changeVolume()">
             <input id="timeRange" #timeRange type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.changeTime()">
+        </div>
+    </div>
+    <div class="container-mobile">
+        <div class="container-header-mobile">
+            <i class="fa-solid fa-music"></i>
+            <i class="fa-solid fa-music"></i>
+        </div>
+        <div class="container-body-mobile">
+            <div class="container-information">
+                <div class="container-names">
+                    <h2>{{this.songSelected().name}}</h2>
+                    <p>{{this.songSelected().artist}}</p>
+                </div>
+                <i class="fa-solid fa-heart" [ngClass]="{'activate-item' : this.songSelected().isFavorite}"></i>
+            </div>
+            <div class="container-controls-mobile">
+                <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
+                <i (click)="this.changeSongBack()" class="fa-solid fa-backward"></i>
+                @if (this.songSelected().isPlaying) {
+                    <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
+                } @else {
+                    <i (click)="playAudio()" class="fa-solid fa-play"></i>
+                }
+                <i (click)="this.changeSongNext()" class="fa-solid fa-forward"></i>
+                <i (click)="this.typePlay('repeat')" class="fa-solid fa-repeat" [ngClass]="{'activate-item' : this.audioPlayCurrent.repeat}"></i>
+            </div>
         </div>
     </div>
 </aside>
