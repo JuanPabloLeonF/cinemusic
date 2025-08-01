@@ -28,7 +28,6 @@ export class MusicPlayerComponent implements AfterViewInit {
     shuffle: true,
     volumeState: true,
   };
-  protected audioState: boolean = false;
   protected volumeValue: number = 50;
   protected timeValue: number = 0;
   protected currentTime: string = '0:00';
@@ -39,20 +38,17 @@ export class MusicPlayerComponent implements AfterViewInit {
     this.audioRef.nativeElement.play();
   }
 
+  public stopAudio(): void {
+    this.stateMusicService.stopAudio();
+    this.audioRef.nativeElement.pause();
+  }
+
   public changeSongNext(): void {
-    if (this.audioPlayCurrent.shuffle) {
-      this.stateMusicService.changeSongNext(TypePlayEnum.SHUFFLE);
-    } else if (this.audioPlayCurrent.repeat) {
-      this.stateMusicService.changeSongNext(TypePlayEnum.REPEAT)
-    }
+    this.stateMusicService.changeSongNext();
   }
 
   public changeSongBack(): void {
-    if (this.audioPlayCurrent.shuffle) {
-      this.stateMusicService.changeSongBack(TypePlayEnum.SHUFFLE);
-    } else if (this.audioPlayCurrent.repeat) {
-      this.stateMusicService.changeSongBack(TypePlayEnum.REPEAT)
-    }
+    this.stateMusicService.changeSongBack();
   }
 
   ngAfterViewInit(): void {
@@ -88,27 +84,27 @@ export class MusicPlayerComponent implements AfterViewInit {
           this.audioPlayCurrent.volumeState = true;
         }
       });
+
+      this.stateMusicService.setupMediaSessionHandlers(
+        () => this.playAudio(),
+        () => this.stopAudio(),
+        () => this.changeSongNext(),
+        () => this.changeSongBack()
+      )
     }
   }
 
   protected typePlay(type: string): void {
-    if (type === 'shuffle') {
+    if (type == TypePlayEnum.SHUFFLE) {
       this.audioPlayCurrent.shuffle = true;
       this.audioPlayCurrent.repeat = false;
-    } else if (type === 'repeat') {
+      this.stateMusicService.setTypePlay(TypePlayEnum.SHUFFLE);
+    } else if (type == TypePlayEnum.REPEAT) {
       this.audioPlayCurrent.repeat = true;
       this.audioPlayCurrent.shuffle = false;
+      this.stateMusicService.setTypePlay(TypePlayEnum.REPEAT)
     }
   }
-
-  protected stopAudio(): void {
-    this.audioRef.nativeElement.pause();
-    this.audioState = false;
-    if ('mediaSession' in navigator) {
-      navigator.mediaSession.playbackState = 'paused';
-    }
-  }
-
 
   protected changeVolume(): void {
     if (this.audioRef && this.volumeRangeRef) {

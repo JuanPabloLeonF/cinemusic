@@ -22,5 +22,7 @@ export enum CardOptionsConst {
 
 export enum TypePlayEnum {
    SHUFFLE = "shuffle",
-   REPEAT = "repeat"
+   REPEAT = "repeat",
+   PLAY =  "play",
+   STOP = "stop"
 }
