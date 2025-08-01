@@ -37,8 +37,11 @@
     </div>
     <div class="container-mobile">
         <div class="container-header-mobile">
-            <i class="fa-solid fa-music"></i>
-            <i class="fa-solid fa-music"></i>
+            <i class="fa-solid fa-chevron-down"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+        <div class="container-img-music-mobile">
+            <img [src]="this.songSelected().image" [alt]="this.songSelected().name">
         </div>
         <div class="container-body-mobile">
             <div class="container-information">
@@ -48,6 +51,13 @@
                 </div>
                 <i class="fa-solid fa-heart" [ngClass]="{'activate-item' : this.songSelected().isFavorite}"></i>
             </div>
+            <div class="container-currentime-music">
+                <input id="timeRange" #timeRange type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.changeTime()">
+                <div class="container-time-music">
+                    <p>{{this.currentTime}}</p>
+                    <p>{{this.totalDuration}}</p>
+                </div>
+            </div> 
             <div class="container-controls-mobile">
                 <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
                 <i (click)="this.changeSongBack()" class="fa-solid fa-backward"></i>
