@@ -146,10 +146,10 @@
     color: var(--primary-color);
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"],
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"] {
+/* Estilos base para range inputs */
+.music-player input[type="range"] {
     -webkit-appearance: none;
-    width: 80%;
+    appearance: none;
     height: 5px;
     background: transparent;
     border-radius: 1rem;
@@ -160,12 +160,15 @@
     transition: all 0.2s ease-in-out;
     --range-fill-color: var(--primary-color);
     --range-track-color: #555;
-    --range-progress: 100%;
+    --range-progress: 0%;
     background: linear-gradient(to right, var(--range-fill-color) var(--range-progress), var(--range-track-color) var(--range-progress));
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"]::-webkit-slider-thumb,
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-webkit-slider-thumb {
+.music-player .container-time-volume .container-volume > input[type="range"] {
+    width: 80%;
+}
+
+.music-player input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 0.5rem;
     height: 0.5rem;
@@ -177,13 +180,11 @@
     transition: background 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"]:hover::-webkit-slider-thumb,
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]:hover::-webkit-slider-thumb {
+.music-player input[type="range"]:hover::-webkit-slider-thumb {
     opacity: 1;
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"]::-moz-range-thumb,
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-moz-range-thumb {
+.music-player input[type="range"]::-moz-range-thumb {
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 100%;
@@ -194,25 +195,23 @@
     transition: background 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"]:hover::-moz-range-thumb,
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]:hover::-moz-range-thumb {
+.music-player input[type="range"]:hover::-moz-range-thumb {
     opacity: 1;
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"]::-moz-range-track,
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-moz-range-track {
+.music-player input[type="range"]::-moz-range-track {
     background: transparent;
     border: none;
     height: 100%;
     border-radius: 1rem;
 }
 
-.music-player .container-time-volume .container-volume > input[type="range"]::-moz-range-progress,
-.music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-moz-range-progress {
+.music-player input[type="range"]::-moz-range-progress {
     background: transparent;
 }
 
-#timeRange {
+/* Estilos específicos para desktop */
+#timeRangeDesktop {
     width: 100%;
     position: absolute;
     left: 0;
@@ -294,6 +293,10 @@
         font-size: 1.5rem;
     }
 
+    .music-player .container-mobile .container-header-mobile > i {
+        cursor: pointer;
+    }
+
     .music-player .container-mobile .container-body-mobile {
         width: 100%;
         height: 40%;
@@ -353,6 +356,10 @@
         color: var(--primary-color);
     }
 
+    .music-player .container-mobile .container-body-mobile .container-controls-mobile > i {
+        cursor: pointer;
+    }
+
     .music-player .container-mobile .container-body-mobile .container-controls-mobile {
         width: 100%;
         height: 20%;
@@ -383,31 +390,18 @@
         align-items: start;
     }
     
-    #timeRange {
+    #timeRangeMobile {
         width: 100%;
-        border-radius: 0;
-        height: 3px;
-        position: static;
-    }
-
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"] {
-        -webkit-appearance: none;
-        width: 80%;
-        height: 5px;
-        background: transparent;
         border-radius: 1rem;
-        outline: none;
-        margin: 0;
-        padding: 0;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        height: 5px;
+        position: static;
         --range-fill-color: var(--primary-color);
         --range-track-color: #555;
-        --range-progress: 100%;
+        --range-progress: 0%;
         background: linear-gradient(to right, var(--range-fill-color) var(--range-progress), var(--range-track-color) var(--range-progress));
     }
 
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-webkit-slider-thumb {
+    #timeRangeMobile::-webkit-slider-thumb {
         -webkit-appearance: none;
         width: 0.5rem;
         height: 0.5rem;
@@ -419,11 +413,11 @@
         transition: background 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
     }
 
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]:hover::-webkit-slider-thumb {
+    #timeRangeMobile:hover::-webkit-slider-thumb {
         opacity: 1;
     }
 
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-moz-range-thumb {
+    #timeRangeMobile::-moz-range-thumb {
         width: 0.5rem;
         height: 0.5rem;
         border-radius: 100%;
@@ -434,18 +428,27 @@
         transition: background 0.2s ease-in-out, opacity 0.2s ease-in-out;
     }
 
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]:hover::-moz-range-thumb {
+    #timeRangeMobile:hover::-moz-range-thumb {
         opacity: 1;
     }
 
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-moz-range-track {
+    #timeRangeMobile::-moz-range-track {
         background: transparent;
         border: none;
         height: 100%;
         border-radius: 1rem;
     }
 
-    .music-player .container-mobile .container-body-mobile .container-currentime-music > input[type="range"]::-moz-range-progress {
+    #timeRangeMobile::-moz-range-progress {
         background: transparent;
+    }
+
+    .i-menu {
+        display: block;
+        position: absolute;
+        top: 1%;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
     }
 }

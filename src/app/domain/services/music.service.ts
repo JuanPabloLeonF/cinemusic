@@ -1,20 +1,18 @@
 import { inject, Injectable } from '@angular/core';
 import { Song } from '../models/music/songs';
-import { listDataMusicData } from '../utils/data/music';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicService {
 
-    private data: Song[] = listDataMusicData;
+    private urlApi: string = 'data/music_data.json';
+    private httpClient: HttpClient = inject(HttpClient);
 
-    public getAll(): Song[] {
-        return this.data;
+    public getAll(): Observable<Song[]> {
+        return this.httpClient.get<Song[]>(this.urlApi);;
     }
 
-    public getOne(id: string): Song {
-        return this.data.find((item) => item.id === id) as Song;
-    }
-
-}
+}   

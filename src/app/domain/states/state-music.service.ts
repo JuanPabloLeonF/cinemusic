@@ -2,6 +2,7 @@ import { ElementRef, inject, Injectable, signal, WritableSignal } from '@angular
 import { MusicService } from '../services/music.service';
 import { Song, TypePlayEnum } from '../models/music/songs';
 import { DevicesConfigurationServiceService } from '../services/devices-configuration-service.service';
+import { StatesMusicMobileService } from './state-music-mobile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,17 @@ import { DevicesConfigurationServiceService } from '../services/devices-configur
 export class StateMusicService {
 
   private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
+  public stateMusicMobileService: StatesMusicMobileService = inject(StatesMusicMobileService);
   private musicService: MusicService = inject(MusicService);
   public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
   public songSelected: WritableSignal<Song> = signal<Song>({} as Song);
   private currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
 
   constructor() {
-    this.listSongs.set(this.musicService.getAll());
-    this.songSelected.set(this.listSongs()[0]);
+    this.musicService.getAll().subscribe((data) => {
+      this.listSongs.set(data);
+      this.songSelected.set(data[0]);
+    });
     this.updateMediaSessionMetadata();
   }
 
@@ -121,9 +125,11 @@ export class StateMusicService {
   }
 
   public stopAudio(): void {
-    this.songSelected().isPlaying = false;
     this.devicesConfigService.stopBackState();
+  }
 
+  public changeFavoriteSong(): void {
+    this.songSelected().isFavorite = !this.songSelected().isFavorite;
   }
 
   private updateMediaSessionMetadata(): void {

@@ -1,6 +1,7 @@
-import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { Component, inject, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TraslateDirective } from '../../animations/traslate/traslate.directive';
+import { StatesNavbarMainService } from '../../../domain/states/states-navbar-main.service';
 
 @Component({
   selector: 'app-nav-bar-main',
@@ -10,11 +11,6 @@ import { TraslateDirective } from '../../animations/traslate/traslate.directive'
 })
 export class NavBarMainComponent {
 
-  public activateMenu: InputSignal<boolean> = input<boolean>(true);
-  public switchMenuOutput: OutputEmitterRef<boolean> = output<boolean>();
-
-  protected switchMenu(): void {
-    this.switchMenuOutput.emit(false);
-  }
+  protected stateNavBarMainService: StatesNavbarMainService = inject(StatesNavbarMainService);
 
  }

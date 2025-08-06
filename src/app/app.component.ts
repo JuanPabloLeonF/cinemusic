@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarMainComponent } from "./ui/layouts/nav-bar-main/nav-bar-main.component";
+import { StatesNavbarMainService } from './domain/states/states-navbar-main.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,5 @@ import { NavBarMainComponent } from "./ui/layouts/nav-bar-main/nav-bar-main.comp
 })
 export class AppComponent {
 
-  protected activateMenu: boolean = true;
-
-  protected switchMenu(value: boolean): void {
-    this.activateMenu = value;
-  }
+  protected stateNavBarMainService: StatesNavbarMainService = inject(StatesNavbarMainService);
 }

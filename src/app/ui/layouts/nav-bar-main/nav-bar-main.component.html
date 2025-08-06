@@ -1,5 +1,5 @@
-<nav class="nav-bar-main" appTraslate [appTraslateActive]="this.activateMenu()">
-    <i (click)="this.switchMenu()" class="fa-solid fa-x close-menu"></i>
+<nav class="nav-bar-main" appTraslate [appTraslateActive]="this.stateNavBarMainService.activateMenu()">
+    <i (click)="this.stateNavBarMainService.switchMenu(false)" class="fa-solid fa-x close-menu"></i>
     <div class="container-logo">
         <img src="images/logo2.png" alt="logo">
     </div>

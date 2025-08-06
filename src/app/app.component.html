@@ -1,5 +1,5 @@
 <main class="main">
-  <i (click)="this.switchMenu(true)" class="fa-solid fa-bars open-menu"></i>
-  <app-nav-bar-main [activateMenu]="this.activateMenu" (switchMenuOutput)="this.switchMenu($event)" />
+  <i (click)="this.stateNavBarMainService.switchMenu(true)" class="fa-solid fa-bars open-menu"></i>
+  <app-nav-bar-main />
   <router-outlet />
 </main>
