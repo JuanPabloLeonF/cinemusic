@@ -1,9 +1,10 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal, HostListener } from '@angular/core';
 import { Song, TypePlayEnum } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { StateMusicService } from '../../../../domain/states/state-music.service';
 import { TraslateVerticalDirective } from '../../../animations/traslate/traslate-vertical.directive';
+import { TraslateVerticalDownDirective } from '../../../animations/traslate/traslate-vertical-down.directive';
 
 interface AudioPlayCurrent {
   repeat: boolean,
@@ -13,7 +14,7 @@ interface AudioPlayCurrent {
 
 @Component({
   selector: 'app-music-player',
-  imports: [FormsModule, NgClass, TraslateVerticalDirective],
+  imports: [FormsModule, NgClass, TraslateVerticalDirective, TraslateVerticalDownDirective],
   templateUrl: './music-player.component.html',
   styleUrl: './music-player.component.css'
 })
@@ -21,6 +22,8 @@ export class MusicPlayerComponent implements AfterViewInit {
 
   protected stateMusicService: StateMusicService = inject(StateMusicService);
   protected songSelected: WritableSignal<Song> = this.stateMusicService.songSelected;
+  @ViewChild('containerVolumeMobile') containerVolumeMobile!: ElementRef<HTMLInputElement>; 
+  @ViewChild('volumeRangeMobile') volumeRangeMobileRef!: ElementRef<HTMLInputElement>; 
   @ViewChild('volumeRange') volumeRangeRef!: ElementRef<HTMLInputElement>;
   @ViewChild('audioPlayer') audioRef!: ElementRef<HTMLAudioElement>;
   @ViewChild('timeRange') timeRangeRef!: ElementRef<HTMLInputElement>;
@@ -127,6 +130,12 @@ export class MusicPlayerComponent implements AfterViewInit {
       this.updateRangeBackgroundVolume();
       this.audioPlayCurrent.volumeState = this.volumeValue > 0;
     }
+
+    if (this.audioRef && this.volumeRangeMobileRef) {
+      this.audioRef.nativeElement.volume = this.volumeValue / 100;
+      this.updateRangeBackgroundVolume();
+      this.audioPlayCurrent.volumeState = this.volumeValue > 0;
+    }
   }
 
   protected onTimeChange(): void {
@@ -153,6 +162,12 @@ export class MusicPlayerComponent implements AfterViewInit {
   protected updateRangeBackgroundVolume(): void {
     if (this.volumeRangeRef && this.volumeRangeRef.nativeElement) {
       const inputElement = this.volumeRangeRef.nativeElement;
+      const progress = this.volumeValue;
+      inputElement.style.setProperty('--range-progress', `${progress}%`);
+    }
+
+    if (this.volumeRangeMobileRef && this.volumeRangeMobileRef.nativeElement) {
+      const inputElement = this.volumeRangeMobileRef.nativeElement;
       const progress = this.volumeValue;
       inputElement.style.setProperty('--range-progress', `${progress}%`);
     }
@@ -193,4 +208,16 @@ export class MusicPlayerComponent implements AfterViewInit {
     const secs = Math.floor(seconds % 60);
     return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
   }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent): void {
+    if (this.containerVolumeMobile) {
+      const clickedInside = this.containerVolumeMobile.nativeElement.contains(event.target as Node);
+      if (!clickedInside) {
+        console.log("me ando ejecutando")
+        this.stateMusicService.activateMenuMobile.set(false);
+      }
+    }
+  }
+
 }

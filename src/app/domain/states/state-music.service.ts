@@ -15,6 +15,7 @@ export class StateMusicService {
   public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
   public songSelected: WritableSignal<Song> = signal<Song>({} as Song);
   private currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
+  public activateMenuMobile: WritableSignal<boolean> = signal<boolean>(false);
 
   constructor() {
     this.musicService.getAll().subscribe((data) => {

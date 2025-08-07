@@ -146,7 +146,6 @@
     color: var(--primary-color);
 }
 
-/* Estilos base para range inputs */
 .music-player input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
@@ -210,7 +209,6 @@
     background: transparent;
 }
 
-/* Estilos específicos para desktop */
 #timeRangeDesktop {
     width: 100%;
     position: absolute;
@@ -392,7 +390,8 @@
         justify-content: space-between;
         align-items: start;
     }
-    
+
+    #volumeRangeMobile,
     #timeRangeMobile {
         width: 100%;
         border-radius: 1rem;
@@ -404,6 +403,7 @@
         background: linear-gradient(to right, var(--range-fill-color) var(--range-progress), var(--range-track-color) var(--range-progress));
     }
 
+    #volumeRangeMobile::-webkit-slider-thumb,
     #timeRangeMobile::-webkit-slider-thumb {
         -webkit-appearance: none;
         width: 0.5rem;
@@ -416,10 +416,12 @@
         transition: background 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
     }
 
+    #volumeRangeMobile::-webkit-slider-thumb,
     #timeRangeMobile:hover::-webkit-slider-thumb {
         opacity: 1;
     }
 
+    #volumeRangeMobile::-moz-range-thumb,
     #timeRangeMobile::-moz-range-thumb {
         width: 0.5rem;
         height: 0.5rem;
@@ -431,10 +433,12 @@
         transition: background 0.2s ease-in-out, opacity 0.2s ease-in-out;
     }
 
+    #volumeRangeMobile::-moz-range-thumb,
     #timeRangeMobile:hover::-moz-range-thumb {
         opacity: 1;
     }
 
+    #volumeRangeMobile::-moz-range-track,
     #timeRangeMobile::-moz-range-track {
         background: transparent;
         border: none;
@@ -442,8 +446,34 @@
         border-radius: 1rem;
     }
 
+    #volumeRangeMobile::-moz-range-progress,
     #timeRangeMobile::-moz-range-progress {
         background: transparent;
+    }
+
+    .container-volume-mobile {
+        position: absolute;
+        top: 5%;
+        left: 4%;
+        width: 50px;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        background-color: var(--bg-selected-menu-music);
+        backdrop-filter: var(--blur-bg);
+        border-radius: 5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    #volumeRangeMobile {
+        width: calc(35dvh);
+        height: 7px;
+        transform: rotate(-90deg);
+        position: static;
     }
 
     .i-menu {

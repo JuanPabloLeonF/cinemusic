@@ -37,8 +37,12 @@
             </div>
         </div>
         <div class="container-mobile">
+            <div appTraslateVerticalDown [appTraslateVerticalDownActivate]="this.stateMusicService.activateMenuMobile()" class="container-volume-mobile">
+                <input id="volumeRangeMobile" #volumeRangeMobile type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.onVolumeChange()">
+            </div>
             <div class="container-header-mobile">
                 @if (this.stateMusicService.stateMusicMobileService.activateMenu()) {
+                    <i #containerVolumeMobile (click)="this.stateMusicService.activateMenuMobile.set(!this.stateMusicService.activateMenuMobile())" class="fa-solid fa-volume-high"></i>
                     <i (click)="this.stateMusicService.stateMusicMobileService.switchMenu(false)" class="fa-solid fa-chevron-down"></i>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 } @else {
