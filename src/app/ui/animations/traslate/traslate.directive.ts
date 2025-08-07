@@ -1,50 +1,49 @@
-import { Directive, ElementRef, inject, input, InputSignal, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, inject, input, InputSignal, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { AnimationBuilder, AnimationPlayer, animate, style } from '@angular/animations';
 
 @Directive({
-  selector: '[appTraslate]'
+  selector: '[appTraslate]',
+  standalone: true
 })
-export class TraslateDirective implements OnInit, OnChanges, OnDestroy {
+export class TraslateDirective implements OnChanges, OnDestroy {
 
-  public elementRef: ElementRef = inject(ElementRef);
-  public appTraslateActive: InputSignal<boolean> = input<boolean>(false);
+ public appTraslateActive: InputSignal<boolean> = input<boolean>(false);
+ private elementRef: ElementRef = inject(ElementRef);
+ private builder: AnimationBuilder = inject(AnimationBuilder);
+ private player: AnimationPlayer | undefined;
 
-  private elementWidth = 0;
+ ngOnChanges(changes: SimpleChanges): void {
+  if (changes['appTraslateActive']) {
+    this.playAnimation();
+  }
+}
 
-  ngOnInit(): void {
-    this.applyAnimation();
+ngOnDestroy(): void {
+  this.stopAnimation();
+}
+
+private playAnimation(): void {
+  if (this.player) {
+    this.player.destroy();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['appTraslateActive']) {
-      this.applyAnimation();
-    }
-  }
+  const isVisible = this.appTraslateActive();
+  const startPosition = isVisible ? 'translateX(-100%)' : 'translateX(0%)';
+  const endPosition = isVisible ? 'translateX(0%)' : 'translateX(-100%)';
 
-  ngOnDestroy(): void {
-    this.stopAnimation();
-  }
+  const animation = this.builder.build([
+    style({ transform: startPosition }),
+    animate('0.3s ease-in-out', style({ transform: endPosition }))
+  ]);
 
-  private applyAnimation(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    setTimeout(() => {
-      this.getDimensions(); 
-      if (this.appTraslateActive()) {
-        element.style.transform = `translateX(0px)`;
-      } else {
-        element.style.transform = `translateX(-${this.elementWidth}px)`;
-      }
-      element.style.transition = 'transform 0.3s ease-in-out';
-    }, 0);
+  this.player = animation.create(this.elementRef.nativeElement);
+    this.player.play();
   }
 
   private stopAnimation(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    element.style.transform = `translateX(0px)`;
-    element.style.transition = 'none'; 
-  }
-
-  private getDimensions(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    this.elementWidth = element.offsetWidth;
+    if (this.player) {
+      this.player.destroy();
+      this.player = undefined;
+    }
   }
 }

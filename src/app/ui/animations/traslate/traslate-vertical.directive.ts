@@ -1,50 +1,49 @@
+import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { Directive, ElementRef, inject, input, InputSignal, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[appTraslateVertical]'
 })
-export class TraslateVerticalDirective implements OnInit, OnChanges, OnDestroy {
+export class TraslateVerticalDirective implements OnChanges, OnDestroy {
 
-  public elementRef: ElementRef = inject(ElementRef);
   public appTraslateVerticalActivate: InputSignal<boolean> = input<boolean>(false);
+ private elementRef: ElementRef = inject(ElementRef);
+ private builder: AnimationBuilder = inject(AnimationBuilder);
+ private player: AnimationPlayer | undefined;
 
-  private elementWidth = 0;
 
-  ngOnInit(): void {
-    this.applyAnimation();
+ ngOnChanges(changes: SimpleChanges): void {
+  if (changes['appTraslateVerticalActivate']) {
+    this.playAnimation();
+  }
+}
+
+ngOnDestroy(): void {
+  this.stopAnimation();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['appTraslateVerticalActivate']) {
-      this.applyAnimation();
+  private playAnimation(): void {
+    if (this.player) {
+      this.player.destroy();
     }
-  }
 
-  ngOnDestroy(): void {
-    this.stopAnimation();
-  }
+    const isVisible = this.appTraslateVerticalActivate();
+    const startPosition = isVisible ? 'translateY(95%)' : 'translateY(0%)';
+    const endPosition = isVisible ? 'translateY(0%)' : 'translateY(95%)';
 
-  private applyAnimation(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    setTimeout(() => {
-      this.getDimensions(); 
-      if (this.appTraslateVerticalActivate()) {
-        element.style.transform = `translateY(0%)`;
-      } else {
-        element.style.transform = `translateY(${95}%)`;
-      }
-      element.style.transition = 'transform 0.3s ease-in-out';
-    }, 0);
+    const animation = this.builder.build([
+      style({ transform: startPosition }),
+      animate('0.3s ease-in-out', style({ transform: endPosition }))
+    ]);
+
+    this.player = animation.create(this.elementRef.nativeElement);
+      this.player.play();
   }
 
   private stopAnimation(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    element.style.transform = `translateY(0px)`;
-    element.style.transition = 'none'; 
-  }
-
-  private getDimensions(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    this.elementWidth = element.offsetWidth;
+    if (this.player) {
+      this.player.destroy();
+      this.player = undefined;
+    }
   }
 }
