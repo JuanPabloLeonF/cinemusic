@@ -1,5 +1,6 @@
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { Directive, ElementRef, inject, input, InputSignal, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Directive, effect, ElementRef, inject, input, InputSignal, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { QueryResponsiveService } from '../../../domain/services/query-responsive.service';
 
 @Directive({
   selector: '[appTraslateVertical]'
@@ -10,6 +11,17 @@ export class TraslateVerticalDirective implements OnChanges, OnDestroy {
  private elementRef: ElementRef = inject(ElementRef);
  private builder: AnimationBuilder = inject(AnimationBuilder);
  private player: AnimationPlayer | undefined;
+ private queryResponsiveService: QueryResponsiveService = inject(QueryResponsiveService);
+ 
+   constructor() {
+     effect(() => {
+       if (this.queryResponsiveService.isMobile()) {
+         this.playAnimation();
+       } else {
+         this.stopAnimation();
+       }
+     });
+   }
 
 
  ngOnChanges(changes: SimpleChanges): void {
