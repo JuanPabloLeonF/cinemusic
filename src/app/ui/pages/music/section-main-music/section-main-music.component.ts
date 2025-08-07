@@ -7,6 +7,7 @@ import { listDataCategories } from '../../../../domain/utils/data/categories';
 import { NgClass } from '@angular/common';
 import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
 import { StateMusicService } from '../../../../domain/states/state-music.service';
+import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
 
 @Component({
   selector: 'app-section-main-music',
@@ -14,7 +15,8 @@ import { StateMusicService } from '../../../../domain/states/state-music.service
     InputSearchGenericComponent, 
     ButtonFilterGenericComponent,
     NgClass,
-    WobbleDirective
+    WobbleDirective,
+    ScrollRevealDirective
   ],
   templateUrl: './section-main-music.component.html',
   styleUrl: './section-main-music.component.css'

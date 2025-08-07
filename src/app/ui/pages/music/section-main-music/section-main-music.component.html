@@ -9,7 +9,7 @@
     </div>
     <div class="container-list-songs">
         @for (song of this.listdataMusic(); track $index) {
-            <div [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
+            <div appScrollReveal [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
                 <div class="mask-activate">
                     <i class="fa-solid fa-music" appWobble [appWobbleActive]="song.isPlaying" ></i>
                 </div>
