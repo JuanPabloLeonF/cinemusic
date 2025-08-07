@@ -1,0 +1,17 @@
+<section class="formulary-create-list-music">
+    <form>
+        <h2>Crear nueva lista</h2>
+        <label>
+            <span>Nombre de la lista</span>
+            <app-input-search-generic placeholder="Mi lista de reproduccion" widthInput="100%" heightInput="2.5rem" />
+        </label>
+        <label>
+            <span>Descripcion</span>
+            <app-input-search-generic placeholder="Describe tu lista" widthInput="100%" heightInput="7rem" />
+        </label>
+        <div>
+            <app-button-generic buttonText="Cancelar" [actionClick]="this.createList" />
+            <app-button-generic buttonText="Crear lista" [actionClick]="this.createList" />
+        </div>
+    </form>
+</section>

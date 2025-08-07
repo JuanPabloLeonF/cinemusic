@@ -10,6 +10,8 @@ import { TypeSearch, TypeSearchEnum } from '../../../domain/models/music/categor
 export class InputSearchGenericComponent {
 
   public placeholder: InputSignal<string> = input<string>("placeholder");
+  public widthInput: InputSignal<string> = input<string>("100%");
+  public heightInput: InputSignal<string> = input<string>("2rem");
   public onChangeInputData: OutputEmitterRef<TypeSearch> = output<TypeSearch>();
 
   protected onChangeInput(event: Event): void {

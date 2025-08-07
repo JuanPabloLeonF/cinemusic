@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, input, InputSignal, linkedSignal, OnDestroy, OnInit, output, OutputEmitterRef, ViewChild, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { Song } from '../../../../domain/models/music/songs';
 import { InputSearchGenericComponent } from '../../../components/input-search-generic/input-search-generic.component';
 import { ButtonFilterGenericComponent } from "../../../components/button-filter-generic/button-filter-generic.component";
@@ -8,44 +8,34 @@ import { NgClass } from '@angular/common';
 import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
 import { StateMusicService } from '../../../../domain/states/state-music.service';
 import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
+import { ScrollsCarouselDirective } from '../../../animations/scroll/scrolls-carousel.directive';
+import { FormularyCreateListMusicComponent } from '../formulary-create-list-music/formulary-create-list-music.component';
 
 @Component({
   selector: 'app-section-main-music',
   imports: [
     InputSearchGenericComponent, 
     ButtonFilterGenericComponent,
+    FormularyCreateListMusicComponent,
     NgClass,
     WobbleDirective,
-    ScrollRevealDirective
+    ScrollRevealDirective,
+    ScrollsCarouselDirective
   ],
   templateUrl: './section-main-music.component.html',
   styleUrl: './section-main-music.component.css'
 })
-export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SectionMainMusicComponent implements OnInit {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
   protected listCategories: Category[] = listDataCategories;
-  @ViewChild('filterContainer') filterContainer!: ElementRef<HTMLDivElement>;
-
-  
   protected listdataMusic: WritableSignal<Song[]> = this.stateMusicService.listSongs;
   private listDataMusicData: Song[] = this.listdataMusic();
-
-  private carouselInterval: any;
-  private currentScrollIndex: number = 0;
 
   ngOnInit(): void {
     if (this.listdataMusic().length > 0) {
       this.listdataMusic()[0].isPlaying = true;
     }
-  }
-
-  ngAfterViewInit(): void {
-    this.startCarousel();
-  }
-
-  ngOnDestroy(): void {
-    this.stopCarousel();
   }
 
 
@@ -93,38 +83,6 @@ export class SectionMainMusicComponent implements OnInit, AfterViewInit, OnDestr
       this.listdataMusic.set(this.listDataMusicData.filter(s => s.gender === CategoriesEnum.REGGAE));
     } else if (category === CategoriesEnum.METAL) {
       this.listdataMusic.set(this.listDataMusicData.filter(s => s.gender === CategoriesEnum.METAL));
-    }
-  }
-
-  private startCarousel(): void {
-    this.stopCarousel();
-
-    const container = this.filterContainer.nativeElement;
-    const buttonElements = container.querySelectorAll('button');
-
-    this.carouselInterval = setInterval(() => {
-
-      this.currentScrollIndex++;
-
-      if (this.currentScrollIndex >= buttonElements.length) {
-        this.currentScrollIndex = 0;
-      }
-
-      const targetButton = buttonElements[this.currentScrollIndex] as HTMLElement;
-
-      if (targetButton) {
-        container.scrollTo({
-          left: targetButton.offsetLeft - 8,
-          behavior: 'smooth',
-        });
-      }
-    }, 3000);
-  }
-
-  private stopCarousel(): void {
-    if (this.carouselInterval) {
-      clearInterval(this.carouselInterval);
-      this.carouselInterval = null;
     }
   }
 

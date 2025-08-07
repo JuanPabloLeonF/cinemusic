@@ -1,1 +1,8 @@
-<input class="input-search" type="text" [placeholder]="this.placeholder()" (input)="this.onChangeInput($event)">
+<input 
+class="input-search" 
+type="text" 
+[placeholder]="this.placeholder()" 
+[style.width]="this.widthInput()"
+[style.height]="this.heightInput()"
+(input)="this.onChangeInput($event)"
+>

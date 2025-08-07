@@ -1,6 +1,6 @@
 <section class="section-main-music">
     <div class="container-filter-search">
-        <div class="container-filters-button" #filterContainer>
+        <div class="container-filters-button" appScrollsCarousel>
             @for (category of listCategories; track $index) {
                 <app-button-filter-generic [buttonText]="category.name" (actionClick)="this.filterSongs($event)" />
             }
@@ -28,4 +28,5 @@
             </p>
         }
     </div>
+    <!-- <app-formulary-create-list-music /> -->
 </section>
