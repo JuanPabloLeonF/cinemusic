@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarMainComponent } from "./ui/layouts/nav-bar-main/nav-bar-main.component";
 import { StatesNavbarMainService } from './domain/states/states-navbar-main.service';
+import { MusicPlayerComponent } from "./ui/pages/music/music-player/music-player.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavBarMainComponent],
+  imports: [RouterOutlet, NavBarMainComponent, MusicPlayerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
