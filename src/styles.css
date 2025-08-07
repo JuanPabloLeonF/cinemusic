@@ -62,9 +62,8 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
-    overflow-x: hidden;
     overflow-y: auto;
-    width: 100vw;
+    width: 100%;
     height: auto;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
