@@ -247,6 +247,7 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        transition: height 0.3s ease;
     }
 
     .music-player .container-information-music-player,
