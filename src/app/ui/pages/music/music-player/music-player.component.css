@@ -238,6 +238,8 @@
         left: 0;
         width: 100vw;
         height: 100dvh;
+        min-height: 100svh;
+        max-height: 100lvh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
