@@ -9,14 +9,12 @@ import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
 import { StateMusicService } from '../../../../domain/states/state-music.service';
 import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
 import { ScrollsCarouselDirective } from '../../../animations/scroll/scrolls-carousel.directive';
-import { FormularyCreateListMusicComponent } from '../formulary-create-list-music/formulary-create-list-music.component';
 
 @Component({
   selector: 'app-section-main-music',
   imports: [
     InputSearchGenericComponent, 
     ButtonFilterGenericComponent,
-    FormularyCreateListMusicComponent,
     NgClass,
     WobbleDirective,
     ScrollRevealDirective,

@@ -1,17 +1,35 @@
 <section class="formulary-create-list-music">
-    <form>
+    <form [formGroup]="this.listForms" (ngSubmit)="this.submitForm()">
         <h2>Crear nueva lista</h2>
         <label>
-            <span>Nombre de la lista</span>
-            <app-input-search-generic placeholder="Mi lista de reproduccion" widthInput="100%" heightInput="2.5rem" />
+            @if (
+                listForms.get('name')?.errors?.['required'] && 
+                listForms.get('name')?.invalid && 
+                (listForms.get('name')?.touched || 
+                listForms.get('name')?.dirty)
+                ) {
+                <span class="error">Nombre de la lista es requerido</span>
+            } @else {
+                <span>Nombre de la lista</span>
+            }
+            <app-input-form-generic [hasError]="listForms.get('name')?.invalid && listForms.get('name')?.touched" formControlName="name" placeholder="Mi lista de reproduccion" widthInput="100%" heightInput="2.5rem" />
         </label>
         <label>
-            <span>Descripcion</span>
-            <app-input-search-generic placeholder="Describe tu lista" widthInput="100%" heightInput="7rem" />
+            @if (
+            listForms.get('description')?.errors?.['required'] && 
+            listForms.get('description')?.invalid && 
+            (listForms.get('description')?.touched || 
+            listForms.get('description')?.dirty)
+            ) {
+                <span class="error">Descripcion es requerida</span>
+            } @else {
+                <span>Descripcion</span>
+            }
+            <textarea [ngClass]="{'input-error': (listForms.get('description')?.invalid && listForms.get('description')?.touched) }" formControlName="description" placeholder="Describe tu lista"></textarea>
         </label>
         <div>
-            <app-button-generic buttonText="Cancelar" [actionClick]="this.createList" />
-            <app-button-generic buttonText="Crear lista" [actionClick]="this.createList" />
+            <app-button-generic buttonText="Cancelar" (actionClick)="this.cancel()" />
+            <app-button-generic buttonText="Crear lista" typeButton="submit" />
         </div>
     </form>
 </section>

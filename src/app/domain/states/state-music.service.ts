@@ -1,4 +1,4 @@
-import { ElementRef, inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { MusicService } from '../services/music.service';
 import { Song, TypePlayEnum } from '../models/music/songs';
 import { DevicesConfigurationServiceService } from '../services/devices-configuration-service.service';

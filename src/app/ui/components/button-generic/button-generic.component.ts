@@ -1,4 +1,4 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 
 @Component({
   selector: 'app-button-generic',
@@ -8,10 +8,10 @@ import { Component, input, InputSignal } from '@angular/core';
 })
 export class ButtonGenericComponent {
   public buttonText: InputSignal<String> = input<String>('Boton');
-  public actionClick: InputSignal<Function> = input<Function>(() => {alert("click en el boton")});
+  public typeButton: InputSignal<String> = input<String>('button');
+  public actionClick: OutputEmitterRef<void> = output<void>();
 
-
-  protected onClick(): void {
-    this.actionClick()();
+  public onClick(): void {
+    this.actionClick.emit();
   }
 }

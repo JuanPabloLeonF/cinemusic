@@ -1,7 +1,7 @@
 <section class="main-music">
     <div class="navbar-music">
         <h2>Musica</h2>
-        <app-button-generic buttonText="Crear lista" [actionClick]="this.addList"/>
+        <app-button-generic buttonText="Crear lista" (actionClick)="this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic.set(true)"/>
     </div>
     <div class="container-filter-type">
         <div class="container-item-filter">
@@ -26,5 +26,8 @@
             </div>
         </div>
     </div>
+    @if (this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic()) {
+        <app-formulary-create-list-music />
+    }
     <app-section-main-music />
 </section>
