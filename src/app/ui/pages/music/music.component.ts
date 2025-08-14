@@ -3,13 +3,15 @@ import { SectionMainMusicComponent } from './section-main-music/section-main-mus
 import { ButtonGenericComponent } from "../../components/button-generic/button-generic.component";
 import { FormularyCreateListMusicComponent } from './formulary-create-list-music/formulary-create-list-music.component';
 import { StateSectionMainMusicService } from '../../../domain/states/state-section-main-music.service';
+import { ContainerBentoGridMusicComponent } from "./container-bento-grid-music/container-bento-grid-music.component";
 
 @Component({
   imports: [
     SectionMainMusicComponent,
     ButtonGenericComponent,
-    FormularyCreateListMusicComponent
-  ],
+    FormularyCreateListMusicComponent,
+    ContainerBentoGridMusicComponent
+],
   templateUrl: './music.component.html',
   styleUrl: './music.component.css'
 })

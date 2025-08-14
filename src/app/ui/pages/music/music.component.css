@@ -5,7 +5,6 @@
 .main-music {
     width: 100%;
     height: 100%;
-    background-color: var(--bg-color-web);
 }
 
 .navbar-music {
@@ -28,60 +27,6 @@
     color: transparent;
 }
 
-.container-filter-type {
-    width: 100%;
-    height: 10rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.container-filter-type .container-item-filter {
-    background-color: var(--secondary-color);
-    width: 30%;
-    height: 70%;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    border-radius: 0.5rem;
-    border: 1px solid var(--color-gray-secondary);
-    padding-left: 1rem;
-    gap: 1rem;
-}
-
-.container-filter-type .container-item-filter > i {
-    width: 15%;
-    height: 50%;    
-    font-size: clamp(1rem, 2vw,2rem);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--primary-color);
-}
-
-.container-filter-type .container-item-filter > .container-information-filter {
-    width: 85%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    gap: 0.5rem;
-}
-
-.container-filter-type .container-item-filter > .container-information-filter > h3 {
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    font-weight: bold;
-}
-
-.container-filter-type .container-item-filter > .container-information-filter > p {
-    font-size: clamp(1rem, 2vw, 1rem);
-    font-weight: normal;
-    color: var(--color-gray-400);
-}
-
 @media screen and (width <= 768px) {
     .main-music {
         width: 100%;
@@ -91,25 +36,5 @@
         justify-content: stretch;
         align-items: stretch;
         background-color: var(--bg-color-web);
-    }
-
-    .container-filter-type {
-        width: 100%;
-        height: 10rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .container-filter-type .container-item-filter {
-        width: 30%;
-        height: 70%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0.5rem;
-        gap: 0.5rem;
     }
 }

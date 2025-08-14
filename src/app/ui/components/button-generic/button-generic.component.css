@@ -1,3 +1,7 @@
+:host-context {
+    display: contents;
+}
+
 .button-generic {
     border: none;
     outline: none;

@@ -1,31 +1,14 @@
 <section class="main-music">
     <div class="navbar-music">
         <h2>Musica</h2>
-        <app-button-generic buttonText="Crear lista" (actionClick)="this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic.set(true)"/>
+        <app-button-generic 
+        buttonText="Crear lista" 
+        (actionClick)="this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic.set(true)"
+        width="10%"
+        height="2.5rem"
+        />
     </div>
-    <div class="container-filter-type">
-        <div class="container-item-filter">
-            <i class="fa-solid fa-music"></i>
-            <div class="container-information-filter">
-                <h3>Canciones</h3>
-                <p>35</p>
-            </div>
-        </div>
-        <div class="container-item-filter">
-            <i class="fa-solid fa-user"></i>
-            <div class="container-information-filter">
-                <h3>Artistas</h3>
-                <p>15</p>
-            </div>
-        </div>
-        <div class="container-item-filter">
-            <i class="fa-solid fa-list"></i>
-            <div class="container-information-filter">
-                <h3>Albumnes</h3>
-                <p>5</p>
-            </div>
-        </div>
-    </div>
+    <app-container-bento-grid-music />
     @if (this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic()) {
         <app-formulary-create-list-music />
     }

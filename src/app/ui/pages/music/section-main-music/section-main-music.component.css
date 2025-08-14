@@ -4,38 +4,6 @@
 
 .section-main-music {
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: stretch;
-    padding-bottom: 8%;
-}
-
-.container-filter-search {
-    width: 100%;
-    height: 5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 0 0.5rem;
-}
-
-.container-filter-search .container-filters-button {
-    width: 75%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-    gap: 2rem;
-}
-
-.container-list-songs {
-    width: 100%;
     height: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -44,7 +12,7 @@
     gap: 1rem;
 }
 
-.container-list-songs .container-item-song {
+.container-item-song {
     width: 100%;
     height: 8rem;
     display: flex;
@@ -57,16 +25,16 @@
     transition: all 0.3s ease-out;
 }
 
-.container-list-songs .container-item-song > .mask-activate {
+.container-item-song > .mask-activate {
     display: none;
 }
 
-.container-list-songs .container-item-song.activate-song {
+.container-item-song.activate-song {
     position: relative;
 }
 
 
-.container-list-songs .container-item-song.activate-song > .mask-activate {
+.container-item-song.activate-song > .mask-activate {
     position: absolute;
     top: 0;
     left: 0;
@@ -80,7 +48,7 @@
     align-items: start;
 }
 
-.container-list-songs .container-item-song.activate-song > .mask-activate > i {
+.container-item-song.activate-song > .mask-activate > i {
     width: 3rem;
     height: 3rem;
     display: flex;
@@ -92,12 +60,12 @@
     border: 2px solid var(--primary-color);
 }
 
-.container-list-songs .container-item-song:hover {
+.container-item-song:hover {
     transform: translateY(-5px);
     background-color: var(--color-gray-primary);
 }
 
-.container-list-songs .container-item-song .container-img-song {
+.container-item-song .container-img-song {
     width: 50%;
     height: 100%;
     flex-shrink: 0;
@@ -105,13 +73,13 @@
     position: relative;
 }
 
-.container-list-songs .container-item-song .container-img-song > img {
+.container-item-song .container-img-song > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.container-list-songs .container-item-song .container-information-song {
+.container-item-song .container-information-song {
     width: 50%;
     height: 100%;
     display: flex;
@@ -123,7 +91,7 @@
     text-transform: uppercase;
 }
 
-.container-list-songs .container-item-song .container-information-song > h2 {
+.container-item-song .container-information-song > h2 {
     font-size: 1rem;
     font-weight: bold;
     background: var(--linear-gradient);
@@ -133,12 +101,12 @@
     color: transparent;
 }
 
-.container-list-songs .container-item-song .container-information-song > p:nth-child(2) {
+.container-item-song .container-information-song > p:nth-child(2) {
     font-size: 0.8rem;
     color: var(--white-color);
 }
 
-.container-list-songs .container-item-song .container-information-song > p:nth-child(3) {
+.container-item-song .container-information-song > p:nth-child(3) {
     font-size: 0.7rem;
     color: var(--color-gray-secondary);
 }
@@ -163,32 +131,6 @@
 
     .section-main-music {
         padding-bottom: 10%;
-    }
-    
-    .container-filter-search {
-        width: 100%;
-        height: 10rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 0;
-        padding: 0;
-    }
-    
-    .container-filter-search .container-filters-button {
-        width: 100%;
-        height: 50%;
-        display: flex;
-        flex-direction: row;
-        justify-content: start;
-        align-items: center;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        padding: 0 0 0 0.5rem;
-        gap: 2rem;
     }
 
     .container-item-song-empty {

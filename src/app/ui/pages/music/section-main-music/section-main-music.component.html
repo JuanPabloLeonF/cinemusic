@@ -1,31 +1,21 @@
 <section class="section-main-music">
-    <div class="container-filter-search">
-        <div class="container-filters-button" appScrollsCarousel>
-            @for (category of listCategories; track $index) {
-                <app-button-filter-generic [buttonText]="category.name" (actionClick)="this.filterSongs($event)" />
-            }
-        </div>
-        <app-input-search-generic placeholder="Buscar canciones..." (onChangeInputData)="this.filterSongs($event)" />
-    </div>
-    <div class="container-list-songs">
-        @for (song of this.listdataMusic(); track $index) {
-            <div appScrollReveal [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
-                <div class="mask-activate">
-                    <i class="fa-solid fa-music" appWobble [appWobbleActive]="song.isPlaying" ></i>
-                </div>
-                <div class="container-img-song">
-                    <img src="{{song.image}}" alt="{{song.name}}">
-                </div>
-                <div class="container-information-song">
-                    <h2>{{song.name}}</h2>
-                    <p>{{song.artist}}</p>
-                    <p>{{song.gender}}</p>
-                </div>
+    @for (song of this.listdataMusic(); track $index) {
+        <div appScrollReveal [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
+            <div class="mask-activate">
+                <i class="fa-solid fa-music" appWobble [appWobbleActive]="song.isPlaying" ></i>
             </div>
-        } @empty {
-            <p class="container-item-song-empty">
-                ¡Ups! 🎶 Parece que no hay canciones en este momento. ¡Añade algunas para que empiece la fiesta! 🎉
-            </p>
-        }
-    </div>
+            <div class="container-img-song">
+                <img src="{{song.image}}" alt="{{song.name}}">
+            </div>
+            <div class="container-information-song">
+                <h2>{{song.name}}</h2>
+                <p>{{song.artist}}</p>
+                <p>{{song.gender}}</p>
+            </div>
+        </div>
+    } @empty {
+        <p class="container-item-song-empty">
+            ¡Ups! 🎶 Parece que no hay canciones en este momento. ¡Añade algunas para que empiece la fiesta! 🎉
+        </p>
+    }
 </section>

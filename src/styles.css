@@ -38,6 +38,9 @@
     --bg-selected-menu-music: rgba(0, 0, 0, 0.404);
     --color-gray-primary: rgb(29, 39, 57);
     --color-gray-secondary: rgba(93, 100, 114, 0.719);
+    --color-gray-white: rgba(218, 218, 218, 0.719);;
+    --bg-transparent-black: rgba(0, 0, 0, 0.4);
+    --bg-transparent-black-opacity: rgba(255, 255, 255, 0.05);
 }
 
 /* Reset */
@@ -67,7 +70,7 @@ body {
     height: auto;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
-    background-color: var(--bg-color-web);
+    background: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(0, 0, 0) 50%, rgb(88, 28, 135) 100%);
 }
 
 ::-webkit-scrollbar {
