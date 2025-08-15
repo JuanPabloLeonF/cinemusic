@@ -10,7 +10,6 @@
     flex-direction: column;
     justify-content: end;
     align-items: center;
-    background: var(--bg-transparent-black);
     border-radius: 1rem;
     gap: 0.5rem;
     transform: scale(1);

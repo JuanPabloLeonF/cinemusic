@@ -33,7 +33,7 @@
     --white-color-opacity: rgba(255, 255, 255, 0.123);
     --primary-color: rgb(173, 0, 248);
     --secondary-color: rgb(16, 21, 40);
-    --bg-color-web: black;
+    --black-color: black;
     --linear-gradient: linear-gradient(to right, var(--primary-color) 0%, var(--white-color) 100%);
     --bg-selected-menu-music: rgba(0, 0, 0, 0.404);
     --color-gray-primary: rgb(29, 39, 57);

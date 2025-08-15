@@ -1,0 +1,13 @@
+<div
+    class="container-input-icon"
+    [style.width]="this.widthInput()"
+    [style.height]="this.heightInput()"
+>
+    <app-svg-search width="10%" height="100%" color="white" />
+    <input 
+    class="input-search" 
+    type="text" 
+    [placeholder]="this.placeholder()" 
+    (input)="this.onChangeInput($event)"
+    >
+</div>

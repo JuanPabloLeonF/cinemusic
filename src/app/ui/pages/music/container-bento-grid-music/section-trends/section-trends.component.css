@@ -1,0 +1,73 @@
+:host-context {
+    display: contents;
+}
+
+.section-trends {
+    width: 100%;
+    height: 100%;
+    grid-area: section-trends;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 0.8rem;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.section-trends:hover {
+    transform: scale(1.02);
+}
+
+.section-trends > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center;
+    mask-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0, 0, 0, 0) 100%);
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-position: center;
+    z-index: 2;
+    border-radius: 1rem;
+}
+
+.section-trends > div {
+    background-color: rgba(255, 255, 255, 0.226);
+    z-index: 3;
+    width: 12%;
+    height: 16%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 100%;
+    transition: background-color 0.2s ease;
+}
+
+.section-trends > div:hover {
+    background-color: rgba(255, 255, 255, 0.404);
+}
+
+.section-trends > h3 {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: bold;
+    color: var(--white-color);
+    text-transform: uppercase;
+    z-index: 3;
+}
+
+.section-trends > p {
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+    color: var(--color-gray-white);
+    z-index: 3;
+}

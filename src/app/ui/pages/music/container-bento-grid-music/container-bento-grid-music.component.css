@@ -11,31 +11,15 @@
     padding: 0.5rem;
     gap: 0.5rem;
     grid-template-areas:
-      "section-news section-news section-my-music section-my-music section-trends section-trends"
-      "section-news section-news section-my-music section-my-music section-trends section-trends"
-      "section-other section-other section-my-music section-my-music section-artists section-artists"
-      "section-other section-other section-playlists section-playlists section-artists section-artists"
+      "section-news section-news section-new-music section-new-music section-other section-other"
+      "section-news section-news section-new-music section-new-music section-other section-other"
+      "section-trends section-trends section-new-music section-new-music section-artists section-artists"
+      "section-trends section-trends section-playlists section-playlists section-artists section-artists"
       "section-search section-search section-playlists section-playlists section-artists section-artists";
-}
-
-.section-my-music {
-    grid-area: section-my-music;
-}
-
-.section-search {
-    grid-area: section-search;
 }
 
 .section-playlists {
     grid-area: section-playlists;
-}
-
-.section-artists {
-    grid-area: section-artists;
-}
-
-.section-trends {
-    grid-area: section-trends;
 }
 
 .section-other {
