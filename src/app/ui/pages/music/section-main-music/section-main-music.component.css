@@ -19,7 +19,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--secondary-color);
+    background-color: var(--bg-transparent-black);
     cursor: pointer;
     transform: translateY(0);
     transition: all 0.3s ease-out;
@@ -62,7 +62,7 @@
 
 .container-item-song:hover {
     transform: translateY(-5px);
-    background-color: var(--color-gray-primary);
+    background-color: var(--black-color);
 }
 
 .container-item-song .container-img-song {

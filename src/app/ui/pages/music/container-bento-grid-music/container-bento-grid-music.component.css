@@ -4,24 +4,16 @@
 
 .container-bento {
     width: 100%;
-    height: 45rem;
+    height: 50rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    padding: 0.5rem;
+    padding: 1rem;
     gap: 0.5rem;
     grid-template-areas:
       "section-news section-news section-new-music section-new-music section-other section-other"
       "section-news section-news section-new-music section-new-music section-other section-other"
       "section-trends section-trends section-new-music section-new-music section-artists section-artists"
-      "section-trends section-trends section-playlists section-playlists section-artists section-artists"
-      "section-search section-search section-playlists section-playlists section-artists section-artists";
-}
-
-.section-playlists {
-    grid-area: section-playlists;
-}
-
-.section-other {
-    grid-area: section-other;
+      "section-trends section-trends section-play-lists section-play-lists section-artists section-artists"
+      "section-search section-search section-play-lists section-play-lists section-artists section-artists";
 }

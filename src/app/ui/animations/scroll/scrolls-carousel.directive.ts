@@ -10,11 +10,11 @@ export class ScrollsCarouselDirective implements OnInit, OnDestroy {
   private queryResponsiveService: QueryResponsiveService = inject(QueryResponsiveService);
   private isMobile = false;
 
-  private scrollIntervalId: any;
+  private scrollTimeoutId: any;
   private scrollDirection: 'right' | 'left' = 'right';
-  private scrollAmount = 1.5;
-  private frameRate = 15;
 
+  private delayPerItem = 5000;
+  
   constructor() {
     effect(() => {
       this.isMobile = this.queryResponsiveService.isMobile();
@@ -24,44 +24,37 @@ export class ScrollsCarouselDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     const element = this.elementRef.nativeElement as HTMLElement;
     this.renderer.setStyle(element, 'overflowX', this.isMobile ? 'auto' : 'hidden');
-    this.renderer.setStyle(element, 'scrollBehavior', 'smooth');
     this.startAutoScroll(element);
   }
 
   ngOnDestroy(): void {
-    if (this.scrollIntervalId) {
-      clearInterval(this.scrollIntervalId);
+    if (this.scrollTimeoutId) {
+      clearTimeout(this.scrollTimeoutId);
     }
   }
 
   private startAutoScroll(container: HTMLElement): void {
-    let lastScrollLeft = container.scrollLeft;
-
-    this.scrollIntervalId = setInterval(() => {
+    const step = () => {
+      const itemWidth = container.clientWidth;
       const maxScrollLeft = container.scrollWidth - container.clientWidth;
 
       if (this.scrollDirection === 'right') {
-        container.scrollLeft += this.scrollAmount;
-        if (container.scrollLeft >= maxScrollLeft) {
+        container.scrollBy({ left: itemWidth, behavior: 'smooth' });
+
+        if (container.scrollLeft + itemWidth >= maxScrollLeft) {
           this.scrollDirection = 'left';
         }
       } else {
-        container.scrollLeft -= this.scrollAmount;
-        if (container.scrollLeft <= 0) {
+        container.scrollBy({ left: -itemWidth, behavior: 'smooth' });
+
+        if (container.scrollLeft - itemWidth <= 0) {
           this.scrollDirection = 'right';
         }
       }
 
-      if (this.isMobile) {
-        if (Math.abs(container.scrollLeft - lastScrollLeft) > this.scrollAmount + 1) {
-          clearInterval(this.scrollIntervalId);
-          setTimeout(() => {
-            this.scrollDirection = 'right';
-            this.startAutoScroll(container);
-          }, 3000);
-        }
-        lastScrollLeft = container.scrollLeft;
-      }
-    }, this.frameRate);
+      this.scrollTimeoutId = setTimeout(step, this.delayPerItem);
+    };
+
+    this.scrollTimeoutId = setTimeout(step, this.delayPerItem);
   }
 }

@@ -1,0 +1,150 @@
+:host-context {
+    display: contents;
+}
+
+.section-play-lists {
+    width: 100%;
+    height: 100%;
+    grid-area: section-play-lists;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    background: var(--bg-transparent-black);
+    border-radius: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+.section-play-lists:hover {
+    transform: scale(1.02);
+}
+
+.section-play-lists > div:nth-child(1) {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-play-lists > .container-item {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-play-lists > .container-item > .item {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.section-play-lists > .container-item > .item:nth-child(1) {
+    background: linear-gradient(
+    to right,
+    rgba(147, 51, 234, 0.3) 0%,
+    rgba(219, 39, 119, 0.3) 100%
+  );
+}
+
+.section-play-lists > .container-item > .item:nth-child(2) {
+    background: linear-gradient(
+    to right, 
+    rgba(37, 99, 235, 0.3) 0%,
+    rgba(147, 51, 234, 0.3) 100%
+  );
+}
+
+.section-play-lists > .container-item > .item > div:nth-child(1) {
+    width: 20%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.color-item-1 {
+    background-color: rgb(134, 41, 255);
+}
+
+.color-item-2 {
+    background-color: rgb(0, 174, 255);
+}
+
+
+.section-play-lists > .container-item > .item > div:nth-child(2) {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border-radius: 0.5rem;
+}
+
+.section-play-lists > .container-item > .item > div:nth-child(2) > h3 {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    color: var(--white-color);
+}
+
+.section-play-lists > .container-item > .item > div:nth-child(2) > p {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    color: var(--color-gray-secondary);
+}
+
+.section-play-lists > .container-buttons {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.section-play-lists > .container-buttons > button {
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    width: 40%;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: bold;
+}
+
+.section-play-lists > .container-buttons > button:nth-child(1) {
+    background-color: var(--color-gray-white);
+    color: var(--black-color);
+}
+
+.section-play-lists > .container-buttons > button:hover:nth-child(1) {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.section-play-lists > .container-buttons > button:nth-child(2) {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.section-play-lists > .container-buttons > button:hover:nth-child(2) {
+    background-color: var(--color-gray-white);
+    color: var(--black-color);
+}

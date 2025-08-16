@@ -4,10 +4,20 @@ import { SectionArtistsComponent } from "./section-artists/section-artists.compo
 import { SectionTrendsComponent } from "./section-trends/section-trends.component";
 import { SectionNewMusicComponent } from "./section-new-music/section-new-music.component";
 import { SectionSearchComponent } from "./section-search/section-search.component";
+import { SectionPlayListsComponent } from "./section-play-lists/section-play-lists.component";
+import { SectionOtherComponent } from "./section-other/section-other.component";
 
 @Component({
   selector: 'app-container-bento-grid-music',
-  imports: [SectionNewsComponent, SectionArtistsComponent, SectionTrendsComponent, SectionNewMusicComponent, SectionSearchComponent],
+  imports: [
+    SectionNewsComponent,
+    SectionArtistsComponent,
+    SectionTrendsComponent,
+    SectionNewMusicComponent,
+    SectionSearchComponent,
+    SectionPlayListsComponent,
+    SectionOtherComponent
+],
   templateUrl: './container-bento-grid-music.component.html',
   styleUrl: './container-bento-grid-music.component.css'
 })
