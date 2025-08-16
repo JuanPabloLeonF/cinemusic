@@ -20,6 +20,7 @@
 
 @media screen and (width <= 768px) {
     .container-bento {
+    height: auto;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
