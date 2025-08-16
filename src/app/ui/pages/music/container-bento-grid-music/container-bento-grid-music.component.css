@@ -17,3 +17,18 @@
       "section-trends section-trends section-play-lists section-play-lists section-artists section-artists"
       "section-search section-search section-play-lists section-play-lists section-artists section-artists";
 }
+
+@media screen and (width <= 768px) {
+    .container-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "section-news section-news"
+      "section-new-music section-new-music"
+      "section-other section-other"
+      "section-trends section-trends"
+      "section-play-lists section-play-lists"
+      "section-artists section-artists"
+      "section-search section-search";
+    }
+}
