@@ -19,10 +19,42 @@
 }
 
 @media screen and (width <= 768px) {
-    .container-bento {
-    height: auto;
+    ChatGPT
+Dijiste:
+Mira tengo este bento: :host-context {
+    display: contents;
+}
+
+.container-bento {
+    width: 100%;
+    height: 50rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    padding: 1rem;
+    gap: 0.5rem;
+    grid-template-areas:
+      "section-news section-news section-new-music section-new-music section-other section-other"
+      "section-news section-news section-new-music section-new-music section-other section-other"
+      "section-trends section-trends section-new-music section-new-music section-artists section-artists"
+      "section-trends section-trends section-play-lists section-play-lists section-artists section-artists"
+      "section-search section-search section-play-lists section-play-lists section-artists section-artists";
+}
+
+@media screen and (width <= 768px) {
+    
+}. Necesito que en la query el bento sea de dos columnas y las filas pues las necesarias que las secciones de ancho conserven su ancho de columnas y las de alto igual 
+ChatGPT dijo:
+Perfecto 👌, lo que quieres es que en pantallas pequeñas (<=768px) tu bento grid cambie a 2 columnas y que cada sección siga ocupando el mismo número de columnas/filas que antes, pero ahora adaptadas a esa grilla reducida.
+
+Eso se logra con un nuevo grid-template-areas en el media query, rediseñado para 2 columnas.
+
+Aquí te paso el ejemplo adaptado:
+
+@media screen and (max-width: 768px) {
+  .container-bento {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: auto; /* que crezca según el contenido */
     grid-template-areas:
       "section-news section-news"
       "section-new-music section-new-music"
@@ -31,5 +63,79 @@
       "section-play-lists section-play-lists"
       "section-artists section-artists"
       "section-search section-search";
-    }
+  }
+}
+🔎 Explicación:
+
+Cada sección ahora ocupa las 2 columnas completas, manteniendo el "ancho proporcional" respecto al nuevo layout.
+
+El alto de cada área seguirá respetando lo que tenía, porque las filas se ajustan automáticamente (auto) o por grid-row: span X si quieres forzarlo.
+
+Si prefieres que algunas secciones se dividan (por ejemplo que section-search quede solo en una columna), puedes hacerlo así:
+
+grid-template-areas:
+  "section-news section-news"
+  "section-new-music section-new-music"
+  "section-other section-other"
+  "section-trends section-trends"
+  "section-play-lists section-play-lists"
+  "section-artists section-search";
+👉 Aquí section-artists y section-search compartirían la fila, cada uno ocupando una columna.
+
+¿Quieres que en mobile todas las secciones vayan una debajo de la otra (stacked) o prefieres que algunas sí compartan fila como en el último ejemplo?
+
+Dijiste:
+Pero si te das cuenta que algunas secciones tenían hasta tres de alto? Bueno igualmente las que equivalen dos de alto y tres de alto pon las para que el diseño de cada section no se vea afectado e igual el alto del bento ponlo automático y no fijo como lo tenía en desktop
+ChatGPT dijo:
+¡Exacto! 🔥 Lo que dices es clave: en desktop tu bento tiene secciones que ocupan 2 o hasta 3 filas de alto, y si en móvil ponemos cada sección en una sola fila, se aplasta y pierde su proporción.
+
+👉 Entonces lo que hay que hacer es:
+
+En desktop se queda como lo tienes (repeat(6,1fr) × repeat(5,1fr), altura fija 50rem).
+
+En mobile (max-width: 768px) cambiamos a 2 columnas y dejamos que el grid-auto-rows maneje la altura, pero respetando los span (es decir, que un item puede ocupar 2 o 3 filas si lo tenía antes).
+
+Eliminamos la altura fija y usamos height: auto;.
+
+Aquí tienes el CSS ajustado:
+
+.container-bento {
+  width: 100%;
+  height: 50rem; /* desktop fijo */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  padding: 1rem;
+  gap: 0.5rem;
+  grid-template-areas:
+    "section-news section-news section-new-music section-new-music section-other section-other"
+    "section-news section-news section-new-music section-new-music section-other section-other"
+    "section-trends section-trends section-new-music section-new-music section-artists section-artists"
+    "section-trends section-trends section-play-lists section-play-lists section-artists section-artists"
+    "section-search section-search section-play-lists section-play-lists section-artists section-artists";
+}
+
+@media screen and (max-width: 768px) {
+  .container-bento {
+    height: auto; /* ya no fijo */
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(8rem, auto); /* cada fila tiene un alto mínimo, pero puede crecer */
+    grid-template-areas:
+      "section-news section-news"
+      "section-news section-news"   /* repito para que conserve doble alto */
+      "section-new-music section-new-music"
+      "section-new-music section-new-music"
+      "section-new-music section-new-music"
+       /* repito para conservar doble alto */
+      "section-other section-other"
+      "section-other section-other"
+      "section-trends section-trends"
+      "section-trends section-trends" /* repito porque antes era doble */
+      "section-play-lists section-play-lists"
+      "section-play-lists section-play-lists" /* repito porque antes era doble */
+      "section-artists section-artists"
+      "section-artists section-artists"
+      "section-artists section-artists" /* repito porque antes era triple */
+      "section-search section-search";
+  }
 }
