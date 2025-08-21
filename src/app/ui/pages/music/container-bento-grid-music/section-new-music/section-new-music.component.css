@@ -51,6 +51,7 @@
     cursor: pointer;
     border-radius: 2rem;
     width: 15%;
+    min-width: 4rem;
     height: 2rem;
     padding: 0.2rem;
     z-index: 3;
@@ -113,6 +114,7 @@
     cursor: pointer;
     border-radius: 2rem;
     width: 25%;
+    min-width: 5rem;
     height: 100%;
     padding: 0.2rem;
     z-index: 3;

@@ -1,13 +1,4 @@
 <section class="main-music">
-    <div class="navbar-music">
-        <h2>Musica</h2>
-        <app-button-generic 
-        buttonText="Crear lista" 
-        (actionClick)="this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic.set(true)"
-        width="10%"
-        height="2.5rem"
-        />
-    </div>
     <app-container-bento-grid-music />
     @if (this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic()) {
         <app-formulary-create-list-music />
