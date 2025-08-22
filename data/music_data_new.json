@@ -1,0 +1,14 @@
+{
+    "id": "8",
+    "name": "Play Hard",
+    "image": "images/music/play-hard.jpg",
+    "album": "album",
+    "artist": "David Guetta",
+    "year": 2025,
+    "gender": "ELECTRONIC",
+    "rating": 10,
+    "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta minus rerum ratione, aliquid fugiat consectetur culpa, blanditiis sapiente recusandae suscipit exercitationem ullam ex unde assumenda. Dolorum dicta rerum voluptate ab!",
+    "audio": "images/music/song1.mp3",
+    "isFavorite": false,
+    "isPlaying": false
+}
