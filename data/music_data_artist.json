@@ -1,0 +1,8 @@
+{
+    "id": "1",
+    "name": "METALLICA",
+    "image": "images/music/metallica.jpg",
+    "gender": "ROCK",
+    "song": "Nothing else matters",
+    "numberPerson": 100000000
+}
