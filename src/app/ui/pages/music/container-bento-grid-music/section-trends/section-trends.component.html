@@ -1,7 +1,7 @@
 <section class="section-trends">
-    <img src="images/music/trends.jpg" alt="imagen del artista">
+    <img [src]="this.selectedGender.image" [alt]="this.selectedGender.name">
     <h3>Genero musical mas escuchado</h3>
-    <p>Rock - 23.5M oyentes</p>
+    <p>{{this.selectedGender.name}} - {{this.selectedGender.numberPerson | numberAbbrev}} oyentes</p>
     <div>
         <app-svg-play width="40%" height="40%" color="white" />
     </div>

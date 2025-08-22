@@ -1,14 +1,25 @@
 import { inject, Injectable, signal, WritableSignal } from '@angular/core';
-import { MusicService } from '../services/music.service';
-import { Song, TypePlayEnum } from '../models/music/songs';
-import { DevicesConfigurationServiceService } from '../services/devices-configuration-service.service';
+import { MusicService } from '../../services/music.service';
+import { Song, TypePlayEnum } from '../../models/music/songs';
+import { DevicesConfigurationServiceService } from '../../services/devices-configuration-service.service';
 import { StatesMusicMobileService } from './state-music-mobile.service';
+import { StateSectionNewsService } from './state-section-news.service';
+import { StateSectionNewMusicService } from './state-section-new-music.service';
+import { StateSectionOtherService } from './state-section-other.service';
+import { StateSectionTrendsService } from './state-section-trends.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateMusicService {
 
+  //Nuevo estados:
+  public stateSectionNewsService: StateSectionNewsService = inject(StateSectionNewsService);
+  public stateSectionNewMusicService: StateSectionNewMusicService = inject(StateSectionNewMusicService);
+  public stateSectionOtherService: StateSectionOtherService = inject(StateSectionOtherService);
+  public stateSectionTrendsService: StateSectionTrendsService = inject(StateSectionTrendsService);
+
+  //antiguo estado:
   private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
   public stateMusicMobileService: StatesMusicMobileService = inject(StatesMusicMobileService);
   private musicService: MusicService = inject(MusicService);
@@ -22,6 +33,22 @@ export class StateMusicService {
       this.listSongs.set(data);
       this.songSelected.set(data[0]);
     });
+
+    this.musicService.getSongMostListened().subscribe((data) => {
+      this.stateSectionNewsService.setSelectedSong(data);
+    })
+
+    this.musicService.getSongNew().subscribe((data) => {
+      this.stateSectionNewMusicService.setSelectedSong(data);
+    })
+
+    this.musicService.getAllHistory().subscribe((data) => {
+      this.stateSectionOtherService.setSelectedListSongs(data);
+    })
+
+    this.musicService.getGenderMostListened().subscribe((data) => {
+      this.stateSectionTrendsService.setSelectedGender(data);
+    })
     this.updateMediaSessionMetadata();
   }
 

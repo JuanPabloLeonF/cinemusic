@@ -2,7 +2,7 @@ import { Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { Song } from '../../../../domain/models/music/songs';
 import { NgClass } from '@angular/common';
 import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
-import { StateMusicService } from '../../../../domain/states/state-music.service';
+import { StateMusicService } from '../../../../domain/states/music/state-music.service';
 import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
 
 @Component({

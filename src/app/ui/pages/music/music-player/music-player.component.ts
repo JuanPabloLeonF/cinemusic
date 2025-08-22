@@ -2,7 +2,7 @@ import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal
 import { Song, TypePlayEnum } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { StateMusicService } from '../../../../domain/states/state-music.service';
+import { StateMusicService } from '../../../../domain/states/music/state-music.service';
 import { TraslateVerticalDirective } from '../../../animations/traslate/traslate-vertical.directive';
 import { TraslateVerticalDownDirective } from '../../../animations/traslate/traslate-vertical-down.directive';
 

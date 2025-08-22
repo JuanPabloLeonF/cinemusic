@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ButtonGenericComponent } from '../../../components/button-generic/button-generic.component';
 import { InputFormGenericComponent } from '../../../components/input-form-generic/input-form-generic.component';
-import { StateSectionMainMusicService } from '../../../../domain/states/state-section-main-music.service';
+import { StateSectionMainMusicService } from '../../../../domain/states/music/state-section-main-music.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 

@@ -1,8 +1,9 @@
+import { NgClass } from '@angular/common';
 import { Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-heart',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './svg-heart.component.html',
   styles: [
     `
@@ -11,12 +12,20 @@ import { Component, input, InputSignal } from '@angular/core';
     }
 
     svg {
-      color: var(--white-color);
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
     }
 
     svg:hover {
-      cursor: pointer;
       color: var(--primary-color);
+    }
+
+    .favorite {
+      color: var(--primary-color);
+    }
+
+    .not-favorite {
+      color: var(--white-color);
     }
     `
   ]
@@ -24,4 +33,5 @@ import { Component, input, InputSignal } from '@angular/core';
 export class SvgHeartComponent {
   public width: InputSignal<string> = input<string>("100%");
   public height: InputSignal<string> = input<string>("100%");
+  public isFavorite: InputSignal<boolean> = input<boolean>(false);
 }
