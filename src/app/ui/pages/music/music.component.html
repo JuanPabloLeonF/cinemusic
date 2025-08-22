@@ -1,7 +1,20 @@
 <section class="main-music">
     <app-container-bento-grid-music />
-    @if (this.stateSectionMainMusicService.showToggleFormularyCreatedListMusic()) {
-        <app-formulary-create-list-music />
+    @if (this.toogleFormulary()) {
+        @defer (on immediate) {
+            <app-formulary-create-list-music />
+        } @placeholder {
+            <p>cargando...</p>
+        }
     }
+
+    @if (this.toogleAddSong()) {
+        @defer (on immediate) {
+            <app-formulary-create-list-music />
+        } @placeholder {
+            <p>cargando...</p>
+        }
+    }
+
     <app-section-main-music />
 </section>

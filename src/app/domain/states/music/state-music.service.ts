@@ -7,24 +7,31 @@ import { StateSectionNewsService } from './state-section-news.service';
 import { StateSectionNewMusicService } from './state-section-new-music.service';
 import { StateSectionOtherService } from './state-section-other.service';
 import { StateSectionTrendsService } from './state-section-trends.service';
+import { StateSectionPlayListService } from './state-section-play-list.service';
+import { StateSectionArtistsService } from './state-section-artists.service';
+import { StateSectionMainMusicService } from './state-section-main-music.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateMusicService {
 
+  public songSelected: WritableSignal<Song> = signal<Song>({} as Song);
+
   //Nuevo estados:
   public stateSectionNewsService: StateSectionNewsService = inject(StateSectionNewsService);
   public stateSectionNewMusicService: StateSectionNewMusicService = inject(StateSectionNewMusicService);
   public stateSectionOtherService: StateSectionOtherService = inject(StateSectionOtherService);
   public stateSectionTrendsService: StateSectionTrendsService = inject(StateSectionTrendsService);
+  public stateSectionPlayListService: StateSectionPlayListService = inject(StateSectionPlayListService);
+  public stateSectionArtistsService: StateSectionArtistsService = inject(StateSectionArtistsService);
+  public stateSectionMainMusicService: StateSectionMainMusicService = inject(StateSectionMainMusicService);
 
   //antiguo estado:
   private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
   public stateMusicMobileService: StatesMusicMobileService = inject(StatesMusicMobileService);
   private musicService: MusicService = inject(MusicService);
   public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
-  public songSelected: WritableSignal<Song> = signal<Song>({} as Song);
   private currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
   public activateMenuMobile: WritableSignal<boolean> = signal<boolean>(false);
 
@@ -32,6 +39,7 @@ export class StateMusicService {
     this.musicService.getAll().subscribe((data) => {
       this.listSongs.set(data);
       this.songSelected.set(data[0]);
+      this.stateSectionMainMusicService.setListDataSongs(data);
     });
 
     this.musicService.getSongMostListened().subscribe((data) => {
@@ -49,6 +57,15 @@ export class StateMusicService {
     this.musicService.getGenderMostListened().subscribe((data) => {
       this.stateSectionTrendsService.setSelectedGender(data);
     })
+
+    this.musicService.getDataPlayList().subscribe((data) => {
+      this.stateSectionPlayListService.setDataPlayList(data);
+    })
+
+    this.musicService.getArtist().subscribe((data) => {
+      this.stateSectionArtistsService.setSelectedArtist(data);
+    })
+
     this.updateMediaSessionMetadata();
   }
 

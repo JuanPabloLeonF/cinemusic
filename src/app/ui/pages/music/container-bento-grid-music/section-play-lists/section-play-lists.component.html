@@ -10,7 +10,7 @@
             </div>
             <div>
                 <h3>Favoritas</h3>
-                <p>20 canciones</p>
+                <p>{{this.dataPlayList.quantityFavorite}} canciones</p>
             </div>
         </div>
         <div class="item">
@@ -19,12 +19,12 @@
             </div>
             <div>
                 <h3>Listas</h3>
-                <p>50 canciones</p>
+                <p>{{this.dataPlayList.quantitySongsTotals}} canciones</p>
             </div>
         </div>
     </div>
     <div class="container-buttons">
-        <button type="button">Crear lista</button>
-        <button type="button">Agregar cancion</button>
+        <button (click)="this.toogleFormulary.set(true)" type="button">Crear lista</button>
+        <button (click)="this.toogleAddSong.set(true)" type="button">Agregar cancion</button>
     </div>
 </section>

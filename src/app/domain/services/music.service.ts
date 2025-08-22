@@ -3,6 +3,8 @@ import { Song } from '../models/music/songs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Gender } from '../models/music/gender';
+import { PlayList } from '../models/music/play-list';
+import { Artis } from '../models/music/artis';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +36,13 @@ export class MusicService {
 
     public getGenderMostListened(): Observable<Gender> {
       return this.httpClient.get<Gender>("data/music_data_gender.json");;
+    }
+
+    public getDataPlayList(): Observable<PlayList> {
+      return this.httpClient.get<PlayList>("data/music_data_play_list.json");;
+    }
+
+    public getArtist(): Observable<Artis> {
+      return this.httpClient.get<Artis>("data/music_data_artist.json");
     }
 }   

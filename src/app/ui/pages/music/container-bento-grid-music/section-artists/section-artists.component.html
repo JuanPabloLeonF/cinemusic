@@ -1,5 +1,5 @@
 <section class="section-artists">
-    <img src="images/music/metallica.jpg" alt="imagen del artista">
+    <img [src]="this.selectedArtist.image" [alt]="this.selectedArtist.name">
     <div class="container-information">
         <div class="container-title">
             <div class="container-svg">
@@ -7,8 +7,8 @@
             </div>
             <h3>ARTISTA DESTACADO</h3>
         </div>
-        <h2>METALLICA</h2>
-        <p>Metal - Nothing else matters - 23.5M oyentes</p>
+        <h2>{{this.selectedArtist.name}}</h2>
+        <p>{{this.selectedArtist.gender}} - {{this.selectedArtist.song}} - {{this.selectedArtist.numberPerson | numberAbbrev}} oyentes</p>
         <app-button-generic buttonText="reproducir" width="fit-content" height="2.5rem" typeButton="button" />
     </div>
 </section>

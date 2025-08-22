@@ -90,3 +90,10 @@
 .input-error {
     border: 1px solid red;
 }
+
+@media screen and (width <= 768px) {
+    .formulary-create-list-music > form {
+        width: 95%;
+        height: 50%;
+    }
+}

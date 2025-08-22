@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { SectionMainMusicComponent } from './section-main-music/section-main-music.component';
 import { FormularyCreateListMusicComponent } from './formulary-create-list-music/formulary-create-list-music.component';
 import { ContainerBentoGridMusicComponent } from "./container-bento-grid-music/container-bento-grid-music.component";
 import { StateSectionMainMusicService } from '../../../domain/states/music/state-section-main-music.service';
+import { StateMusicService } from '../../../domain/states/music/state-music.service';
 
 @Component({
   imports: [
@@ -15,5 +16,7 @@ import { StateSectionMainMusicService } from '../../../domain/states/music/state
 })
 export class MusicComponent {
 
-  protected stateSectionMainMusicService: StateSectionMainMusicService = inject(StateSectionMainMusicService);
+  private stateMusicService: StateMusicService = inject(StateMusicService);
+  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
+  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleAddSong;
 }

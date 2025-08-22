@@ -7,9 +7,15 @@ export interface TypeSearch {
     value: String;
 }
 
+export interface TypeSvgSearch {
+    type: String;
+    value: boolean;
+}
+
 export enum TypeSearchEnum {
     CATEGORY = "CATEGORY",
-    SEARCH = "SEARCH"
+    SEARCH = "SEARCH",
+    ARTIST = "ARTIST",
 }
 
 export enum CategoriesEnum {

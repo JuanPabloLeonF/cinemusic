@@ -1,6 +1,21 @@
 <section class="section-search">
+    <div class="container-svg">
+        <app-svg-songs 
+        width="2rem" 
+        height="2rem" 
+        color="var(--white-color)" 
+        colorHover="var(--primary-color)"
+        (activateSvg)="this.onActivateSvg($event)"  />
+        <app-svg-start width="2rem" height="2rem" color="yellow" />
+        <app-svg-start width="2rem" height="2rem" color="yellow" />
+    </div>
     <div class="container-input">
-        <app-input-icon-search placeholder="Buscar musica, artistas, canciones..." widthInput="100%" heightInput="100%" />
+        <app-input-icon-search 
+        placeholder="Buscar musica, artistas, canciones..." 
+        widthInput="100%" 
+        heightInput="100%" 
+        [typeSearch]="this.typeSearch"
+        (onChangeInputData)="this.onChangeInput($event)"/>
     </div>
     <p>Encuentra cualquier canción, artista o álbum al instante</p>
 </section>
