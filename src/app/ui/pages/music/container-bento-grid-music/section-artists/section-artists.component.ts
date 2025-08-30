@@ -4,6 +4,8 @@ import { SvgStartComponent } from "../../../../components/svg-start/svg-start.co
 import { StateMusicService } from '../../../../../domain/states/music/state-music.service';
 import { Artis } from '../../../../../domain/models/music/artis';
 import { NumberAbbrevPipe } from "../../../../../domain/pipes/number-abbrev.pipe";
+import { TypeSearch, TypeSearchEnum } from '../../../../../domain/models/music/category';
+import { Song } from '../../../../../domain/models/music/songs';
 
 @Component({
   selector: 'app-section-artists',
@@ -13,5 +15,20 @@ import { NumberAbbrevPipe } from "../../../../../domain/pipes/number-abbrev.pipe
 })
 export class SectionArtistsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedArtist: Artis = this.stateMusicService.stateSectionArtistsService.getSelectedArtist();
+  protected selectedArtist: Artis = this.stateMusicService.stateSectionArtistsService.selectedArtist();
+
+  protected onClickPlay(): void {
+      const filter: TypeSearch = {
+        type: TypeSearchEnum.ARTIST,
+        value: this.selectedArtist.name
+      }
+  
+      let listData: Song[] = this.stateMusicService.stateSectionMainMusicService.changeFilteredSongs(filter);
+  
+      if (listData.length > 0) {
+        this.stateMusicService.stateMusicPlayerService.listSongs.set(listData);
+        this.stateMusicService.stateMusicPlayerService.setSongSelected(listData[0]);
+      }
+
+    }
 }

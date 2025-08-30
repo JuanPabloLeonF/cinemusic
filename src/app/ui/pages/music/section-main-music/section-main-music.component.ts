@@ -22,11 +22,13 @@ export class SectionMainMusicComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.listdataMusic().length > 0) {
+      this.stateMusicService.stateMusicPlayerService.listSongs.set(this.listdataMusic())
       this.listdataMusic()[0].isPlaying = true;
+      this.stateMusicService.stateMusicPlayerService.setSongSelected(this.listdataMusic()[0]);
     }
   }
 
   protected getSong(song: Song): void {
-    this.stateMusicService.setSongSelected(song);
+    this.stateMusicService.stateMusicPlayerService.setSongSelected(song);
   }
 }

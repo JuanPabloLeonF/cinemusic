@@ -9,6 +9,6 @@
         </div>
         <h2>{{this.selectedArtist.name}}</h2>
         <p>{{this.selectedArtist.gender}} - {{this.selectedArtist.song}} - {{this.selectedArtist.numberPerson | numberAbbrev}} oyentes</p>
-        <app-button-generic buttonText="reproducir" width="fit-content" height="2.5rem" typeButton="button" />
+        <app-button-generic (actionClick)="this.onClickPlay()" buttonText="reproducir" width="fit-content" height="2.5rem" typeButton="button" />
     </div>
 </section>

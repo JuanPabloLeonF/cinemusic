@@ -21,7 +21,7 @@ interface AudioPlayCurrent {
 export class MusicPlayerComponent implements AfterViewInit {
 
   protected stateMusicService: StateMusicService = inject(StateMusicService);
-  protected songSelected: WritableSignal<Song> = this.stateMusicService.songSelected;
+  protected songSelected: WritableSignal<Song> = this.stateMusicService.stateMusicPlayerService.selectedSong;
   @ViewChild('containerVolumeMobile') containerVolumeMobile!: ElementRef<HTMLInputElement>; 
   @ViewChild('volumeRangeMobile') volumeRangeMobileRef!: ElementRef<HTMLInputElement>; 
   @ViewChild('volumeRange') volumeRangeRef!: ElementRef<HTMLInputElement>;
@@ -41,27 +41,27 @@ export class MusicPlayerComponent implements AfterViewInit {
   protected totalDuration: string = '0:00';
 
   public playAudio(): void {
-    this.stateMusicService.playAudio();
+    this.stateMusicService.stateMusicPlayerService.playAudio();
     this.audioRef.nativeElement.play();
     this.autoPlaySongState = true;
   }
 
   public stopAudio(): void {
-    this.stateMusicService.stopAudio();
+    this.stateMusicService.stateMusicPlayerService.stopAudio();
     this.audioRef.nativeElement.pause();
     this.autoPlaySongState = false;
   }
 
   public changeSongNext(): void {
-    this.stateMusicService.changeSongNext();
+    this.stateMusicService.stateMusicPlayerService.changeSongNext();
   }
 
   public changeSongBack(): void {
-    this.stateMusicService.changeSongBack();
+    this.stateMusicService.stateMusicPlayerService.changeSongBack();
   }
 
   public changeFavoriteSong(): void {
-    this.stateMusicService.changeFavoriteSong();
+    this.stateMusicService.stateMusicPlayerService.changeFavoriteSong();
   }
 
   ngAfterViewInit(): void {
@@ -103,7 +103,7 @@ export class MusicPlayerComponent implements AfterViewInit {
         }
       });
 
-      this.stateMusicService.setupMediaSessionHandlers(
+      this.stateMusicService.stateMusicPlayerService.setupMediaSessionHandlers(
         () => this.playAudio(),
         () => this.stopAudio(),
         () => this.changeSongNext(),
@@ -111,16 +111,15 @@ export class MusicPlayerComponent implements AfterViewInit {
       )
     }
   }
-
   protected typePlay(type: string): void {
     if (type == TypePlayEnum.SHUFFLE) {
       this.audioPlayCurrent.shuffle = true;
       this.audioPlayCurrent.repeat = false;
-      this.stateMusicService.setTypePlay(TypePlayEnum.SHUFFLE);
+      this.stateMusicService.stateMusicPlayerService.setTypePlay(TypePlayEnum.SHUFFLE);
     } else if (type == TypePlayEnum.REPEAT) {
       this.audioPlayCurrent.repeat = true;
       this.audioPlayCurrent.shuffle = false;
-      this.stateMusicService.setTypePlay(TypePlayEnum.REPEAT)
+      this.stateMusicService.stateMusicPlayerService.setTypePlay(TypePlayEnum.REPEAT)
     }
   }
 
@@ -214,7 +213,6 @@ export class MusicPlayerComponent implements AfterViewInit {
     if (this.containerVolumeMobile) {
       const clickedInside = this.containerVolumeMobile.nativeElement.contains(event.target as Node);
       if (!clickedInside) {
-        console.log("me ando ejecutando")
         this.stateMusicService.activateMenuMobile.set(false);
       }
     }

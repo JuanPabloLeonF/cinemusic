@@ -10,7 +10,7 @@
                 <p>{{song.year}}</p>
             </div>
             <div class="container-svg">
-                <app-svg-play width="100%" height="100%" color="white" />
+                <app-svg-play (click)="this.onClickPlay(song)" width="100%" height="100%" color="white" />
             </div>
             <img [src]="song.image" [alt]="song.name">
         </div>

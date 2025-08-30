@@ -6,13 +6,5 @@ import { Song } from '../../models/music/songs';
 })
 export class StateSectionNewMusicService {
 
-  private selectedSong: WritableSignal<Song> = signal<Song>({} as Song); 
-
-  public setSelectedSong(selectedSong: Song) {
-    this.selectedSong.set(selectedSong);
-  }
-
-  public getSelectedSong(): Song {
-    return this.selectedSong();
-  }
+  public selectedSong: WritableSignal<Song> = signal<Song>({} as Song); 
 }

@@ -12,11 +12,10 @@ export class InputIconSearchComponent {
   public placeholder: InputSignal<string> = input<string>("placeholder");
   public widthInput: InputSignal<string> = input<string>("100%");
   public heightInput: InputSignal<string> = input<string>("2rem");
-  public typeSearch: InputSignal<TypeSearch> = input<TypeSearch>({} as TypeSearch);
-  public onChangeInputData: OutputEmitterRef<TypeSearch> = output<TypeSearch>();
+  public onChangeInputData: OutputEmitterRef<string> = output<string>();
 
   protected onChangeInput(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.onChangeInputData.emit({type: TypeSearchEnum.SEARCH, value: target.value.toUpperCase()});
+    this.onChangeInputData.emit(target.value);
   }
 }

@@ -8,12 +8,11 @@
         <p>{{this.selectedSong.artist}}</p>
         <p>{{this.selectedSong.year}}</p>
         <div>
-            <button type="button">
+            <button (click)="onClickPlay()" type="button">
                 <app-svg-play width="20%" height="20%" color="black" />
                 <p>Play</p>
             </button>
-            <app-svg-heart width="5%" height="100%" [isFavorite]="this.selectedSong.isFavorite" />
+            <app-svg-heart (click)="onClickFavorite()" width="5%" height="100%" [isFavorite]="this.selectedSong.isFavorite" />
         </div>
     </div>
-    
 </section>

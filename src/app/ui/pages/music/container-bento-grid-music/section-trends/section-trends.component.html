@@ -3,6 +3,6 @@
     <h3>Genero musical mas escuchado</h3>
     <p>{{this.selectedGender.name}} - {{this.selectedGender.numberPerson | numberAbbrev}} oyentes</p>
     <div>
-        <app-svg-play width="40%" height="40%" color="white" />
+        <app-svg-play (click)="onClickPlay()" width="40%" height="40%" color="white" />
     </div>
 </section>

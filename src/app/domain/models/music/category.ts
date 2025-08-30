@@ -8,8 +8,9 @@ export interface TypeSearch {
 }
 
 export interface TypeSvgSearch {
-    type: String;
-    value: boolean;
+    category: boolean,
+    search: boolean,
+    artist: boolean
 }
 
 export enum TypeSearchEnum {

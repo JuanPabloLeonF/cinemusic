@@ -1,11 +1,11 @@
-import { Component, ElementRef, HostListener, inject, input, InputSignal, output, OutputEmitterRef, WritableSignal } from '@angular/core';
+import { Component, inject, input, InputSignal, WritableSignal } from '@angular/core';
 import { TypeSearchEnum, TypeSvgSearch } from '../../../domain/models/music/category';
 import { StateMusicService } from '../../../domain/states/music/state-music.service';
 
 @Component({
-  selector: 'app-svg-songs',
+  selector: 'app-svg-singer',
   imports: [],
-  templateUrl: './svg-songs.component.html',
+  templateUrl: './svg-singer.component.html',
   styles: [
       `
       :host-context {
@@ -16,20 +16,23 @@ import { StateMusicService } from '../../../domain/states/music/state-music.serv
         cursor: pointer;
         transition: fill 0.3s ease;
       }
+      svg path {
+        fill: inherit;
+      }
+
       `
     ]
 })
-export class SvgSongsComponent {
-
+export class SvgSingerComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected activationSong: WritableSignal<boolean> = this.stateMusicService.stateSectionSearchService.activationSong;
+  protected activationSinger: WritableSignal<boolean> = this.stateMusicService.stateSectionSearchService.activationSinger;
   public width: InputSignal<string> = input<string>("100%");
   public height: InputSignal<string> = input<string>("100%");
   public color: InputSignal<string> = input("white");
   public colorHover: InputSignal<string> = input("red");
 
   protected onActivateSvg(): void {
-    this.stateMusicService.stateSectionSearchService.setStateElements(TypeSearchEnum.SEARCH)
-    this.activationSong.set(!this.activationSong());
+    this.stateMusicService.stateSectionSearchService.setStateElements(TypeSearchEnum.ARTIST)
+    this.activationSinger.set(!this.activationSinger())
   }
 }

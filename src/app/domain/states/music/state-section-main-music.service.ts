@@ -19,25 +19,30 @@ export class StateSectionMainMusicService {
     this.listSongsFiltered.set(listDataSongs);
   }
 
-  public changeFilteredSongs(filter: TypeSearch): void {
+  public changeFilteredSongs(filter: TypeSearch): Song[] {
+    if (filter.value.trim() === "") {
+      this.resetFilter();
+      return this.listSongsFiltered();
+    }
     switch (filter.type) {
       case TypeSearchEnum.CATEGORY: {
-        this.filterByDataCategory(filter.value);
+        this.filteredByCategory(filter.value);
         break;
       }
       case TypeSearchEnum.SEARCH: {
         this.filteredBySearch(filter.value);
         break;
       }
+      case TypeSearchEnum.ARTIST: {
+        this.filteredByArtist(filter.value);
+      }
     }
+
+    return this.listSongsFiltered();
   }
 
-  private filterByDataCategory(category: String): void {
-    if (category === CategoriesEnum.ALL) {
-      this.resetFilter();
-    } else {
-      this.filteredByCategory(category);
-    }
+  private filteredByArtist(artist: String) {
+    this.listSongsFiltered.set(this.listDataSongs().filter(song => song.artist.toLowerCase() === artist.toLowerCase()));
   }
 
   private filteredByCategory(category: String) {

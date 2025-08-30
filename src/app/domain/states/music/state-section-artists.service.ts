@@ -6,13 +6,5 @@ import { Artis } from '../../models/music/artis';
 })
 export class StateSectionArtistsService {
 
-  private selectedArtist: WritableSignal<Artis> = signal<Artis>({} as Artis); 
-
-  public setSelectedArtist(selectedArtist: Artis) {
-    this.selectedArtist.set(selectedArtist);
-  }
-
-  public getSelectedArtist(): Artis {
-    return this.selectedArtist();
-  }
+  public selectedArtist: WritableSignal<Artis> = signal<Artis>({} as Artis); 
 }
