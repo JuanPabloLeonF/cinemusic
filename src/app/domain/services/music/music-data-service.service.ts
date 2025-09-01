@@ -4,7 +4,7 @@ import { Song } from '../../models/music/songs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 import { Gender } from '../../models/music/gender';
-import { PlayList } from '../../models/music/play-list';
+import { ListSongs, PlayList } from '../../models/music/play-list';
 import { Artis } from '../../models/music/artis';
 
 @Injectable({
@@ -15,39 +15,48 @@ export class MusicDataService {
   private musicService = inject(MusicService);
 
   public songMostListened = this.createWritableFromObservable<Song>(
-    this.musicService.getSongMostListened(),
+    this.musicService.apisSongs.getSongMostListened(),
     {} as Song
   );
 
   public newSong = this.createWritableFromObservable<Song>(
-    this.musicService.getSongNew(),
+    this.musicService.apisSongs.getSongNew(),
     {} as Song
   );
 
   public songsHistory = this.createWritableFromObservable<Song[]>(
-    this.musicService.getAllHistory(),
+    this.musicService.apisSongs.getAllHistory(),
     []
   );
 
   public getGenderMostListened = this.createWritableFromObservable<Gender>(
-    this.musicService.getGenderMostListened(),
+    this.musicService.apisGender.getGenderMostListened(),
     {} as Gender
   );
 
   public getDataPlayList = this.createWritableFromObservable<PlayList>(
-    this.musicService.getDataPlayList(),
+    this.musicService.apisPlayList.getDataPlayList(),
     {} as PlayList
   );
 
   public getArtirstMostListened = this.createWritableFromObservable<Artis>(
-    this.musicService.getArtist(),
+    this.musicService.apisArtist.getArtist(),
     {} as Artis
   )
 
   public allSongs = this.createWritableFromObservable<Song[]>(
-    this.musicService.getAll(),
+    this.musicService.apisSongs.getAll(),
     []
   );
+
+  public getAllListSongs = this.createWritableFromObservable<ListSongs[]>(
+    this.musicService.apisListSongs.getAll(),
+    []
+  );
+
+  public createNewListSongs(listSongs: any): Observable<ListSongs> {
+    return this.musicService.apisListSongs.createNewListSongs(listSongs);
+  }
 
   private createWritableFromObservable<T>(
     source$: Observable<T>,

@@ -11,9 +11,11 @@ import { StateMusicPlayerService } from './state-music-player.service';
 import { Song, TypePlayEnum } from '../../models/music/songs';
 import { MusicDataService } from '../../services/music/music-data-service.service';
 import { Gender } from '../../models/music/gender';
-import { PlayList } from '../../models/music/play-list';
+import { ListSongs, PlayList } from '../../models/music/play-list';
 import { Artis } from '../../models/music/artis';
 import { TypeSearch } from '../../models/music/category';
+import { StateFormularyCreateListService } from './state-formulary-create-list.service';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +32,15 @@ export class StateMusicService {
   private stateSectionMainMusicService: StateSectionMainMusicService = inject(StateSectionMainMusicService);
   private stateSectionSearchService: StateSectionSearchService = inject(StateSectionSearchService);
   private stateMusicPlayerService: StateMusicPlayerService = inject(StateMusicPlayerService);
+  private stateFormularyCreateListService: StateFormularyCreateListService = inject(StateFormularyCreateListService);
   public activateMenuMobile: WritableSignal<boolean> = signal<boolean>(false);
 
 
   constructor() {
+
+    effect(() => {
+      this.stateFormularyCreateListService.listsDataOfSongs.set(this.musicDataService.getAllListSongs());
+    });
 
     effect(() => {
       this.stateSectionNewsService.selectedSong.set(this.musicDataService.songMostListened());
@@ -80,6 +87,7 @@ export class StateMusicService {
   public selectedSong: WritableSignal<Song> = this.stateMusicPlayerService.selectedSong;
   public listSongs: WritableSignal<Song[]> = this.stateMusicPlayerService.listSongs;
   public currentTypePlay: WritableSignal<TypePlayEnum> = this.stateMusicPlayerService.currentTypePlay;
+  public listsDataOfSongs: WritableSignal<ListSongs[]> = this.stateFormularyCreateListService.listsDataOfSongs;
   public activateMenu: WritableSignal<boolean> = signal<boolean>(false);
 
   public changeFilteredSongs(filter: TypeSearch): Song[] {
@@ -116,6 +124,19 @@ export class StateMusicService {
 
   public setupMediaSessionHandlers(playAudio: Function, stopAudio: Function, changeSongNext: Function, changeSongBack: Function ): void {
     this.stateMusicPlayerService.setupMediaSessionHandlers(playAudio, stopAudio, changeSongNext, changeSongBack);
+  }
+
+   public createNewListSongs(listSongs: any): void {
+    this.musicDataService.createNewListSongs(listSongs).subscribe({
+      next: () => {
+        this.toogleFormulary.set(false);
+        this.stateFormularyCreateListService.listsDataOfSongs.set(this.musicDataService.getAllListSongs());
+        console.log("data vuelta a traer: ", this.listsDataOfSongs());
+      },
+      error: (error) => {
+        alert("Error al crear una lista de cancione nueva")
+      }
+    })
   }
 
 }

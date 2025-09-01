@@ -5,6 +5,7 @@ import { StateSectionMainMusicService } from '../../../../domain/states/music/st
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { StateMusicService } from '../../../../domain/states/music/state-music.service';
+import { ListSongs } from '../../../../domain/models/music/play-list';
 
 @Component({
   selector: 'app-formulary-create-list-music',
@@ -25,14 +26,18 @@ export class FormularyCreateListMusicComponent {
   private formularyBuilder: FormBuilder = inject(FormBuilder);
 
   protected listForms = this.formularyBuilder.group({
-    name: ['', [Validators.required]],
-    description: ['', [Validators.required]]
+    name: ['', [Validators.required, Validators.pattern(/^(?!\s*$).+/)]],
+    description: ['', [Validators.required, Validators.pattern(/^(?!\s*$).+/)]]
   });
 
   protected submitForm(): void {
     if (this.listForms.valid) {
       console.log('Formulario enviado:', this.listForms.value);
-      this.toogleFormulary.set(false);
+      const data = {
+        name: this.listForms.get('name')?.value,
+        description: this.listForms.get('description')?.value,
+      }
+      this.stateMusicService.createNewListSongs(data);
     } else {
       this.listForms.markAllAsTouched();
     }

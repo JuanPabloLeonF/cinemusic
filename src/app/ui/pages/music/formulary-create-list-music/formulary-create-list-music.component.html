@@ -4,6 +4,7 @@
         <label>
             @if (
                 listForms.get('name')?.errors?.['required'] && 
+                listForms.get('name')?.errors?.['pattern'] &&
                 listForms.get('name')?.invalid && 
                 (listForms.get('name')?.touched || 
                 listForms.get('name')?.dirty)
@@ -17,6 +18,7 @@
         <label>
             @if (
             listForms.get('description')?.errors?.['required'] && 
+            listForms.get('description')?.errors?.['pattern'] &&
             listForms.get('description')?.invalid && 
             (listForms.get('description')?.touched || 
             listForms.get('description')?.dirty)

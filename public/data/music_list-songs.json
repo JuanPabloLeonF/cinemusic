@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "name": "lista de metal",
+        "description": "listado de canciones de metal que me encantan",
+        "list": [
+            {
+                "id": "8",
+                "name": "nothing else matters",
+                "image": "images/music/metallica.jpg",
+                "album": "album",
+                "artist": "metallica",
+                "year": 2020,
+                "gender": "METAL",
+                "rating": 10,
+                "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta minus rerum ratione, aliquid fugiat consectetur culpa, blanditiis sapiente recusandae suscipit exercitationem ullam ex unde assumenda. Dolorum dicta rerum voluptate ab!",
+                "audio": "images/music/nothing.weba",
+                "isFavorite": true,
+                "isPlaying": false
+            },
+            {
+                "id": "7",
+                "name": "go go go",
+                "image": "images/music/song7.jpg",
+                "album": "album",
+                "artist": "no me acuerdo",
+                "year": 2020,
+                "gender": "ELECTRONIC",
+                "rating": 10,
+                "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta minus rerum ratione, aliquid fugiat consectetur culpa, blanditiis sapiente recusandae suscipit exercitationem ullam ex unde assumenda. Dolorum dicta rerum voluptate ab!",
+                "audio": "images/music/song7.mp4",
+                "isFavorite": false,
+                "isPlaying": false
+            }
+        ]
+    }
+]
