@@ -9,7 +9,7 @@ export class StateMusicPlayerService {
 
   public selectedSong: WritableSignal<Song> = signal<Song>({} as Song);
   public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
-  private currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
+  public currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
   private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
 
   public playAudio(): void {
@@ -150,9 +150,5 @@ export class StateMusicPlayerService {
         artwork
       );
     }
-  }
-
-  public setTypePlay(type: TypePlayEnum): void {
-    this.currentTypePlay.set(type);
   }
 }

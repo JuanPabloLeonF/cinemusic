@@ -21,7 +21,7 @@ import { StateMusicService } from '../../../../domain/states/music/state-music.s
 export class FormularyCreateListMusicComponent {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
+  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.toogleFormulary;
   private formularyBuilder: FormBuilder = inject(FormBuilder);
 
   protected listForms = this.formularyBuilder.group({

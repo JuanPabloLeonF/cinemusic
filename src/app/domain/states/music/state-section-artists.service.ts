@@ -5,6 +5,5 @@ import { Artis } from '../../models/music/artis';
   providedIn: 'root'
 })
 export class StateSectionArtistsService {
-
   public selectedArtist: WritableSignal<Artis> = signal<Artis>({} as Artis); 
 }

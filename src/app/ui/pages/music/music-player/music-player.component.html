@@ -1,5 +1,5 @@
 @if (this.songSelected()) {
-    <aside class="music-player" appTraslateVertical [appTraslateVerticalActivate]="this.stateMusicService.stateMusicMobileService.activateMenu()">
+    <aside class="music-player" appTraslateVertical [appTraslateVerticalActivate]="this.stateMusicService.activateMenu()">
         <div class="container-information-music-player">
             <div class="contaner-img-player">
                 <img [src]="this.songSelected().image" [alt]="this.songSelected().name">
@@ -41,12 +41,12 @@
                 <input id="volumeRangeMobile" #volumeRangeMobile type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.onVolumeChange()">
             </div>
             <div class="container-header-mobile">
-                @if (this.stateMusicService.stateMusicMobileService.activateMenu()) {
+                @if (this.stateMusicService.activateMenu()) {
                     <i #containerVolumeMobile (click)="this.stateMusicService.activateMenuMobile.set(!this.stateMusicService.activateMenuMobile())" class="fa-solid fa-volume-high"></i>
-                    <i (click)="this.stateMusicService.stateMusicMobileService.switchMenu(false)" class="fa-solid fa-chevron-down"></i>
+                    <i (click)="this.stateMusicService.activateMenu.set(false)" class="fa-solid fa-chevron-down"></i>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 } @else {
-                    <i (click)="this.stateMusicService.stateMusicMobileService.switchMenu(true)" class="fa-solid fa-chevron-up i-menu"></i>
+                    <i (click)="this.stateMusicService.activateMenu.set(true)" class="fa-solid fa-chevron-up i-menu"></i>
                 }
             </div>
             <div class="container-img-music-mobile">

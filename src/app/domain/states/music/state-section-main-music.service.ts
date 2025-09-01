@@ -7,12 +7,8 @@ import { CategoriesEnum, TypeSearch, TypeSearchEnum } from '../../models/music/c
 })
 export class StateSectionMainMusicService {
 
-  private listDataSongs: WritableSignal<Song[]> = signal<Song[]>([]);
+  public listDataSongs: WritableSignal<Song[]> = signal<Song[]>([]);
   public listSongsFiltered: WritableSignal<Song[]> = signal<Song[]>([]);
-
-  public getListDataSongs(): Song[] {
-    return this.listDataSongs();
-  }
 
   public setListDataSongs(listDataSongs: Song[]): void {
     this.listDataSongs.set(listDataSongs);

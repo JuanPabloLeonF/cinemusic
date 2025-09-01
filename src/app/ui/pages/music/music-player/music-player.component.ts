@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal, HostListener } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal, HostListener, signal } from '@angular/core';
 import { Song, TypePlayEnum } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
@@ -21,7 +21,7 @@ interface AudioPlayCurrent {
 export class MusicPlayerComponent implements AfterViewInit {
 
   protected stateMusicService: StateMusicService = inject(StateMusicService);
-  protected songSelected: WritableSignal<Song> = this.stateMusicService.stateMusicPlayerService.selectedSong;
+  protected songSelected: WritableSignal<Song> = this.stateMusicService.selectedSong;
   @ViewChild('containerVolumeMobile') containerVolumeMobile!: ElementRef<HTMLInputElement>; 
   @ViewChild('volumeRangeMobile') volumeRangeMobileRef!: ElementRef<HTMLInputElement>; 
   @ViewChild('volumeRange') volumeRangeRef!: ElementRef<HTMLInputElement>;
@@ -41,27 +41,27 @@ export class MusicPlayerComponent implements AfterViewInit {
   protected totalDuration: string = '0:00';
 
   public playAudio(): void {
-    this.stateMusicService.stateMusicPlayerService.playAudio();
+    this.stateMusicService.playAudio();
     this.audioRef.nativeElement.play();
     this.autoPlaySongState = true;
   }
 
   public stopAudio(): void {
-    this.stateMusicService.stateMusicPlayerService.stopAudio();
+    this.stateMusicService.stopAudio();
     this.audioRef.nativeElement.pause();
     this.autoPlaySongState = false;
   }
 
   public changeSongNext(): void {
-    this.stateMusicService.stateMusicPlayerService.changeSongNext();
+    this.stateMusicService.changeSongNext();
   }
 
   public changeSongBack(): void {
-    this.stateMusicService.stateMusicPlayerService.changeSongBack();
+    this.stateMusicService.changeSongBack();
   }
 
   public changeFavoriteSong(): void {
-    this.stateMusicService.stateMusicPlayerService.changeFavoriteSong();
+    this.stateMusicService.changeFavoriteSong();
   }
 
   ngAfterViewInit(): void {
@@ -103,7 +103,7 @@ export class MusicPlayerComponent implements AfterViewInit {
         }
       });
 
-      this.stateMusicService.stateMusicPlayerService.setupMediaSessionHandlers(
+      this.stateMusicService.setupMediaSessionHandlers(
         () => this.playAudio(),
         () => this.stopAudio(),
         () => this.changeSongNext(),
@@ -115,11 +115,11 @@ export class MusicPlayerComponent implements AfterViewInit {
     if (type == TypePlayEnum.SHUFFLE) {
       this.audioPlayCurrent.shuffle = true;
       this.audioPlayCurrent.repeat = false;
-      this.stateMusicService.stateMusicPlayerService.setTypePlay(TypePlayEnum.SHUFFLE);
+      this.stateMusicService.currentTypePlay.set(TypePlayEnum.SHUFFLE);
     } else if (type == TypePlayEnum.REPEAT) {
       this.audioPlayCurrent.repeat = true;
       this.audioPlayCurrent.shuffle = false;
-      this.stateMusicService.stateMusicPlayerService.setTypePlay(TypePlayEnum.REPEAT)
+      this.stateMusicService.currentTypePlay.set(TypePlayEnum.REPEAT)
     }
   }
 

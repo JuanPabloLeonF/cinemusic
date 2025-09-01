@@ -1,6 +1,4 @@
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
-import { MusicService } from '../../services/music.service';
-import { StatesMusicMobileService } from './state-music-mobile.service';
+import { effect, inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { StateSectionNewsService } from './state-section-news.service';
 import { StateSectionNewMusicService } from './state-section-new-music.service';
 import { StateSectionOtherService } from './state-section-other.service';
@@ -10,52 +8,114 @@ import { StateSectionArtistsService } from './state-section-artists.service';
 import { StateSectionMainMusicService } from './state-section-main-music.service';
 import { StateSectionSearchService } from './state-section-search.service';
 import { StateMusicPlayerService } from './state-music-player.service';
+import { Song, TypePlayEnum } from '../../models/music/songs';
+import { MusicDataService } from '../../services/music/music-data-service.service';
+import { Gender } from '../../models/music/gender';
+import { PlayList } from '../../models/music/play-list';
+import { Artis } from '../../models/music/artis';
+import { TypeSearch } from '../../models/music/category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StateMusicService {
+  private musicDataService: MusicDataService = inject(MusicDataService);
 
-  private musicService: MusicService = inject(MusicService);
-  public stateSectionNewsService: StateSectionNewsService = inject(StateSectionNewsService);
-  public stateSectionNewMusicService: StateSectionNewMusicService = inject(StateSectionNewMusicService);
-  public stateSectionOtherService: StateSectionOtherService = inject(StateSectionOtherService);
-  public stateSectionTrendsService: StateSectionTrendsService = inject(StateSectionTrendsService);
-  public stateSectionPlayListService: StateSectionPlayListService = inject(StateSectionPlayListService);
-  public stateSectionArtistsService: StateSectionArtistsService = inject(StateSectionArtistsService);
-  public stateSectionMainMusicService: StateSectionMainMusicService = inject(StateSectionMainMusicService);
-  public stateSectionSearchService: StateSectionSearchService = inject(StateSectionSearchService);
-  public stateMusicPlayerService: StateMusicPlayerService = inject(StateMusicPlayerService);
-  public stateMusicMobileService: StatesMusicMobileService = inject(StatesMusicMobileService);
+  private stateSectionNewsService: StateSectionNewsService = inject(StateSectionNewsService);
+  private stateSectionNewMusicService: StateSectionNewMusicService = inject(StateSectionNewMusicService);
+  private stateSectionOtherService: StateSectionOtherService = inject(StateSectionOtherService);
+  private stateSectionTrendsService: StateSectionTrendsService = inject(StateSectionTrendsService);
+  private stateSectionPlayListService: StateSectionPlayListService = inject(StateSectionPlayListService);
+  private stateSectionArtistsService: StateSectionArtistsService = inject(StateSectionArtistsService);
+  private stateSectionMainMusicService: StateSectionMainMusicService = inject(StateSectionMainMusicService);
+  private stateSectionSearchService: StateSectionSearchService = inject(StateSectionSearchService);
+  private stateMusicPlayerService: StateMusicPlayerService = inject(StateMusicPlayerService);
   public activateMenuMobile: WritableSignal<boolean> = signal<boolean>(false);
 
+
   constructor() {
-    this.musicService.getAll().subscribe((data) => {
-      this.stateSectionMainMusicService.setListDataSongs(data);
+
+    effect(() => {
+      this.stateSectionNewsService.selectedSong.set(this.musicDataService.songMostListened());
     });
 
-    this.musicService.getSongMostListened().subscribe((data) => {
-      this.stateSectionNewsService.setSelectedSong(data);
-    })
+    effect(() => {
+      this.stateSectionNewMusicService.selectedSong.set(this.musicDataService.newSong());
+    });
 
-    this.musicService.getSongNew().subscribe((data) => {
-      this.stateSectionNewMusicService.selectedSong.set(data);
-    })
+    effect(() => {
+      this.stateSectionOtherService.selectedListSongs.set(this.musicDataService.songsHistory());
+    });
 
-    this.musicService.getAllHistory().subscribe((data) => {
-      this.stateSectionOtherService.setSelectedListSongs(data);
-    })
+    effect(() => {
+      this.stateSectionTrendsService.selectedGender.set(this.musicDataService.getGenderMostListened());
+    });
 
-    this.musicService.getGenderMostListened().subscribe((data) => {
-      this.stateSectionTrendsService.setSelectedGender(data);
-    })
+    effect(() => {
+      this.stateSectionPlayListService.dataPlayList.set(this.musicDataService.getDataPlayList());
+    });
 
-    this.musicService.getDataPlayList().subscribe((data) => {
-      this.stateSectionPlayListService.setDataPlayList(data);
-    })
+    effect(() => {
+      this.stateSectionArtistsService.selectedArtist.set(this.musicDataService.getArtirstMostListened());
+    });
 
-    this.musicService.getArtist().subscribe((data) => {
-      this.stateSectionArtistsService.selectedArtist.set(data);
-    })
+    effect(() => {
+      this.stateSectionMainMusicService.setListDataSongs(this.musicDataService.allSongs());
+    });
   }
+
+  public songMostListened: WritableSignal<Song> = this.stateSectionNewsService.selectedSong;
+  public newSong: WritableSignal<Song> = this.stateSectionNewMusicService.selectedSong;
+  public songsHistory: WritableSignal<Song[]> = this.stateSectionOtherService.selectedListSongs;
+  public genderMostListened: WritableSignal<Gender> = this.stateSectionTrendsService.selectedGender;
+  public dataPlayList: WritableSignal<PlayList> = this.stateSectionPlayListService.dataPlayList;
+  public toogleFormulary: WritableSignal<boolean> = this.stateSectionPlayListService.toogleFormulary;
+  public toogleAddSong: WritableSignal<boolean> = this.stateSectionPlayListService.toogleAddSong;
+  public artistMostListened: WritableSignal<Artis> = this.stateSectionArtistsService.selectedArtist;
+  public listSongsFiltered: WritableSignal<Song[]> = this.stateSectionMainMusicService.listSongsFiltered;
+  public dataSearch: WritableSignal<TypeSearch> = this.stateSectionSearchService.dataSearch;
+  public activationSong: WritableSignal<boolean> = this.stateSectionSearchService.activationSong;
+  public activationGender: WritableSignal<boolean> = this.stateSectionSearchService.activationGender;
+  public activationSinger: WritableSignal<boolean> = this.stateSectionSearchService.activationSinger;
+  public selectedSong: WritableSignal<Song> = this.stateMusicPlayerService.selectedSong;
+  public listSongs: WritableSignal<Song[]> = this.stateMusicPlayerService.listSongs;
+  public currentTypePlay: WritableSignal<TypePlayEnum> = this.stateMusicPlayerService.currentTypePlay;
+  public activateMenu: WritableSignal<boolean> = signal<boolean>(false);
+
+  public changeFilteredSongs(filter: TypeSearch): Song[] {
+    return this.stateSectionMainMusicService.changeFilteredSongs(filter);
+  }
+
+  public setStateElements(data: string): void {
+    this.stateSectionSearchService.setStateElements(data);
+  }
+
+  public playAudio(): void {
+    this.stateMusicPlayerService.playAudio();
+  }
+
+  public setSongSelected(song: Song): void {
+    this.stateMusicPlayerService.setSongSelected(song);
+  }
+
+  public changeSongNext(): void {
+    this.stateMusicPlayerService.changeSongNext();
+  }
+
+  public changeSongBack(): void {
+    this.stateMusicPlayerService.changeSongBack();
+  }
+
+  public stopAudio(): void {
+    this.stateMusicPlayerService.stopAudio();
+  }
+
+  public changeFavoriteSong(): void {
+    this.stateMusicPlayerService.changeFavoriteSong();
+  }
+
+  public setupMediaSessionHandlers(playAudio: Function, stopAudio: Function, changeSongNext: Function, changeSongBack: Function ): void {
+    this.stateMusicPlayerService.setupMediaSessionHandlers(playAudio, stopAudio, changeSongNext, changeSongBack);
+  }
+
 }

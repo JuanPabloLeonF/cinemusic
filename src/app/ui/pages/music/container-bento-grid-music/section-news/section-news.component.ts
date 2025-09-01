@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { SvgNoteComponent } from "../../../../components/svg-note/svg-note.component";
 import { SvgTendencyComponent } from '../../../../components/svg-tendency/svg-tendency.component';
 import { SvgHeadPhonesComponent } from '../../../../components/svg-head-phones/svg-head-phones.component';
@@ -13,5 +13,5 @@ import { Song } from '../../../../../domain/models/music/songs';
 })
 export class SectionNewsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedSong: Song = this.stateMusicService.stateSectionNewsService.getSelectedSong();
+  protected selectedSong: WritableSignal<Song> = this.stateMusicService.songMostListened;
 }

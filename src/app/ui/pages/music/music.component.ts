@@ -17,6 +17,6 @@ import { StateMusicService } from '../../../domain/states/music/state-music.serv
 export class MusicComponent {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
-  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleAddSong;
+  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.toogleFormulary;
+  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.toogleAddSong;
 }

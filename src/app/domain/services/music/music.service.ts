@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
-import { Song } from '../models/music/songs';
+import { Song } from '../../models/music/songs';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Gender } from '../models/music/gender';
-import { PlayList } from '../models/music/play-list';
-import { Artis } from '../models/music/artis';
+import { Gender } from '../../models/music/gender';
+import { PlayList } from '../../models/music/play-list';
+import { Artis } from '../../models/music/artis';
 
 @Injectable({
   providedIn: 'root'

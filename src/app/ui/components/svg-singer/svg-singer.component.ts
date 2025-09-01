@@ -25,14 +25,14 @@ import { StateMusicService } from '../../../domain/states/music/state-music.serv
 })
 export class SvgSingerComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected activationSinger: WritableSignal<boolean> = this.stateMusicService.stateSectionSearchService.activationSinger;
+  protected activationSinger: WritableSignal<boolean> = this.stateMusicService.activationSinger;
   public width: InputSignal<string> = input<string>("100%");
   public height: InputSignal<string> = input<string>("100%");
   public color: InputSignal<string> = input("white");
   public colorHover: InputSignal<string> = input("red");
 
   protected onActivateSvg(): void {
-    this.stateMusicService.stateSectionSearchService.setStateElements(TypeSearchEnum.ARTIST)
+    this.stateMusicService.setStateElements(TypeSearchEnum.ARTIST)
     this.activationSinger.set(!this.activationSinger())
   }
 }

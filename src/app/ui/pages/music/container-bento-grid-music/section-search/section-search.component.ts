@@ -16,7 +16,7 @@ import { Song } from '../../../../../domain/models/music/songs';
 export class SectionSearchComponent {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected dataSearch: WritableSignal<TypeSearch> = this.stateMusicService.stateSectionSearchService.dataSearch;
+  protected dataSearch: WritableSignal<TypeSearch> = this.stateMusicService.dataSearch;
 
   protected onChangeInput(value: string): void {
     this.dataSearch.set({
@@ -24,10 +24,10 @@ export class SectionSearchComponent {
       value: value
     })
 
-    let listDataFiltered: Song[] = this.stateMusicService.stateSectionMainMusicService.changeFilteredSongs(this.dataSearch());
+    let listDataFiltered: Song[] = this.stateMusicService.changeFilteredSongs(this.dataSearch());
 
     if (listDataFiltered.length > 0) {
-      this.stateMusicService.stateMusicPlayerService.listSongs.set(listDataFiltered);
+      this.stateMusicService.listSongs.set(listDataFiltered);
     }
   }
 }

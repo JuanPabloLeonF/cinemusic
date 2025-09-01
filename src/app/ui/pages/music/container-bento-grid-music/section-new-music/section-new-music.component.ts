@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { ButtonGenericComponent } from "../../../../components/button-generic/button-generic.component";
 import { SvgPlayComponent } from "../../../../components/svg-play/svg-play.component";
 import { SvgHeartComponent } from "../../../../components/svg-heart/svg-heart.component";
 import { Song } from '../../../../../domain/models/music/songs';
@@ -13,13 +12,13 @@ import { StateMusicService } from '../../../../../domain/states/music/state-musi
 })
 export class SectionNewMusicComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedSong: Song = this.stateMusicService.stateSectionNewMusicService.selectedSong();
+  protected selectedSong: Song = this.stateMusicService.newSong();
 
   protected onClickPlay(): void {
-    this.stateMusicService.stateMusicPlayerService.setSongSelected(this.selectedSong);
+    this.stateMusicService.setSongSelected(this.selectedSong);
   }
 
   protected onClickFavorite(): void {
-    this.stateMusicService.stateMusicPlayerService.changeFavoriteSong();
+    this.stateMusicService.changeFavoriteSong();
   }
 }
