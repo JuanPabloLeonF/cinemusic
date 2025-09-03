@@ -15,7 +15,7 @@ import { Song } from '../../../../../domain/models/music/songs';
 })
 export class SectionArtistsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedArtist: Artis = this.stateMusicService.artistMostListened();
+  protected selectedArtist: Artis = this.stateMusicService.stateSectionArtistsService.selectedArtist();
 
   protected onClickPlay(): void {
       const filter: TypeSearch = {
@@ -23,11 +23,11 @@ export class SectionArtistsComponent {
         value: this.selectedArtist.name
       }
   
-      let listData: Song[] = this.stateMusicService.changeFilteredSongs(filter);
+      let listData: Song[] = this.stateMusicService.stateSectionMainMusicService.changeFilteredSongs(filter);
   
       if (listData.length > 0) {
-        this.stateMusicService.listSongs.set(listData);
-        this.stateMusicService.setSongSelected(listData[0]);
+        this.stateMusicService.stateMusicPlayerService.listSongs.set(listData);
+        this.stateMusicService.stateMusicPlayerService.setSongSelected(listData[0]);
       }
 
     }

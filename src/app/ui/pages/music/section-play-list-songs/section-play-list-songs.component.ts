@@ -1,14 +1,26 @@
-[
+import { Component, WritableSignal } from '@angular/core';
+import { ButtonGenericComponent } from "../../../components/button-generic/button-generic.component";
+import { ListSongs } from '../../../../domain/models/music/play-list';
+import { SvgPlayComponent } from "../../../components/svg-play/svg-play.component";
+
+@Component({
+  selector: 'app-section-play-list-songs',
+  imports: [ButtonGenericComponent, SvgPlayComponent],
+  templateUrl: './section-play-list-songs.component.html',
+  styleUrl: './section-play-list-songs.component.css'
+})
+export class SectionPLayListSongsComponent {
+  protected listsListSongs: ListSongs[] = [
     {
-        "id": "1",
-        "name": "lista de metal",
-        "description": "listado de canciones de metal que me encantan",
-        "image": "images/music/metallica.jpg",
-        "durationList": "2h 12min",
-        "listSongs": [
+        id: "1",
+        name: "lista de metal",
+        description: "listado de canciones de metal que me encantan",
+        image: "images/music/metallica.jpg",
+        durationList: "2h 12min",
+        listSongs: [
             {
-                "id": "8",
-                "name": "nothing else matters",
+                id: "8",
+                name: "nothing else matters",
                 "image": "images/music/metallica.jpg",
                 "album": "album",
                 "artist": "metallica",
@@ -36,4 +48,5 @@
             }
         ]
     }
-]
+];
+}

@@ -14,7 +14,7 @@ import { TypeSearch, TypeSearchEnum } from '../../../../../domain/models/music/c
 })
 export class SectionTrendsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedGender: Gender = this.stateMusicService.genderMostListened();
+  protected selectedGender: Gender = this.stateMusicService.stateSectionTrendsService.selectedGender();
 
   protected onClickPlay(): void {
     const filter: TypeSearch = {
@@ -22,10 +22,10 @@ export class SectionTrendsComponent {
       value: this.selectedGender.name
     }
 
-    let listData: Song[] = this.stateMusicService.changeFilteredSongs(filter);
+    let listData: Song[] = this.stateMusicService.stateSectionMainMusicService.changeFilteredSongs(filter);
 
     if (listData.length > 0) {
-      this.stateMusicService.listSongs.set(listData);
+      this.stateMusicService.stateMusicPlayerService.listSongs.set(listData);
     }
   }
 }

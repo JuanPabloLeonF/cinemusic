@@ -11,5 +11,7 @@ export interface ListSongs {
     id: string
     name: string
     description: string
-    list: Song[]
+    image: string
+    listSongs: Song[]
+    durationList: string
 }

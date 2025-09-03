@@ -41,6 +41,7 @@
     --color-gray-white: rgba(218, 218, 218, 0.719);;
     --bg-transparent-black: rgba(0, 0, 0, 0.4);
     --bg-transparent-black-opacity: rgba(255, 255, 255, 0.05);
+    --bg-page: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(0, 0, 0) 50%, rgb(88, 28, 135) 100%);
 }
 
 /* Reset */
@@ -70,7 +71,7 @@ body {
     height: auto;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
-    background: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(0, 0, 0) 50%, rgb(88, 28, 135) 100%);
+    background: var(--bg-page);
 }
 
 ::-webkit-scrollbar {

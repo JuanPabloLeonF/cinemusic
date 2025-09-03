@@ -22,7 +22,7 @@ import { ListSongs } from '../../../../domain/models/music/play-list';
 export class FormularyCreateListMusicComponent {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.toogleFormulary;
+  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
   private formularyBuilder: FormBuilder = inject(FormBuilder);
 
   protected listForms = this.formularyBuilder.group({
@@ -32,12 +32,12 @@ export class FormularyCreateListMusicComponent {
 
   protected submitForm(): void {
     if (this.listForms.valid) {
-      console.log('Formulario enviado:', this.listForms.value);
       const data = {
         name: this.listForms.get('name')?.value,
         description: this.listForms.get('description')?.value,
       }
-      this.stateMusicService.createNewListSongs(data);
+      this.stateMusicService.stateFormularyCreateListService.createNewListSongs(data);
+      this.toogleFormulary.set(false);
     } else {
       this.listForms.markAllAsTouched();
     }

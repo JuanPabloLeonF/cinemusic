@@ -12,9 +12,9 @@ import { Song } from '../../../../../domain/models/music/songs';
 })
 export class SectionOtherComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected listSongs: Song[] = this.stateMusicService.songsHistory();
+  protected listSongs: Song[] = this.stateMusicService.stateSectionOtherService.selectedListSongs();
 
   protected onClickPlay(song: Song): void {
-    this.stateMusicService.setSongSelected(song);
+    this.stateMusicService.stateMusicPlayerService.setSongSelected(song);
   }
 }

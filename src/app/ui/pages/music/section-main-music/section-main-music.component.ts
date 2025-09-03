@@ -18,17 +18,17 @@ import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.
 export class SectionMainMusicComponent implements OnInit {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected listdataMusic: WritableSignal<Song[]> = this.stateMusicService.listSongsFiltered;
+  protected listdataMusic: WritableSignal<Song[]> = this.stateMusicService.stateSectionMainMusicService.listSongsFiltered;
 
   ngOnInit(): void {
     if (this.listdataMusic().length > 0) {
-      this.stateMusicService.listSongs.set(this.listdataMusic())
+      this.stateMusicService.stateMusicPlayerService.listSongs.set(this.listdataMusic())
       this.listdataMusic()[0].isPlaying = true;
-      this.stateMusicService.setSongSelected(this.listdataMusic()[0]);
+      this.stateMusicService.stateMusicPlayerService.setSongSelected(this.listdataMusic()[0]);
     }
   }
 
   protected getSong(song: Song): void {
-    this.stateMusicService.setSongSelected(song);
+    this.stateMusicService.stateMusicPlayerService.setSongSelected(song);
   }
 }

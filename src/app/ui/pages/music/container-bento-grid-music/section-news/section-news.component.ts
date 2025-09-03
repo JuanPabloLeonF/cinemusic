@@ -13,5 +13,5 @@ import { Song } from '../../../../../domain/models/music/songs';
 })
 export class SectionNewsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedSong: WritableSignal<Song> = this.stateMusicService.songMostListened;
+  protected selectedSong: WritableSignal<Song> = this.stateMusicService.stateSectionNewsService.selectedSong;
 }

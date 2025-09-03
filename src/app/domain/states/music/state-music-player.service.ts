@@ -7,6 +7,8 @@ import { DevicesConfigurationServiceService } from '../../services/devices-confi
 })
 export class StateMusicPlayerService {
 
+  public activateMenuMobile: WritableSignal<boolean> = signal<boolean>(false);
+  public activateMenu: WritableSignal<boolean> = signal<boolean>(false);
   public selectedSong: WritableSignal<Song> = signal<Song>({} as Song);
   public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
   public currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);

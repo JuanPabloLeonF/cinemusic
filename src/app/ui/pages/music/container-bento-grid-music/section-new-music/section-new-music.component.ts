@@ -12,13 +12,13 @@ import { StateMusicService } from '../../../../../domain/states/music/state-musi
 })
 export class SectionNewMusicComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected selectedSong: Song = this.stateMusicService.newSong();
+  protected selectedSong: Song = this.stateMusicService.stateSectionNewMusicService.selectedSong();
 
   protected onClickPlay(): void {
-    this.stateMusicService.setSongSelected(this.selectedSong);
+    this.stateMusicService.stateMusicPlayerService.selectedSong.set(this.selectedSong);
   }
 
   protected onClickFavorite(): void {
-    this.stateMusicService.changeFavoriteSong();
+    this.stateMusicService.stateMusicPlayerService.changeFavoriteSong();
   }
 }

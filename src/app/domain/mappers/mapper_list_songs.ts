@@ -7,7 +7,9 @@ export class MapperListSongs {
           id: json.id,
           name: json.name,
           description: json.description,
-          list: json.list
+          listSongs: json.list,
+          image: json.image,
+          durationList: json.duration
         };
       }
     

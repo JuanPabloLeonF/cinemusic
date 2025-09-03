@@ -13,7 +13,7 @@ import { PlayList } from '../../../../../domain/models/music/play-list';
 })
 export class SectionPlayListsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected dataPlayList: PlayList = this.stateMusicService.dataPlayList();
-  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.toogleFormulary;
-  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.toogleAddSong;
+  protected dataPlayList: PlayList = this.stateMusicService.stateSectionPlayListService.dataPlayList();
+  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
+  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleAddSong;
 }

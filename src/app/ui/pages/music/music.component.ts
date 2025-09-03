@@ -4,12 +4,14 @@ import { FormularyCreateListMusicComponent } from './formulary-create-list-music
 import { ContainerBentoGridMusicComponent } from "./container-bento-grid-music/container-bento-grid-music.component";
 import { StateSectionMainMusicService } from '../../../domain/states/music/state-section-main-music.service';
 import { StateMusicService } from '../../../domain/states/music/state-music.service';
+import { SectionPLayListSongsComponent } from "./section-play-list-songs/section-play-list-songs.component";
 
 @Component({
   imports: [
     SectionMainMusicComponent,
     FormularyCreateListMusicComponent,
-    ContainerBentoGridMusicComponent
+    ContainerBentoGridMusicComponent,
+    SectionPLayListSongsComponent
 ],
   templateUrl: './music.component.html',
   styleUrl: './music.component.css'
@@ -17,6 +19,6 @@ import { StateMusicService } from '../../../domain/states/music/state-music.serv
 export class MusicComponent {
 
   private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.toogleFormulary;
-  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.toogleAddSong;
+  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
+  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleAddSong;
 }
