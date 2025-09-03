@@ -3,7 +3,9 @@
         "id": "1",
         "name": "lista de metal",
         "description": "listado de canciones de metal que me encantan",
-        "list": [
+        "image": "images/music/metallica.jpg",
+        "durationList": "2h 12min",
+        "listSongs": [
             {
                 "id": "8",
                 "name": "nothing else matters",
