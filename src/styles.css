@@ -42,6 +42,7 @@
     --bg-transparent-black: rgba(0, 0, 0, 0.4);
     --bg-transparent-black-opacity: rgba(255, 255, 255, 0.05);
     --bg-page: linear-gradient(135deg, rgb(17, 24, 39) 0%, rgb(0, 0, 0) 50%, rgb(88, 28, 135) 100%);
+    --bg-color-table: rgb(255 255 255 / 0.07);
 }
 
 /* Reset */

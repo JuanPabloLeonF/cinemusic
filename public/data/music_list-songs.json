@@ -3,7 +3,7 @@
         "id": "1",
         "name": "lista de metal",
         "description": "listado de canciones de metal que me encantan",
-        "image": "images/music/metallica.jpg",
+        "image": "images/music/song7.jpg",
         "durationList": "2h 12min",
         "listSongs": [
             {

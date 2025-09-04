@@ -6,7 +6,7 @@
         </div>
         <div class="container-body">
             @for (list of this.listsListSongs; track $index) {
-                <div class="container-item">
+                <div (click)="this.getListSongs(list)" class="container-item">
                     <div class="container-img">
                         <img [src]="list.image" [alt]="list.name">
                     </div>
@@ -16,23 +16,26 @@
                         <div class="container-elements">
                             <div class="container-item-element">
                                 <div class="container-img-item">
-                                    <app-svg-play width="100%" height="100%" color="var(--color-gray-secondary)" />
+                                    <app-svg-note width="100%" height="100%" color="var(--color-gray-secondary)" />
                                 </div>
                                 <p>{{list.listSongs.length}} canciones</p>
                             </div>
                             <div class="container-item-element">
                                 <div class="container-img-item">
-                                    <app-svg-play width="100%" height="100%" color="var(--color-gray-secondary)" />
+                                    <app-svg-clock width="99%" height="99%" color="var(--color-gray-secondary)" />
                                 </div>
                                 <p>{{list.durationList}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="container-img-play">
-                        <app-svg-play width="100%" height="100%" color="white" />
+                        <app-svg-play width="1.2rem" height="1.2rem" color="white" />
                     </div>
                 </div>
             }
         </div>
     </section>
+    @if (this.stateMusic.stateMyListSongsService.activateSection()) {
+        <app-section-card-lists-song-selected/>
+    }
 </section>

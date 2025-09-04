@@ -1,0 +1,67 @@
+<section class="section-card-list-songs-selected">
+    <div class="container-section">
+        <div class="container-header">
+            <div (click)="this.stateMusic.stateMyListSongsService.activateSection.set(false)" class="container-svg-close">
+                <app-svg-close width="2rem" height="2rem" color="var(--primary-color)" />
+            </div>
+            <img [src]="this.listSongsSelected.image" [alt]="this.listSongsSelected.name">
+            <div class="container-information">
+                <h2>{{this.listSongsSelected.name}}</h2>
+                <p>{{this.listSongsSelected.description}}</p>
+                <div class="container-elements">
+                    <div class="container-item-element">
+                        <div class="container-img-item">
+                            <app-svg-note width="100%" height="100%" color="var(--color-gray-secondary)" />
+                        </div>
+                        <p>{{this.listSongsSelected.listSongs.length}} canciones</p>
+                    </div>
+                    <div class="container-item-element">
+                        <div class="container-img-item">
+                            <app-svg-clock width="100%" height="100%" color="var(--color-gray-secondary)" />
+                        </div>
+                        <p>{{this.listSongsSelected.durationList}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container-img-play">
+                <app-svg-play width="1.2rem" height="1.2rem" color="white" />
+            </div>
+        </div>
+        <div class="container-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Titulo</th>
+                        <th>Artista</th>
+                        <th>Album</th>
+                        <th>Favorita</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of this.listSongsSelected.listSongs; track $index) {
+                        <tr (click)="this.getSongsPlay(item)">
+                            <td>
+                                <app-svg-play width="1rem" height="1rem" color="var(--color-gray-white)" />
+                            </td>
+                            <td>
+                                <img [src]="item.image" [alt]="item.name">
+                                {{item.name}}
+                            </td>
+                            <td>{{item.artist}}</td>
+                            <td>{{item.album}}</td>
+                            <td>
+                                <app-svg-heart width="1rem" height="1rem" [isFavorite]="item.isFavorite" />
+                            </td>
+                            <td>
+                                <!-- <app-svg-trash width="1.2rem" height="1.2rem" color="var(--primary-color)" /> -->
+                                <app-svg-heart width="1rem" height="1rem" [isFavorite]="item.isFavorite" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
