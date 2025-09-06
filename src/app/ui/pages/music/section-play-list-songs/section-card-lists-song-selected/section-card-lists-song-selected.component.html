@@ -24,7 +24,11 @@
                 </div>
             </div>
             <div class="container-img-play">
-                <app-svg-play width="1.2rem" height="1.2rem" color="white" />
+                @if(this.stateMusic.stateMusicPlayerService.autoPlaySongState()) {
+                    <app-svg-stop (click)="this.stateMusic.stateMusicPlayerService.stopAudio()" width="1.2rem" height="1.2rem" color="white" />
+                } @else {
+                    <app-svg-play (click)="this.stateMusic.stateMusicPlayerService.playAudio()" width="1.2rem" height="1.2rem" color="white" />    
+                }
             </div>
         </div>
         <div class="container-body">
@@ -41,9 +45,13 @@
                 </thead>
                 <tbody>
                     @for (item of this.listSongsSelected.listSongs; track $index) {
-                        <tr (click)="this.getSongsPlay(item)">
+                        <tr (click)="this.getSongsPlay(item)" appTraslateVerticalDeleted [appTraslateVerticalDeletedActivate]="this.activationAnimation === item.id">
                             <td>
-                                <app-svg-play width="1rem" height="1rem" color="var(--color-gray-white)" />
+                                @if(this.stateMusic.stateMusicPlayerService.autoPlaySongState() && this.stateMusic.stateMusicPlayerService.selectedSong().id === item.id) {
+                                    <app-svg-stop width="1.2rem" height="1.2rem" color="var(--color-gray-white)" />
+                                } @else {
+                                    <app-svg-play width="1rem" height="1rem" color="var(--color-gray-white)" />
+                                }
                             </td>
                             <td>
                                 <img [src]="item.image" [alt]="item.name">
@@ -52,11 +60,10 @@
                             <td>{{item.artist}}</td>
                             <td>{{item.album}}</td>
                             <td>
-                                <app-svg-heart width="1rem" height="1rem" [isFavorite]="item.isFavorite" />
+                                <app-svg-heart (click)="this.stateMusic.stateMusicPlayerService.changeFavoriteSonSelected(item)" width="1rem" height="1rem" [isFavorite]="item.isFavorite" />
                             </td>
                             <td>
-                                <!-- <app-svg-trash width="1.2rem" height="1.2rem" color="var(--primary-color)" /> -->
-                                <app-svg-heart width="1rem" height="1rem" [isFavorite]="item.isFavorite" />
+                                <app-svg-trash (click)="this.deleteSong(item, this.listSongsSelected.id)" width="1.2rem" height="1.2rem" color="var(--primary-color)" />
                             </td>
                         </tr>
                     }

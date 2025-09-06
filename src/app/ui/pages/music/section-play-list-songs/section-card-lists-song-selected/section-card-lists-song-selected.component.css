@@ -12,7 +12,6 @@
     left: 0;
     z-index: 2;
     padding: 1rem;
-    overflow-y: auto;
     display: flex;
     justify-content: center;
     align-items: start;
@@ -23,10 +22,11 @@
     height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
+    justify-content: stretch;
+    align-items: stretch;
     background-color: var(--bg-transparent-black);
     padding: 0.5rem;
+    overflow-x: auto;
 }
 
 .section-card-list-songs-selected > .container-section > .container-header {
@@ -152,12 +152,12 @@
 
 .section-card-list-songs-selected > .container-section > .container-body {
     width: 100%;
-    height: auto;
+    height: 55%;
 }
 
 .section-card-list-songs-selected > .container-section > .container-body > table {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-collapse: collapse;
     border: 1px solid var(--bg-color-table);
     color: var(--color-gray-white);
@@ -166,7 +166,7 @@
 .section-card-list-songs-selected > .container-section > .container-body > table > thead {
     width: 100%;
     height: 2.5rem;
-    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
 }
 
 .section-card-list-songs-selected > .container-section > .container-body > table > tbody {
@@ -179,7 +179,7 @@
     height: 4.5rem;
     cursor: pointer;
     text-align: center;
-    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+    font-size: clamp(0.7rem, 1vw, 0.8rem);
 }
 
 .section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr:hover {
@@ -190,6 +190,7 @@
     width: auto;
     height: 100%;
     padding: 0.5rem;
+    z-index: 5;
 }
 
 .section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr > td:nth-child(2) {
@@ -211,4 +212,40 @@
 
 .section-card-list-songs-selected > .container-section > .container-body > table tr:last-child {
   border-bottom: none;
+}
+
+@media screen and (width <= 768px) {
+    .section-card-list-songs-selected > .container-section {
+        width: 100%;
+        height: auto;
+        margin-bottom: 3rem;
+        display: flex;
+        padding: 0;
+    }
+
+    .section-card-list-songs-selected > .container-section > .container-header {
+        height: 20rem;
+    }
+
+    .section-card-list-songs-selected {
+        background: var(--bg-transparent-black);
+        backdrop-filter: var(--blur-bg);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        padding: 0rem;
+        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .section-card-list-songs-selected > .container-section > .container-body > table > thead > tr > th:nth-child(5),
+    .section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr > td:nth-child(5) {
+        display: none;
+    }
+    
 }

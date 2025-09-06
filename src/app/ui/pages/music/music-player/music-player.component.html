@@ -13,7 +13,7 @@
         <div class="container-controls">
             <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
             <i (click)="this.changeSongBack()" class="fa-solid fa-backward"></i>
-            @if (this.autoPlaySongState) {
+            @if (this.stateMusicService.stateMusicPlayerService.autoPlaySongState()) {
                 <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
             } @else {
                 <i (click)="playAudio()" class="fa-solid fa-play"></i>
@@ -31,7 +31,7 @@
                 } @else {
                     <i (click)="this.changeVolumeNormal()" class="fa-solid fa-volume-xmark"></i>
                 }
-                <audio id="audio" #audioPlayer [src]="this.songSelected().audio" [autoplay]="this.autoPlaySongState"></audio>
+                <audio id="audio" #audioPlayer [src]="this.songSelected().audio" [autoplay]="this.stateMusicService.stateMusicPlayerService.autoPlaySongState()"></audio>
                 <input id="volumeRange" #volumeRange type="range" min="0" max="100" [(ngModel)]="this.volumeValue" (input)="this.onVolumeChange()">
                 <input id="timeRangeDesktop" #timeRange type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.onTimeChange()">
             </div>
@@ -70,7 +70,7 @@
                 <div class="container-controls-mobile">
                     <i (click)="this.typePlay('shuffle')" class="fa-solid fa-shuffle" [ngClass]="{'activate-item' : this.audioPlayCurrent.shuffle}"></i>
                     <i (click)="this.changeSongBack()" class="fa-solid fa-backward"></i>
-                    @if (this.autoPlaySongState) {
+                    @if (this.stateMusicService.stateMusicPlayerService.autoPlaySongState()) {
                         <i (click)="stopAudio()" class="fa-solid fa-pause"></i>
                     } @else {
                         <i (click)="playAudio()" class="fa-solid fa-play"></i>

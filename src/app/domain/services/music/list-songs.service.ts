@@ -19,4 +19,9 @@ export class ListSongsService {
   public createNewListSongs(listSongs: any): Observable<ListSongs> {
     return this.httpClient.post<ListSongs>(this.urlApi, listSongs);
   }
+
+  public deleteSongOfList(idSong: string, idList: string): void {
+    alert("se elimino: " + idSong + idList);
+    this.httpClient.delete(this.urlApi + '/' + idSong + '/' + idList);
+  }
 }

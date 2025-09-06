@@ -6,10 +6,12 @@ import { SvgNoteComponent } from "../../../components/svg-note/svg-note.componen
 import { SvgClockComponent } from "../../../components/svg-clock/svg-clock.component";
 import { StateMusicService } from '../../../../domain/states/music/state-music.service';
 import { SectionCardListsSongSelectedComponent } from "./section-card-lists-song-selected/section-card-lists-song-selected.component";
+import { SvgStopComponent } from "../../../components/svg-stop/svg-stop.component";
+import { SvgBackComponent } from "../../../components/svg-back/svg-back.component";
 
 @Component({
   selector: 'app-section-play-list-songs',
-  imports: [ButtonGenericComponent, SvgPlayComponent, SvgNoteComponent, SvgClockComponent, SectionCardListsSongSelectedComponent],
+  imports: [ButtonGenericComponent, SvgPlayComponent, SvgNoteComponent, SvgClockComponent, SectionCardListsSongSelectedComponent, SvgStopComponent, SvgBackComponent],
   templateUrl: './section-play-list-songs.component.html',
   styleUrl: './section-play-list-songs.component.css'
 })

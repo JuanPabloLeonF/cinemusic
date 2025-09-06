@@ -58,6 +58,10 @@ export class MusicDataService {
     return this.musicService.apisListSongs.createNewListSongs(listSongs);
   }
 
+  public deleteSongOfList(idSong: string, idList: string): void {
+    this.musicService.apisListSongs.deleteSongOfList(idSong, idList);
+  }
+
   private createSignalWithRefresh<T>(source$: () => Observable<T>, initial: T) {
     const refreshTrigger = new Subject<void>();
 

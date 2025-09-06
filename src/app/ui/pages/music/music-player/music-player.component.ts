@@ -34,7 +34,6 @@ export class MusicPlayerComponent implements AfterViewInit {
     shuffle: true,
     volumeState: true,
   };
-  protected autoPlaySongState: boolean = false;
   protected volumeValue: number = 50;
   protected timeValue: number = 0;
   protected currentTime: string = '0:00';
@@ -42,14 +41,10 @@ export class MusicPlayerComponent implements AfterViewInit {
 
   public playAudio(): void {
     this.stateMusicService.stateMusicPlayerService.playAudio();
-    this.audioRef.nativeElement.play();
-    this.autoPlaySongState = true;
   }
 
   public stopAudio(): void {
     this.stateMusicService.stateMusicPlayerService.stopAudio();
-    this.audioRef.nativeElement.pause();
-    this.autoPlaySongState = false;
   }
 
   public changeSongNext(): void {
@@ -66,6 +61,7 @@ export class MusicPlayerComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.audioRef && this.volumeRangeRef) {
+      this.stateMusicService.stateMusicPlayerService.audioRef.set(this.audioRef);
       this.audioRef.nativeElement.volume = this.volumeValue / 100;
       this.updateRangeBackgroundVolume();
       this.updateRangeBackgroundTime();

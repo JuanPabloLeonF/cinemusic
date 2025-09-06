@@ -1,4 +1,4 @@
-import { inject, Injectable, signal, WritableSignal } from '@angular/core';
+import { ElementRef, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { Song, TypePlayEnum } from '../../models/music/songs';
 import { DevicesConfigurationServiceService } from '../../services/devices-configuration-service.service';
 
@@ -13,9 +13,13 @@ export class StateMusicPlayerService {
   public listSongs: WritableSignal<Song[]> = signal<Song[]>([]);
   public currentTypePlay: WritableSignal<TypePlayEnum> = signal<TypePlayEnum>(TypePlayEnum.SHUFFLE);
   private devicesConfigService: DevicesConfigurationServiceService = inject(DevicesConfigurationServiceService);
+  public audioRef: WritableSignal<ElementRef<HTMLAudioElement>> = signal<ElementRef<HTMLAudioElement>>({} as ElementRef<HTMLAudioElement>);
+  public autoPlaySongState: WritableSignal<boolean> = signal<boolean>(false);
 
   public playAudio(): void {
+    this.audioRef().nativeElement.play();
     this.selectedSong().isPlaying = true;
+    this.autoPlaySongState.set(true);
     this.devicesConfigService.playBackState();
   }
 
@@ -125,11 +129,17 @@ export class StateMusicPlayerService {
   }
 
   public stopAudio(): void {
+    this.audioRef().nativeElement.pause();
+    this.autoPlaySongState.set(false);
     this.devicesConfigService.stopBackState();
   }
 
   public changeFavoriteSong(): void {
     this.selectedSong().isFavorite = !this.selectedSong().isFavorite;
+  }
+
+  public changeFavoriteSonSelected(song: Song): void {
+    song.isFavorite = !song.isFavorite;
   }
 
   public setupMediaSessionHandlers(playAudio: Function, stopAudio: Function, changeSongNext: Function, changeSongBack: Function ): void {
