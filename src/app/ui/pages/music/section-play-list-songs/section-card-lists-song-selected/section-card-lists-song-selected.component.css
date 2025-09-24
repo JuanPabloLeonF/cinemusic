@@ -214,6 +214,15 @@
   border-bottom: none;
 }
 
+.container-elements > .container-item-element:nth-child(3) {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.container-elements > .container-item-element:nth-child(3) > p {
+    color: var(--primary-color);
+}
+
 @media screen and (width <= 768px) {
     .section-card-list-songs-selected > .container-section {
         width: 100%;
@@ -244,8 +253,22 @@
     }
 
     .section-card-list-songs-selected > .container-section > .container-body > table > thead > tr > th:nth-child(5),
-    .section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr > td:nth-child(5) {
+    .section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr > td:nth-child(5),
+    .section-card-list-songs-selected > .container-section > .container-body > table > thead > tr > th:nth-child(1),
+    .section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr > td:nth-child(1) {
         display: none;
+    }
+
+    .section-card-list-songs-selected > .container-section > .container-header > .container-img-play {
+        width: 3rem;
+        height: 3rem;
+        bottom: 20%;
+        right: 2%;
+        transform: translate(-2%, -20%);
+    }
+
+    .container-elements > .container-item-element {
+        justify-content: center;
     }
     
 }

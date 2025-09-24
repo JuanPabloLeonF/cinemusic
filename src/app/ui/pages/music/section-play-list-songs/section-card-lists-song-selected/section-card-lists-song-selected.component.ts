@@ -10,6 +10,8 @@ import { Song } from '../../../../../domain/models/music/songs';
 import { SvgTrashComponent } from "../../../../components/svg-trash/svg-trash.component";
 import { TraslateVerticalDeletedDirective } from '../../../../animations/traslate/traslate-vertical-deleted.directive';
 import { SvgStopComponent } from "../../../../components/svg-stop/svg-stop.component";
+import { SvgAddSongListComponent } from "../../../../components/svg-add-song-list/svg-add-song-list.component";
+import { AddSongToListComponent } from "../../add-song-to-list/add-song-to-list.component";
 
 @Component({
   selector: 'app-section-card-lists-song-selected',
@@ -21,7 +23,9 @@ import { SvgStopComponent } from "../../../../components/svg-stop/svg-stop.compo
     SvgHeartComponent,
     SvgTrashComponent,
     TraslateVerticalDeletedDirective,
-    SvgStopComponent
+    SvgStopComponent,
+    SvgAddSongListComponent,
+    AddSongToListComponent
 ],
   templateUrl: './section-card-lists-song-selected.component.html',
   styleUrl: './section-card-lists-song-selected.component.css'

@@ -21,7 +21,6 @@ export class ListSongsService {
   }
 
   public deleteSongOfList(idSong: string, idList: string): void {
-    alert("se elimino: " + idSong + idList);
     this.httpClient.delete(this.urlApi + '/' + idSong + '/' + idList);
   }
 }

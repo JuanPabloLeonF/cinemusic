@@ -21,6 +21,12 @@
                         </div>
                         <p>{{this.listSongsSelected.durationList}}</p>
                     </div>
+                    <div class="container-item-element">
+                        <div class="container-img-item">
+                            <app-svg-add-song-list width="100%" height="100%" color="var(--primary-color)" />
+                        </div>
+                        <p>Agregar</p>
+                    </div>
                 </div>
             </div>
             <div class="container-img-play">
@@ -71,4 +77,12 @@
             </table>
         </div>
     </div>
+
+    @if (this.stateMusic.stateSectionPlayListService.toogleAddSong()) {
+        @defer (on immediate) {
+            <app-add-song-to-list />
+        } @placeholder {
+            <p>cargando...</p>
+        }
+    }
 </section>

@@ -130,22 +130,12 @@
     font-weight: bold;
 }
 
-.section-play-lists > .container-buttons > button:nth-child(1) {
-    background-color: var(--color-gray-white);
-    color: var(--black-color);
-}
-
-.section-play-lists > .container-buttons > button:hover:nth-child(1) {
+.section-play-lists > .container-buttons > button {
     background-color: var(--primary-color);
     color: var(--white-color);
 }
 
-.section-play-lists > .container-buttons > button:nth-child(2) {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-}
-
-.section-play-lists > .container-buttons > button:hover:nth-child(2) {
+.section-play-lists > .container-buttons > button:hover {
     background-color: var(--color-gray-white);
     color: var(--black-color);
 }

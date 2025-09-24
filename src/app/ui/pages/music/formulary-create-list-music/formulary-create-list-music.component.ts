@@ -1,11 +1,9 @@
 import { Component, inject, WritableSignal } from '@angular/core';
 import { ButtonGenericComponent } from '../../../components/button-generic/button-generic.component';
 import { InputFormGenericComponent } from '../../../components/input-form-generic/input-form-generic.component';
-import { StateSectionMainMusicService } from '../../../../domain/states/music/state-section-main-music.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { StateMusicService } from '../../../../domain/states/music/state-music.service';
-import { ListSongs } from '../../../../domain/models/music/play-list';
 
 @Component({
   selector: 'app-formulary-create-list-music',

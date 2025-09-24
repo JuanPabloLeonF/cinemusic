@@ -142,3 +142,9 @@
     width: 1rem;
     height: 1rem;
 }
+
+@media screen and (width <= 768px) {
+    .section-play-list-songs > .section-container > .container-body > .container-item {
+        height: 7rem;
+    }
+}

@@ -5,7 +5,12 @@
              (click)="this.stateMusic.stateSectionPlayListService.toogleAddSong.set(false)"
               width="1.5rem" height="1.5rem" color="white" colorHover="var(--primary-color)" />
             <h2>Mi listas de musica</h2>
-            <app-button-generic buttonText="Nueva lista" width="fit-content" height="2.5rem" typeButton="button" />
+            <app-button-generic 
+            (click)="this.stateMusic.stateSectionPlayListService.toogleFormulary.set(true)" 
+            buttonText="Nueva lista" 
+            width="fit-content" 
+            height="2.5rem" 
+            typeButton="button" />
         </div>
         <div class="container-body">
             @for (list of this.listsListSongs; track $index) {
@@ -44,5 +49,13 @@
     </section>
     @if (this.stateMusic.stateMyListSongsService.activateSection()) {
         <app-section-card-lists-song-selected/>
+    }
+
+    @if (this.stateMusic.stateSectionPlayListService.toogleFormulary()) {
+        @defer (on immediate) {
+            <app-formulary-create-list-music />
+        } @placeholder {
+            <p>cargando...</p>
+        }
     }
 </section>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { ButtonGenericComponent } from "../../../components/button-generic/button-generic.component";
 import { ListSongs } from '../../../../domain/models/music/play-list';
 import { SvgPlayComponent } from "../../../components/svg-play/svg-play.component";
@@ -8,10 +8,11 @@ import { StateMusicService } from '../../../../domain/states/music/state-music.s
 import { SectionCardListsSongSelectedComponent } from "./section-card-lists-song-selected/section-card-lists-song-selected.component";
 import { SvgStopComponent } from "../../../components/svg-stop/svg-stop.component";
 import { SvgBackComponent } from "../../../components/svg-back/svg-back.component";
+import { FormularyCreateListMusicComponent } from "../formulary-create-list-music/formulary-create-list-music.component";
 
 @Component({
   selector: 'app-section-play-list-songs',
-  imports: [ButtonGenericComponent, SvgPlayComponent, SvgNoteComponent, SvgClockComponent, SectionCardListsSongSelectedComponent, SvgStopComponent, SvgBackComponent],
+  imports: [ButtonGenericComponent, SvgPlayComponent, SvgNoteComponent, SvgClockComponent, SectionCardListsSongSelectedComponent, SvgStopComponent, SvgBackComponent, FormularyCreateListMusicComponent],
   templateUrl: './section-play-list-songs.component.html',
   styleUrl: './section-play-list-songs.component.css'
 })
