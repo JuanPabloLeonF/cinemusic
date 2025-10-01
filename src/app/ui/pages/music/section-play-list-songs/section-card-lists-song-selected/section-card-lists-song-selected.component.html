@@ -4,24 +4,26 @@
             <div (click)="this.stateMusic.stateMyListSongsService.activateSection.set(false)" class="container-svg-close">
                 <app-svg-close width="2rem" height="2rem" color="var(--primary-color)" />
             </div>
-            <img [src]="this.listSongsSelected.image" [alt]="this.listSongsSelected.name">
+            <img [src]="this.stateMusic.stateMyListSongsService.listSongsSelected().image" [alt]="this.stateMusic.stateMyListSongsService.listSongsSelected().name">
             <div class="container-information">
-                <h2>{{this.listSongsSelected.name}}</h2>
-                <p>{{this.listSongsSelected.description}}</p>
+                <h2>{{this.stateMusic.stateMyListSongsService.listSongsSelected().name}}</h2>
+                <p>{{this.stateMusic.stateMyListSongsService.listSongsSelected().description}}</p>
                 <div class="container-elements">
                     <div class="container-item-element">
                         <div class="container-img-item">
                             <app-svg-note width="100%" height="100%" color="var(--color-gray-secondary)" />
                         </div>
-                        <p>{{this.listSongsSelected.listSongs.length}} canciones</p>
+                        <p>{{this.stateMusic.stateMyListSongsService.listSongsSelected().listSongs.length}} canciones</p>
                     </div>
                     <div class="container-item-element">
                         <div class="container-img-item">
                             <app-svg-clock width="100%" height="100%" color="var(--color-gray-secondary)" />
                         </div>
-                        <p>{{this.listSongsSelected.durationList}}</p>
+                        <p>{{this.stateMusic.stateMyListSongsService.listSongsSelected().durationList}}</p>
                     </div>
-                    <div class="container-item-element">
+                    <div
+                     (click)="this.stateMusic.stateSectionPlayListService.toogleAddSong.set(true)"
+                     class="container-item-element">
                         <div class="container-img-item">
                             <app-svg-add-song-list width="100%" height="100%" color="var(--primary-color)" />
                         </div>
@@ -50,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for (item of this.listSongsSelected.listSongs; track $index) {
+                    @for (item of this.stateMusic.stateMyListSongsService.listSongsSelected().listSongs; track $index) {
                         <tr (click)="this.getSongsPlay(item)" appTraslateVerticalDeleted [appTraslateVerticalDeletedActivate]="this.activationAnimation === item.id">
                             <td>
                                 @if(this.stateMusic.stateMusicPlayerService.autoPlaySongState() && this.stateMusic.stateMusicPlayerService.selectedSong().id === item.id) {
@@ -69,7 +71,7 @@
                                 <app-svg-heart (click)="this.stateMusic.stateMusicPlayerService.changeFavoriteSonSelected(item)" width="1rem" height="1rem" [isFavorite]="item.isFavorite" />
                             </td>
                             <td>
-                                <app-svg-trash (click)="this.deleteSong(item, this.listSongsSelected.id)" width="1.2rem" height="1.2rem" color="var(--primary-color)" />
+                                <app-svg-trash (click)="this.deleteSong(item, this.stateMusic.stateMyListSongsService.listSongsSelected().id)" width="1.2rem" height="1.2rem" color="var(--primary-color)" />
                             </td>
                         </tr>
                     }

@@ -1,11 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { InputIconSearchComponent } from "../../../components/input-icon-search/input-icon-search.component";
+import { SvgAddSongListComponent } from "../../../components/svg-add-song-list/svg-add-song-list.component";
+import { SvgCloseComponent } from "../../../components/svg-close/svg-close.component";
+import { StateMusicService } from '../../../../domain/states/music/state-music.service';
 
 @Component({
   selector: 'app-add-song-to-list',
-  imports: [],
+  imports: [InputIconSearchComponent, SvgAddSongListComponent, SvgCloseComponent],
   templateUrl: './add-song-to-list.component.html',
   styleUrl: './add-song-to-list.component.css'
 })
 export class AddSongToListComponent {
+    protected stateMusicService: StateMusicService = inject(StateMusicService); 
 
+    protected onChangeInput(value: string): void {
+      this.stateMusicService.stateSectionAddSongToListService.filteredSongsByName(value);
+    }
 }

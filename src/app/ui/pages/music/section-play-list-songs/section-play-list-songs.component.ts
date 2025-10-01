@@ -18,7 +18,6 @@ import { FormularyCreateListMusicComponent } from "../formulary-create-list-musi
 })
 export class SectionPLayListSongsComponent {
   protected stateMusic: StateMusicService = inject(StateMusicService);
-  protected listsListSongs: ListSongs[] = this.stateMusic.stateMyListSongsService.listsListSongs();
 
   protected getListSongs(listSongs: ListSongs): void {
     this.stateMusic.stateMyListSongsService.listSongsSelected.set(listSongs);

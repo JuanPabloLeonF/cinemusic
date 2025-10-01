@@ -12,8 +12,5 @@ import { PlayList } from '../../../../../domain/models/music/play-list';
   styleUrl: './section-play-lists.component.css'
 })
 export class SectionPlayListsComponent {
-  private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected dataPlayList: PlayList = this.stateMusicService.stateSectionPlayListService.dataPlayList();
-  protected toogleFormulary: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleFormulary;
-  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleAddSong;
+  protected stateMusicService: StateMusicService = inject(StateMusicService);
 }

@@ -11,6 +11,7 @@ import { StateMusicPlayerService } from './state-music-player.service';
 import { MusicDataService } from '../../services/music/music-data-service.service';
 import { StateFormularyCreateListService } from './state-formulary-create-list.service';
 import { StateMyListSongsService } from './state-my-list-songs.service';
+import { StateSectionAddSongToListService } from './state-section-add-song-to-list.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,8 @@ export class StateMusicService {
   public stateMusicPlayerService: StateMusicPlayerService = inject(StateMusicPlayerService);
   public stateFormularyCreateListService: StateFormularyCreateListService = inject(StateFormularyCreateListService);
   public stateMyListSongsService: StateMyListSongsService = inject(StateMyListSongsService);
+  public stateSectionAddSongToListService: StateSectionAddSongToListService = inject(StateSectionAddSongToListService);
+
 
   constructor() {
 
@@ -58,6 +61,8 @@ export class StateMusicService {
 
     effect(() => {
       this.stateSectionMainMusicService.setListDataSongs(this.musicDataService.allSongs.signal());
+      this.stateSectionAddSongToListService.listAllSongs.set(this.musicDataService.allSongs.signal());
+      this.stateSectionAddSongToListService.listAllSongsFiltered.set(this.musicDataService.allSongs.signal());
     });
 
     effect(() => {

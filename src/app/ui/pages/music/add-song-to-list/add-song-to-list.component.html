@@ -1,1 +1,32 @@
-<p>add-song-to-list works!</p>
+<section class="section-add-song-to-list">
+    <div class="container-section">
+        <div class="btn-close" (click)="this.stateMusicService.stateSectionPlayListService.toogleAddSong.set(false)">
+            <app-svg-close width="100%" height="100%" color="var(--primary-color)" />
+        </div>
+        <div class="container-input">
+            <app-input-icon-search 
+            placeholder="Buscar canciones..." 
+            widthInput="100%" 
+            heightInput="100%" 
+            (onChangeInputData)="this.onChangeInput($event)"
+            />
+        </div>
+        <div class="container-lists">
+            @for (song of this.stateMusicService.stateSectionAddSongToListService.listAllSongsFiltered(); track $index) {
+                <div class="container-item-list">
+                    <div class="container-img-item-list">
+                        <img [src]="song.image" [alt]="song.name">
+                    </div>
+                    <div class="container-information-item-list">
+                        <h2>{{song.name}}</h2>
+                        <p>{{song.artist}} - {{song.gender}}</p>
+                        <p>{{song.year}}</p>
+                    </div>
+                    <div class="container-svg-item-list">
+                        <app-svg-add-song-list width="2rem" height="2rem" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

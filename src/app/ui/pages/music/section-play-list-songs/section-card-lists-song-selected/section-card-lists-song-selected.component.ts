@@ -32,7 +32,6 @@ import { AddSongToListComponent } from "../../add-song-to-list/add-song-to-list.
 })
 export class SectionCardListsSongSelectedComponent {
   protected stateMusic: StateMusicService = inject(StateMusicService);
-  protected listSongsSelected: ListSongs = this.stateMusic.stateMyListSongsService.listSongsSelected();
   protected activationAnimation: string = "";
 
   protected getSongsPlay(song: Song): void {

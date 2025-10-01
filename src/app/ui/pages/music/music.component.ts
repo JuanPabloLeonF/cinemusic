@@ -15,6 +15,5 @@ import { SectionPLayListSongsComponent } from "./section-play-list-songs/section
 })
 export class MusicComponent {
 
-  private stateMusicService: StateMusicService = inject(StateMusicService);
-  protected toogleAddSong: WritableSignal<boolean> = this.stateMusicService.stateSectionPlayListService.toogleAddSong;
+  protected stateMusicService: StateMusicService = inject(StateMusicService);
 }

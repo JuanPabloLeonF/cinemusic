@@ -2,7 +2,7 @@
     <section class="section-container">
         <div class="container-header">
             <app-svg-back
-             (click)="this.stateMusic.stateSectionPlayListService.toogleAddSong.set(false)"
+             (click)="this.stateMusic.stateSectionPlayListService.toogleSectionPLayList.set(false)"
               width="1.5rem" height="1.5rem" color="white" colorHover="var(--primary-color)" />
             <h2>Mi listas de musica</h2>
             <app-button-generic 
@@ -13,7 +13,7 @@
             typeButton="button" />
         </div>
         <div class="container-body">
-            @for (list of this.listsListSongs; track $index) {
+            @for (list of this.stateMusic.stateMyListSongsService.listsListSongs(); track $index) {
                 <div (click)="this.getListSongs(list)" class="container-item">
                     <div class="container-img">
                         <img [src]="list.image" [alt]="list.name">

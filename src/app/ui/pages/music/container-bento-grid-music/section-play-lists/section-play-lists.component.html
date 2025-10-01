@@ -10,7 +10,7 @@
             </div>
             <div>
                 <h3>Favoritas</h3>
-                <p>{{this.dataPlayList.quantityFavorite}} canciones</p>
+                <p>{{this.stateMusicService.stateSectionPlayListService.dataPlayList().quantityFavorite}} canciones</p>
             </div>
         </div>
         <div class="item">
@@ -19,11 +19,11 @@
             </div>
             <div>
                 <h3>Listas</h3>
-                <p>{{this.dataPlayList.quantitySongsTotals}} canciones</p>
+                <p>{{this.stateMusicService.stateSectionPlayListService.dataPlayList().quantitySongsTotals}} canciones</p>
             </div>
         </div>
     </div>
     <div class="container-buttons">
-        <button (click)="this.toogleAddSong.set(true)" type="button">Mis canciones</button>
+        <button (click)="this.stateMusicService.stateSectionPlayListService.toogleSectionPLayList.set(true)" type="button">Mis canciones</button>
     </div>
 </section>

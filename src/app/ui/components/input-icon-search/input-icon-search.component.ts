@@ -1,5 +1,4 @@
 import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
-import { TypeSearch, TypeSearchEnum } from '../../../domain/models/music/category';
 import { SvgSearchComponent } from "../svg-search/svg-search.component";
 
 @Component({
