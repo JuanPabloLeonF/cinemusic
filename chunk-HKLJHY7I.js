@@ -1,1 +1,0 @@
-import{La as o,eb as n,fb as s,ob as i}from"./chunk-POJR2KAK.js";var a=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=o({type:e,selectors:[["app-add-song-to-list"]],decls:2,vars:0,template:function(t,p){t&1&&(n(0,"p"),i(1,"add-song-to-list works!"),s())},encapsulation:2})};export{a as AddSongToListComponent};
