@@ -28,6 +28,7 @@
     --font-secondary: "Bungee";
     --max-width: 1280px;
     --blur-bg: blur(2px);
+    --blur-bg-max: blur(10px);
     --nav-height: 5rem;
     --white-color: rgb(255, 255, 255);
     --white-color-opacity: rgba(255, 255, 255, 0.123);

@@ -4,7 +4,7 @@
 
 .section-card-list-songs-selected {
     background: var(--bg-transparent-black);
-    backdrop-filter: var(--blur-bg);
+    backdrop-filter: var(--blur-bg-max);
     position: fixed;
     width: 100dvw;
     height: 100dvh;
