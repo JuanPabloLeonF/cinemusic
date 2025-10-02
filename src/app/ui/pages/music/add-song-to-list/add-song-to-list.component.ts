@@ -3,17 +3,25 @@ import { InputIconSearchComponent } from "../../../components/input-icon-search/
 import { SvgAddSongListComponent } from "../../../components/svg-add-song-list/svg-add-song-list.component";
 import { SvgCloseComponent } from "../../../components/svg-close/svg-close.component";
 import { StateMusicService } from '../../../../domain/states/music/state-music.service';
+import { SvgCheckComponent } from "../../../components/svg-check/svg-check.component";
+import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
 
 @Component({
   selector: 'app-add-song-to-list',
-  imports: [InputIconSearchComponent, SvgAddSongListComponent, SvgCloseComponent],
+  imports: [
+    InputIconSearchComponent, 
+    SvgAddSongListComponent, 
+    SvgCloseComponent, 
+    SvgCheckComponent,
+    ScrollRevealDirective
+],
   templateUrl: './add-song-to-list.component.html',
   styleUrl: './add-song-to-list.component.css'
 })
 export class AddSongToListComponent {
-    protected stateMusicService: StateMusicService = inject(StateMusicService); 
+  protected stateMusicService: StateMusicService = inject(StateMusicService); 
 
-    protected onChangeInput(value: string): void {
-      this.stateMusicService.stateSectionAddSongToListService.filteredSongsByName(value);
-    }
+  protected onChangeInput(value: string): void {
+    this.stateMusicService.stateSectionAddSongToListService.filteredSongsByName(value);
+  }
 }

@@ -13,7 +13,7 @@
         </div>
         <div class="container-lists">
             @for (song of this.stateMusicService.stateSectionAddSongToListService.listAllSongsFiltered(); track $index) {
-                <div class="container-item-list">
+                <div appScrollReveal class="container-item-list">
                     <div class="container-img-item-list">
                         <img [src]="song.image" [alt]="song.name">
                     </div>
@@ -23,7 +23,15 @@
                         <p>{{song.year}}</p>
                     </div>
                     <div class="container-svg-item-list">
-                        <app-svg-add-song-list width="2rem" height="2rem" />
+                        @if (this.stateMusicService.stateSectionAddSongToListService.isSongSelected(song)) {
+                            <app-svg-check 
+                            (click)="this.stateMusicService.stateSectionAddSongToListService.deleteSongSelected(song)"
+                            width="2rem" height="2rem" color="var(--primary-color)" />
+                        } @else {
+                            <app-svg-add-song-list
+                            (click)="this.stateMusicService.stateSectionAddSongToListService.addSongToList(song)"
+                            width="2rem" height="2rem" />
+                        }
                     </div>
                 </div>
             }

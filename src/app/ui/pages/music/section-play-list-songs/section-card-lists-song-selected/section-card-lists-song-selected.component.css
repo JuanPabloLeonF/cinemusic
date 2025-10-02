@@ -26,6 +26,7 @@
     justify-content: stretch;
     align-items: stretch;
     background-color: var(--bg-transparent-black);
+    backdrop-filter: var(--blur-bg-max);
     padding: 0.5rem;
     overflow-x: hidden;
     overflow-y: auto;
@@ -230,7 +231,7 @@
         width: 100%;
         height: auto;
         padding: 0;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
         display: flex;
     }
 

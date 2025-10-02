@@ -10,6 +10,7 @@ import { SvgStopComponent } from "../../../components/svg-stop/svg-stop.componen
 import { SvgBackComponent } from "../../../components/svg-back/svg-back.component";
 import { FormularyCreateListMusicComponent } from "../formulary-create-list-music/formulary-create-list-music.component";
 import { RouterModule } from '@angular/router';
+import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
 
 @Component({
   selector: 'app-section-play-list-songs',
@@ -23,6 +24,7 @@ import { RouterModule } from '@angular/router';
     SvgBackComponent, 
     FormularyCreateListMusicComponent,
     RouterModule,
+    ScrollRevealDirective
 ],
   templateUrl: './section-play-list-songs.component.html',
   styleUrl: './section-play-list-songs.component.css'

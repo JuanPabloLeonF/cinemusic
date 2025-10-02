@@ -144,4 +144,8 @@
     .section-play-list-songs > .section-container > .container-body > .container-item {
         height: 7rem;
     }
+
+    .section-play-list-songs > .section-container > .container-body > .container-item > .container-img-play {
+        display: none;  
+    }
 }

@@ -1,4 +1,6 @@
-<section class="section-card-list-songs-selected">
+<section 
+class="section-card-list-songs-selected"
+[ngStyle]="this.stateMusic.stateSectionPlayListService.toogleAddSong() ? {'overflow-y': 'hidden', 'height': '100dvh'} : {}">
     <div 
     class="container-section"
     [ngStyle]="this.stateMusic.stateSectionPlayListService.toogleAddSong() ? {'overflow-y': 'hidden', 'height': '100dvh'} : {}" >

@@ -14,7 +14,7 @@
         </div>
         <div class="container-body">
             @for (list of this.stateMusic.stateMyListSongsService.listsListSongs(); track $index) {
-                <div (click)="this.getListSongs(list)" class="container-item">
+                <div appScrollReveal (click)="this.getListSongs(list)" class="container-item">
                     <div class="container-img">
                         <img [src]="list.image" [alt]="list.name">
                     </div>

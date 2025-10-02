@@ -7,13 +7,12 @@
     backdrop-filter: var(--blur-bg-max);
     width: 100%;
     min-height: 100dvh;
-    height: auto;
+    height: 100%;
     position: fixed;
     top:0;
     left: 0;
     z-index: 2;
     padding: 2rem;
-    overflow: hidden;
 }
 
 .btn-close {
@@ -50,9 +49,9 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    overflow-y: auto;
     gap: 0.5rem;
     padding-bottom: 3rem;
+    overflow-y: auto;
 }
 
 .section-add-song-to-list .container-section .container-lists .container-item-list {
