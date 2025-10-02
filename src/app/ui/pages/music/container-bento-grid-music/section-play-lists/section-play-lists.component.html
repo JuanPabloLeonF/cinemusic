@@ -24,6 +24,6 @@
         </div>
     </div>
     <div class="container-buttons">
-        <button (click)="this.stateMusicService.stateSectionPlayListService.toogleSectionPLayList.set(true)" type="button">Mis canciones</button>
+        <button [routerLink]="['/music/myMusic']" type="button">Mis canciones</button>
     </div>
 </section>

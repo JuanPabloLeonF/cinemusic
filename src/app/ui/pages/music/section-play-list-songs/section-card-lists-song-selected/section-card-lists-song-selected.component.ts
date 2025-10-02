@@ -12,6 +12,7 @@ import { TraslateVerticalDeletedDirective } from '../../../../animations/traslat
 import { SvgStopComponent } from "../../../../components/svg-stop/svg-stop.component";
 import { SvgAddSongListComponent } from "../../../../components/svg-add-song-list/svg-add-song-list.component";
 import { AddSongToListComponent } from "../../add-song-to-list/add-song-to-list.component";
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-section-card-lists-song-selected',
@@ -25,7 +26,8 @@ import { AddSongToListComponent } from "../../add-song-to-list/add-song-to-list.
     TraslateVerticalDeletedDirective,
     SvgStopComponent,
     SvgAddSongListComponent,
-    AddSongToListComponent
+    AddSongToListComponent,
+    NgStyle
 ],
   templateUrl: './section-card-lists-song-selected.component.html',
   styleUrl: './section-card-lists-song-selected.component.css'

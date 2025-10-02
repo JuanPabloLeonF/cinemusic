@@ -1,12 +1,8 @@
-<section class="main-music">
-    <app-container-bento-grid-music />
-
-    @if (this.stateMusicService.stateSectionPlayListService.toogleSectionPLayList()) {
-        @defer (on immediate) {
-            <app-section-play-list-songs />
-        } @placeholder {
-            <p>cargando...</p>
-        }
-    }
-    <app-section-main-music />
-</section>
+@if (this.router.url === '/music/myMusic') {
+    <router-outlet />
+} @else {
+    <section class="main-music">
+        <app-container-bento-grid-music />
+        <app-section-main-music />
+    </section>
+}

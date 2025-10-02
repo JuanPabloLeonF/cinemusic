@@ -9,10 +9,21 @@ import { SectionCardListsSongSelectedComponent } from "./section-card-lists-song
 import { SvgStopComponent } from "../../../components/svg-stop/svg-stop.component";
 import { SvgBackComponent } from "../../../components/svg-back/svg-back.component";
 import { FormularyCreateListMusicComponent } from "../formulary-create-list-music/formulary-create-list-music.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-section-play-list-songs',
-  imports: [ButtonGenericComponent, SvgPlayComponent, SvgNoteComponent, SvgClockComponent, SectionCardListsSongSelectedComponent, SvgStopComponent, SvgBackComponent, FormularyCreateListMusicComponent],
+  imports: [
+    ButtonGenericComponent, 
+    SvgPlayComponent, 
+    SvgNoteComponent, 
+    SvgClockComponent, 
+    SectionCardListsSongSelectedComponent, 
+    SvgStopComponent, 
+    SvgBackComponent, 
+    FormularyCreateListMusicComponent,
+    RouterModule,
+],
   templateUrl: './section-play-list-songs.component.html',
   styleUrl: './section-play-list-songs.component.css'
 })

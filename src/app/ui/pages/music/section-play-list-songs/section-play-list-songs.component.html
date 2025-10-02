@@ -1,8 +1,8 @@
-<section class="section-play-list-songs">
+<section class="section-play-list-songs" >
     <section class="section-container">
         <div class="container-header">
             <app-svg-back
-             (click)="this.stateMusic.stateSectionPlayListService.toogleSectionPLayList.set(false)"
+              [routerLink]="['/music/']"
               width="1.5rem" height="1.5rem" color="white" colorHover="var(--primary-color)" />
             <h2>Mi listas de musica</h2>
             <app-button-generic 
@@ -48,7 +48,11 @@
         </div>
     </section>
     @if (this.stateMusic.stateMyListSongsService.activateSection()) {
-        <app-section-card-lists-song-selected/>
+        @defer (on immediate) {
+            <app-section-card-lists-song-selected/>
+        } @placeholder {
+            <p>cargando...</p>
+        }
     }
 
     @if (this.stateMusic.stateSectionPlayListService.toogleFormulary()) {

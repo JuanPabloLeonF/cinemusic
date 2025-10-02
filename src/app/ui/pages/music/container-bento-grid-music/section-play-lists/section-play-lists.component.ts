@@ -3,11 +3,11 @@ import { SvgPlayListComponent } from "../../../../components/svg-play-list/svg-p
 import { SvgHeartComponent } from "../../../../components/svg-heart/svg-heart.component";
 import { SvgNoteComponent } from "../../../../components/svg-note/svg-note.component";
 import { StateMusicService } from '../../../../../domain/states/music/state-music.service';
-import { PlayList } from '../../../../../domain/models/music/play-list';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-section-play-lists',
-  imports: [SvgPlayListComponent, SvgHeartComponent, SvgNoteComponent],
+  imports: [SvgPlayListComponent, SvgHeartComponent, SvgNoteComponent, RouterModule],
   templateUrl: './section-play-lists.component.html',
   styleUrl: './section-play-lists.component.css'
 })

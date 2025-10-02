@@ -1,5 +1,7 @@
 <section class="section-card-list-songs-selected">
-    <div class="container-section">
+    <div 
+    class="container-section"
+    [ngStyle]="this.stateMusic.stateSectionPlayListService.toogleAddSong() ? {'overflow-y': 'hidden', 'height': '100dvh'} : {}" >
         <div class="container-header">
             <div (click)="this.stateMusic.stateMyListSongsService.activateSection.set(false)" class="container-svg-close">
                 <app-svg-close width="2rem" height="2rem" color="var(--primary-color)" />
