@@ -1,0 +1,103 @@
+:host-context {
+    display: contents;
+}
+
+.container-information-series {
+    /* background-color: aquamarine; */
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    padding-top: calc(var(--nav-height) + 0.5rem);
+}
+
+.container-information-series .container-information {
+    width: 65%;
+    height: 100%;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 1rem;
+}
+
+
+.container-information-series .container-information .container-gender {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+.container-information-series .container-information .container-gender > p:hover {
+    color: var(--primary-color);
+}
+
+.container-information-series .container-information .container-gender > p {
+    background-color: var(--bg-transparent-black);
+    backdrop-filter: var(--blur-bg);
+    padding: 0.5rem;
+    width: 7rem;
+    height: 2.5rem;
+    min-width: fit-content;
+    text-align: center;
+    border-radius: 1.5rem;
+    color: var(--white-color);
+    text-transform: uppercase;
+}
+
+.container-information-series .container-information > h2 {
+    width: fit-content;
+    max-width: 100%;
+    height: 12%;
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: bold;
+    font-family: var(--font-secondary);
+    background: var(--linear-gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: -webkit-box;           
+    -webkit-line-clamp: 2;         
+    -webkit-box-orient: vertical;      
+    overflow: hidden;                
+    text-overflow: ellipsis; 
+}
+
+.container-information-series .container-information > p {
+    width: 80%;
+    height: 19%;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    display: -webkit-box;           
+    -webkit-line-clamp: 5;         
+    -webkit-box-orient: vertical;      
+    overflow: hidden;                
+    text-overflow: ellipsis; 
+}
+
+.container-information-series .container-information > button {
+    width: 12rem;
+    height: 3rem;
+    outline: none;
+    border: none;
+    background-color: var(--bg-transparent-black);
+    backdrop-filter: var(--blur-bg);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 1.5rem;
+    color: var(--white-color);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+}
+
+.container-information-series .container-information > button:hover {
+    background-color: var(--primary-color-opacity);
+}

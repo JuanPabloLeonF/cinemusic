@@ -1,4 +1,8 @@
-<nav class="nav-bar-main" appTraslate [appTraslateActive]="this.stateNavBarMainService.activateMenu()">
+<nav 
+class="nav-bar-main" 
+appTraslate [appTraslateActive]="this.stateNavBarMainService.activateMenu()"
+[ngStyle]="this.router.url === '/series' ? {'background-color': 'var(--bg-transparent-black)', 'backdrop-filter': 'var(--blur-bg)'} : {}"
+>
     <i (click)="this.stateNavBarMainService.switchMenu(false)" class="fa-solid fa-x close-menu"></i>
     <div class="container-logo">
         <img src="images/logo2.png" alt="logo">

@@ -1,0 +1,45 @@
+:host-context {
+    display: contents;
+}
+
+.main-series {
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.bg-series {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, #00000000 100%);
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    mask-position: center;
+}
+
+@media screen and (width <= 768px) {
+    .main-series {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: stretch;
+        background-color: var(--bg-color-web);
+    }
+}
