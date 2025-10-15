@@ -76,7 +76,6 @@ body {
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: var(--white-color);
     background: var(--bg-page);
-    color: red;
 }
 
 ::-webkit-scrollbar {
