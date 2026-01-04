@@ -3,9 +3,8 @@
 }
 
 .container-information-series {
-    /* background-color: aquamarine; */
     width: 100%;
-    height: 100dvh;
+    height: 30rem;
     display: flex;
     padding-top: calc(var(--nav-height) + 0.5rem);
 }
@@ -69,14 +68,24 @@
 
 .container-information-series .container-information > p {
     width: 80%;
-    height: 19%;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    height: 7.4rem;
+    padding: 0.5rem;
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
     display: -webkit-box;           
     -webkit-line-clamp: 5;         
     -webkit-box-orient: vertical;      
     overflow: hidden;                
     text-overflow: ellipsis; 
+    backdrop-filter: var(--blur-bg-max);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    transition: background-color 0.3s ease-out;
 }
+
+.container-information-series .container-information > p:hover {
+    background-color: var(--bg-transparent-black);
+}
+
 
 .container-information-series .container-information > button {
     width: 12rem;

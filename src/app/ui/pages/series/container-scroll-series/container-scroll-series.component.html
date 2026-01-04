@@ -1,1 +1,31 @@
-<p>container-scroll-series works!</p>
+<section class="container-series">
+    <div class="container-scroll-series" #scrollContainer>
+        @for (serie of this.listdataSeries; track $index) {
+                <div 
+                    [ngClass]="{
+                        'series-selected-1': seriesSelected == serie.id,
+                        'container-serie': seriesSelected != serie.id
+                    }">
+                        <div 
+                        [ngClass]="{
+                            'series-selected-2': seriesSelected == serie.id,
+                            'container-information': seriesSelected != serie.id
+                        }">
+                            <h2>{{serie.name}}</h2>
+                            <div class="container-svg">
+                                <app-svg-play width="100%" height="100%" color="black"/>
+                            </div>
+                        </div>
+                        <img [src]="serie.image" [alt]="serie.name">
+                </div>
+            } @empty {
+                <p class="container-item-series-empty">
+                    ¡Ups! Parece que no hay series en este momento. 🎉
+                </p>
+            }
+    </div>
+    <section class="container-controls">
+        <app-svg-arrow-back (click)="this.scrollBack()" color="white" height="2.5rem" width="2.5rem" />
+        <app-svg-arrow-next (click)="this.scrollNext()" color="white" height="2.5rem" width="2.5rem" />
+    </section>
+</section>

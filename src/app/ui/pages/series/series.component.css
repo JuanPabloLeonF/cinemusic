@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: stretch;
     align-items: stretch;
+    padding-bottom: 4.5rem;
 }
 
 .bg-series {

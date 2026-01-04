@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Series } from '../../../domain/models/series/series';
 import { ContainerInformationSeriesComponent } from "./container-information-series/container-information-series.component";
+import { ContainerScrollSeriesComponent } from "./container-scroll-series/container-scroll-series.component";
 
 @Component({
   selector: 'app-series',
-  imports: [ContainerInformationSeriesComponent],
+  imports: [ContainerInformationSeriesComponent, ContainerScrollSeriesComponent],
   templateUrl: './series.component.html',
   styleUrl: './series.component.css'
 })
