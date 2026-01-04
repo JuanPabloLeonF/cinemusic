@@ -1,0 +1,1 @@
+import{R as t}from"./chunk-5DMPTUFD.js";var l=new t("");function m(o,n){n=encodeURIComponent(n);for(let e of o.split(";")){let r=e.indexOf("="),[i,s]=r==-1?[e,""]:[e.slice(0,r),e.slice(r+1)];if(i.trim()===n)return decodeURIComponent(s)}return null}var p="browser",u="server";function d(o){return o===u}var c=class{};export{l as a,m as b,p as c,d,c as e};
