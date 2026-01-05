@@ -4,10 +4,11 @@ import { NgClass } from "@angular/common";
 import { Series } from '../../../../domain/models/series/series';
 import { SvgArrowBackComponent } from "../../../components/svg-arrow-back/svg-arrow-back.component";
 import { SvgArrowNextComponent } from "../../../components/svg-arrow-next/svg-arrow-next.component";
+import { SvgArrowSectionComponent } from "../../../components/svg-arrow-section/svg-arrow-section.component";
 
 @Component({
   selector: 'app-container-scroll-series',
-  imports: [SvgPlayComponent, NgClass, SvgArrowBackComponent, SvgArrowNextComponent],
+  imports: [SvgPlayComponent, NgClass, SvgArrowBackComponent, SvgArrowNextComponent, SvgArrowSectionComponent],
   templateUrl: './container-scroll-series.component.html',
   styleUrl: './container-scroll-series.component.css'
 })

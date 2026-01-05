@@ -1,4 +1,8 @@
 <section class="container-series">
+    <div class="container-gender">
+        <p>Telenovelas</p>
+        <app-svg-arrow-section color="white" height="1.2rem" width="1.2rem" />
+    </div>
     <div class="container-scroll-series" #scrollContainer>
         @for (serie of this.listdataSeries; track $index) {
                 <div 
@@ -25,7 +29,7 @@
             }
     </div>
     <section class="container-controls">
-        <app-svg-arrow-back (click)="this.scrollBack()" color="white" height="2.5rem" width="2.5rem" />
-        <app-svg-arrow-next (click)="this.scrollNext()" color="white" height="2.5rem" width="2.5rem" />
+        <app-svg-arrow-back (click)="this.scrollBack()" color="white" height="1.5rem" width="1.5rem" />
+        <app-svg-arrow-next (click)="this.scrollNext()" color="white" height="1.5rem" width="1.5rem" />
     </section>
 </section>
