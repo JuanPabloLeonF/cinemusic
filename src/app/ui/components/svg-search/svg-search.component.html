@@ -1,4 +1,11 @@
-<svg color="currentColor" [attr.width]="width()" [attr.height]="height()"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
+<svg 
+#svg
+(mouseover)="onHover()" 
+(mouseout)="onBlur()"
+[attr.color]="color()" 
+[attr.width]="width()" 
+[attr.height]="height()"
+xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search">
     <circle cx="11" cy="11" r="8" />
     <path d="m21 21-4-4" />
 </svg>

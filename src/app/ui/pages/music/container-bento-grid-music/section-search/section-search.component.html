@@ -25,9 +25,15 @@
         />
     </div>
     <div class="container-input">
-        <app-input-icon-search 
+        <app-input-icon-search
+        colorFocus="var(--primary-color)" 
+        colorText="var(--white-color)"
+        bgColor="var(--color-gray-primary)"
+        colorBorder="var(--color-gray-secondary)"
+        colorIcon="var(--color-gray-secondary)"
+        colorIconHover="var(--primary-color)"
         placeholder="Buscar musica, artistas, canciones..." 
-        widthInput="100%" 
+        widthInput="100%"
         heightInput="100%" 
         (onChangeInputData)="this.onChangeInput($event)"/>
     </div>

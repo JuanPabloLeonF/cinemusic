@@ -3,11 +3,19 @@
     [style.width]="this.widthInput()"
     [style.height]="this.heightInput()"
 >
-    <app-svg-search width="2rem" height="2rem" color="white" />
-    <input 
+    <app-svg-search width="2rem" height="2rem" [color]="this.colorIcon()" [colorHover]="this.colorIconHover()" />
+    <input
+    #inputSearchIcon 
     class="input-search" 
     type="text" 
     [placeholder]="this.placeholder()" 
     (input)="this.onChangeInput($event)"
+    [style.width]="this.widthInput()"
+    [style.height]="this.heightInput()"
+    [style.background-color]="bgColor()"
+    [style.color]="colorText()"
+    [style.border]="'1px solid ' + this.colorBorder()"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
     >
 </div>
