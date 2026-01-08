@@ -1,4 +1,4 @@
-import { Gender } from "../models/music/gender";
+import { Gender } from "../../models/music/gender";
 
 export class GenderMapper {
 

@@ -1,10 +1,10 @@
 <section class="container-series">
     <div class="container-gender">
-        <p>Telenovelas</p>
+        <p>{{this.gender()}}</p>
         <app-svg-arrow-section color="white" height="1.2rem" width="1.2rem" />
     </div>
     <div class="container-scroll-series" #scrollContainer>
-        @for (serie of this.listdataSeries; track $index) {
+        @for (serie of this.listDataSerieFiltered(); track $index) {
                 <div 
                     [ngClass]="{
                         'series-selected-1': seriesSelected == serie.id,

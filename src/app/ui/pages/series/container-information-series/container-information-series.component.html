@@ -1,15 +1,10 @@
 <div class="container-information-series">
     <div class="container-information">
         <div class="container-gender">
-            <p>genero</p>
+            <p>{{this.selectedSerie().gender}}</p>
         </div>
-        <h2>Nombre de la pelicula aquio</h2>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum maiores repudiandae saepe, doloremque harum ducimus ea assumenda quisquam excepturi debitis consectetur deserunt neque quis laudantium? Eveniet doloremque provident voluptas.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum maiores repudiandae saepe, doloremque harum ducimus ea assumenda quisquam excepturi debitis consectetur deserunt neque quis laudantium? Eveniet doloremque provident voluptas.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum maiores repudiandae saepe, doloremque harum ducimus ea assumenda quisquam excepturi debitis consectetur deserunt neque quis laudantium? Eveniet doloremque provident voluptas.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ipsum maiores repudiandae saepe, doloremque harum ducimus ea assumenda quisquam excepturi debitis consectetur deserunt neque quis laudantium? Eveniet doloremque provident voluptas.
-        </p>
+        <h2>{{this.selectedSerie().name}}</h2>
+        <p>{{this.selectedSerie().description}}</p>
         <button type="button">
             <app-svg-play width="13%" height="13%" />
             <p>Reproducir</p>
@@ -26,44 +21,21 @@
          colorText="var(--color-gray-white)"
          colorIcon="var(--color-gray-white)"
          colorIconHover="var(--white-color)"
+         (onChangeInputData)="onChangeInputData($event)"
          />
-        <div class="container-list-search">
-            <div class="container-item">
-                <div class="container-img-item">
-                    <img src="images/series/Spider-Manlejosdecasa.webp" alt="imagen">
+
+         <div class="container-list-search">
+            @for (serie of this.listSeriesSearchDataFiltered(); track $index) {
+                <div class="container-item">
+                    <div class="container-img-item">
+                        <img [src]="serie.image" [alt]="serie.name">
+                    </div>
+                    <div class="container-info-item">
+                        <h2>{{serie.name}}</h2>
+                        <p>{{serie.gender}}</p>
+                    </div>
                 </div>
-                <div class="container-info-item">
-                    <h2>Nombre de la serie que pasaria si este nombre de la serie es demasiado largo</h2>
-                    <p>genero</p>
-                </div>
-            </div>
-            <div class="container-item">
-                <div class="container-img-item">
-                    <img src="images/series/Spider-Manlejosdecasa.webp" alt="imagen">
-                </div>
-                <div class="container-info-item">
-                    <h2>Nombre de la serie</h2>
-                    <p>genero</p>
-                </div>
-            </div>
-            <div class="container-item">
-                <div class="container-img-item">
-                    <img src="images/series/Spider-Manlejosdecasa.webp" alt="imagen">
-                </div>
-                <div class="container-info-item">
-                    <h2>Nombre de la serie</h2>
-                    <p>genero</p>
-                </div>
-            </div>
-            <div class="container-item">
-                <div class="container-img-item">
-                    <img src="images/series/Spider-Manlejosdecasa.webp" alt="imagen">
-                </div>
-                <div class="container-info-item">
-                    <h2>Nombre de la serie</h2>
-                    <p>genero</p>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>

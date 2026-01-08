@@ -1,4 +1,4 @@
-import { Artis } from "../models/music/artis";
+import { Artis } from "../../models/music/artis";
 
 export class MapperArtist {
     public static fromJsonToArtist(json: any): Artis {

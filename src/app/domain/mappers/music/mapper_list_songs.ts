@@ -1,4 +1,4 @@
-import { ListSongs } from "../models/music/play-list";
+import { ListSongs } from "../../models/music/play-list";
 
 export class MapperListSongs {
 

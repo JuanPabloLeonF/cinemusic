@@ -1,5 +1,7 @@
 <section class="main-series">
-    <img [src]="this.seriesData.image" alt="" class="bg-series">
+    <img [src]="this.selectedSerie().image" [alt]="this.selectedSerie().name" class="bg-series">
     <app-container-information-series/>
-    <app-container-scroll-series/>
+    @for (gender of this.listAllGendersData; track $index) {
+        <app-container-scroll-series [gender]="gender" />
+    }
 </section>

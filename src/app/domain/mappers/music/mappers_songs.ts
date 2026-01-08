@@ -1,4 +1,4 @@
-import { Song } from '../models/music/songs';
+import { Song } from '../../models/music/songs';
 
 export class SongMapper {
 

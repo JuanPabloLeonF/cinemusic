@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, WritableSignal } from '@angular/core';
 import { Series } from '../../../domain/models/series/series';
 import { ContainerInformationSeriesComponent } from "./container-information-series/container-information-series.component";
 import { ContainerScrollSeriesComponent } from "./container-scroll-series/container-scroll-series.component";
+import { StateSeriesService } from '../../../domain/states/series/state-series.service';
+import { GenderEnum, listAllGenders } from '../../../domain/models/series/gender';
 
 @Component({
   selector: 'app-series',
@@ -11,13 +13,7 @@ import { ContainerScrollSeriesComponent } from "./container-scroll-series/contai
 })
 export class SeriesComponent {
 
-  protected seriesData: Series = {
-    id: '1',
-    name: 'Spider-Man: lejos de casa',
-    image: 'images/series/Spider-Manlejosdecasa.webp',
-    description: 'Peter Parker decide pasar unas merecidas vacaciones en Europa junto a MJ, Ned y el resto de sus amigos. Sin embargo, Peter debe volver a ponerse el traje de Spider-Man cuando Nick Fury le encomienda una nueva misión: frenar el ataque de unas criaturas que están causando el caos en el continente.',
-    year: 2019,
-    gender: 'ficcion',
-    rating: 7.5
-  }
+  public listAllGendersData: string[] = listAllGenders;
+  private stateSeriesService: StateSeriesService = inject(StateSeriesService);
+  protected selectedSerie: WritableSignal<Series> = this.stateSeriesService.selectedSerie;
 }

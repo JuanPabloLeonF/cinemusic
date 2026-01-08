@@ -12,7 +12,7 @@ import { Artis } from '../../models/music/artis';
 })
 export class MusicDataService {
 
-  private musicService = inject(MusicService);
+  private musicService: MusicService = inject(MusicService);
 
   public songMostListened = this.createSignalWithRefresh<Song>(
     () => this.musicService.apisSongs.getSongMostListened(),
