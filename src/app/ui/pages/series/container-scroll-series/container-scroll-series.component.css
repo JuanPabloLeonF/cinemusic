@@ -169,3 +169,58 @@
     align-items: center;
     gap: 7rem;
 }
+
+@media screen and (width <= 768px) {
+    .container-series {
+        width: 100%;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding: 0rem;
+    }
+
+    .container-scroll-series {  
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        position: relative;
+        padding: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 50%;
+        padding-inline: 1.5rem;
+    }
+
+    .container-scroll-series::-webkit-scrollbar {
+        display: none;
+    }
+
+    .container-scroll-series > * {
+        scroll-snap-align: center;
+    }
+
+    .container-scroll-series .container-serie {
+        width: 12rem;
+    }
+
+    .container-scroll-series .container-serie:hover,
+    .container-scroll-series .series-selected-1 {
+        width: 23rem;
+    }
+
+    .container-controls {
+        display: none;
+    }
+}
