@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, input, InputSignal, OnChanges, SimpleChanges, ViewChild, WritableSignal } from '@angular/core';
+import { Component, computed, ElementRef, inject, input, InputSignal, ViewChild, WritableSignal } from '@angular/core';
 import { SvgPlayComponent } from "../../../components/svg-play/svg-play.component";
 import { NgClass } from "@angular/common";
 import { Series } from '../../../../domain/models/series/series';
@@ -13,22 +13,21 @@ import { StateSerieListGendersService } from '../../../../domain/states/series/s
   templateUrl: './container-scroll-series.component.html',
   styleUrl: './container-scroll-series.component.css'
 })
-export class ContainerScrollSeriesComponent implements OnChanges {
+export class ContainerScrollSeriesComponent {
   
   @ViewChild('scrollContainer', { static: true })
   scrollContainer!: ElementRef<HTMLDivElement>;
   public gender: InputSignal<string> = input<string>("");
-  
-
-  private stateSerieListGendersService: StateSerieListGendersService = inject(StateSerieListGendersService);
-  protected listDataSerieFiltered: WritableSignal<Series[]> = this.stateSerieListGendersService.listDataSerieFiltered;
   public seriesSelected: String = "1";
+  private stateSerieListGendersService: StateSerieListGendersService = inject(StateSerieListGendersService);
+  protected listDataSerieFiltered = computed<Series[]>(() => {
+    const gender: string = this.gender();
+    const listData: Series[] = this.stateSerieListGendersService.listDataSerie();
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['gender']) {
-      this.stateSerieListGendersService.listSeriesFilteredByGender(this.gender());
-    }
-  }
+    if (!gender || listData.length === 0) return [];
+
+    return listData.filter(serie => serie.gender.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim() === gender.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim());
+  })
 
 
   public scrollNext() {
