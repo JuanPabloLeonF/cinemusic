@@ -13,7 +13,13 @@ export const routes: Routes = [
     },
     {
         path: 'series',
-        loadComponent: () => import('./ui/pages/series/series.component').then((c) => c.SeriesComponent)
+        loadComponent: () => import('./ui/pages/series/series.component').then((c) => c.SeriesComponent),
+        children: [
+            {
+                path: "gender",
+                loadComponent: () => import('./ui/pages/series/section-gender-series/section-gender-series.component').then((c) => c.SectionGenderSeriesComponent)
+            }
+        ]
     },
     {
         path: "**",

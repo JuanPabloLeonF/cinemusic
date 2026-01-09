@@ -1,22 +1,22 @@
 <section class="container-series">
     <div class="container-gender">
         <p>{{this.gender()}}</p>
-        <app-svg-arrow-section color="white" height="1.2rem" width="1.2rem" />
+        <app-svg-arrow-section routerLink="/series/gender" color="white" height="1.2rem" width="1.2rem" />
     </div>
     <div class="container-scroll-series" #scrollContainer>
         @for (serie of this.listDataSerieFiltered(); track $index) {
                 <div 
                     [ngClass]="{
-                        'series-selected-1': seriesSelected == serie.id,
-                        'container-serie': seriesSelected != serie.id
+                        'series-selected-1': this.stateSeriesService.selectedSerie().id == serie.id,
+                        'container-serie': this.stateSeriesService.selectedSerie().id != serie.id
                     }">
                         <div 
                         [ngClass]="{
-                            'series-selected-2': seriesSelected == serie.id,
-                            'container-information': seriesSelected != serie.id
+                            'series-selected-2': this.stateSeriesService.selectedSerie().id == serie.id,
+                            'container-information': this.stateSeriesService.selectedSerie().id != serie.id
                         }">
                             <h2>{{serie.name}}</h2>
-                            <div class="container-svg">
+                            <div (click)="this.stateSeriesService.changeSelectedSerie(serie.id)" class="container-svg">
                                 <app-svg-play width="100%" height="100%" color="black"/>
                             </div>
                         </div>

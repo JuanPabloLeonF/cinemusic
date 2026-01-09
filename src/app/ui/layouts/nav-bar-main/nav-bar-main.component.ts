@@ -11,7 +11,6 @@ import { NgStyle } from '@angular/common';
   styleUrl: './nav-bar-main.component.css'
 })
 export class NavBarMainComponent {
-
   protected stateNavBarMainService: StatesNavbarMainService = inject(StatesNavbarMainService);
   protected router = inject(Router);
  }

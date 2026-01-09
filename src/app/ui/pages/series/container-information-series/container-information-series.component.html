@@ -26,7 +26,7 @@
 
          <div class="container-list-search">
             @for (serie of this.listSeriesSearchDataFiltered(); track $index) {
-                <div class="container-item">
+                <div (click)="this.stateSeriesService.changeSelectedSerie(serie.id)" class="container-item">
                     <div class="container-img-item">
                         <img [src]="serie.image" [alt]="serie.name">
                     </div>

@@ -11,7 +11,7 @@
   {
     "id": "2",
     "name": "Sombras del Pasado",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song1.jpg",
     "description": "Un detective retirado se ve obligado a enfrentar un caso sin resolver que marcó su carrera.",
     "year": 2019,
     "gender": "Suspenso",
@@ -20,7 +20,7 @@
   {
     "id": "3",
     "name": "Reinos de Fuego",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song2.jpg",
     "description": "Varias casas luchan por el control de un continente dominado por dragones y antiguas profecías.",
     "year": 2022,
     "gender": "Fantasía",
@@ -29,7 +29,7 @@
   {
     "id": "4",
     "name": "Código Interno",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song3.jpeg",
     "description": "Una ingeniera de software se infiltra en una corporación para destapar una red de corrupción tecnológica.",
     "year": 2020,
     "gender": "Drama",
@@ -38,7 +38,7 @@
   {
     "id": "5",
     "name": "Bajo la Ciudad",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song4.jpg",
     "description": "Un periodista investiga una sociedad secreta que opera en los túneles olvidados de la ciudad.",
     "year": 2018,
     "gender": "Misterio",
@@ -47,7 +47,7 @@
   {
     "id": "6",
     "name": "Órbita Cero",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song5.jpg",
     "description": "Tras un accidente espacial, una tripulación queda atrapada en una estación que se está quedando sin oxígeno.",
     "year": 2023,
     "gender": "Ciencia ficción",
@@ -56,7 +56,7 @@
   {
     "id": "7",
     "name": "Corazones en Ruinas",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song7.jpg",
     "description": "Historias cruzadas de amor y pérdida en una ciudad que intenta reconstruirse después de una tragedia.",
     "year": 2017,
     "gender": "Romance",
@@ -65,7 +65,7 @@
   {
     "id": "8",
     "name": "La Última Frontera",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/song6.jpg",
     "description": "Una colonia humana en un planeta lejano lucha por sobrevivir frente a amenazas desconocidas.",
     "year": 2024,
     "gender": "Aventura",
@@ -74,7 +74,7 @@
   {
     "id": "9",
     "name": "Distrito 9-B",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "image": "images/music/metallica.jpg",
     "description": "Un grupo de agentes especiales investiga crímenes que desafían toda lógica en una zona restringida.",
     "year": 2016,
     "gender": "Acción",

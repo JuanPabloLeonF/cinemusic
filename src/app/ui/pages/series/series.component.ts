@@ -5,15 +5,17 @@ import { ContainerScrollSeriesComponent } from "./container-scroll-series/contai
 import { StateSeriesService } from '../../../domain/states/series/state-series.service';
 import { listAllGenders } from '../../../domain/models/series/gender';
 import { StateSerieListGendersService } from '../../../domain/states/series/state-serie-list-genders.service';
+import { Router, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-series',
-  imports: [ContainerInformationSeriesComponent, ContainerScrollSeriesComponent],
+  imports: [ContainerInformationSeriesComponent, ContainerScrollSeriesComponent, RouterOutlet],
   templateUrl: './series.component.html',
   styleUrl: './series.component.css'
 })
 export class SeriesComponent {
 
+  protected router = inject(Router);
   public listAllGendersData: string[] = listAllGenders;
   private stateSeriesService: StateSeriesService = inject(StateSeriesService);
   private stateSerieListGendersService: StateSerieListGendersService = inject(StateSerieListGendersService);

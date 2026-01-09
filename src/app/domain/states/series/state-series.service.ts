@@ -26,9 +26,10 @@ export class StateSeriesService {
     effect(() => {
       this.selectedSerie.set(this.stateSerieListSearchService.listSeriesSearchData()[0]);
     });
+  }
 
-    console.log("estado de la serie seleccionada: ", this.selectedSerie());
-    console.log("estado de la lista de series de generos: ", this.stateSerieListGendersService.listDataSerie());
-    console.log("estado de la lista de series: ", this.seriesDataService.getAllListSeries.signal());
+  public changeSelectedSerie(id: String): void {
+    const newSerie: Series = this.seriesDataService.getAllListSeries.signal().find((serie) => serie.id === id) || {} as Series;
+    this.selectedSerie.set(newSerie);
   }
 }

@@ -1,7 +1,11 @@
-<section class="main-series">
-    <img [src]="this.selectedSerie().image" [alt]="this.selectedSerie().name" class="bg-series">
-    <app-container-information-series/>
-    @for (gender of this.gendersWithSeries(); track $index) {
-        <app-container-scroll-series [gender]="gender" />
-    }
-</section>
+@if (this.router.url === '/series/gender') {
+    <router-outlet />
+} @else {
+    <section class="main-series">
+        <img [src]="this.selectedSerie().image" [alt]="this.selectedSerie().name" class="bg-series">
+        <app-container-information-series/>
+        @for (gender of this.gendersWithSeries(); track $index) {
+            <app-container-scroll-series [gender]="gender" />
+        }
+    </section>
+}

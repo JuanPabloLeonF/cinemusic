@@ -1,0 +1,37 @@
+<section class="section-gender-series">
+    <div class="container-search-series">
+        <div class="container-search">
+            <app-input-icon-search
+            widthInput="100%" 
+            heightInput="100%" 
+            bgColor="var(--bg-transparent-black)"
+            placeholder="Buscar series..."
+            colorBorder="transparent"
+            colorFocus="var(--color-gray-white)"
+            colorText="var(--color-gray-white)"
+            colorIcon="var(--color-gray-white)"
+            colorIconHover="var(--white-color)"
+            />
+        </div>
+         <div class="container-selected">
+            <select name="" id="">
+                <option value="">Seleccionar género</option>
+                <option value="accion">Acción</option>
+                <option value="comedia">Comedia</option>
+                <option value="drama">Drama</option>
+                <option value="terror">Terror</option>
+                <option value="ciencia ficcion">Ciencia ficción</option>
+            </select>
+         </div>
+    </div>
+    <div class="container-list-series">
+        @for (series of this.seriesListData; track $index) {
+            <div class="series-item">
+                <div class="container-img">
+                    <img [src]="series.image" [alt]="series.name">
+                </div>
+                <h3>{{ series.name }}</h3>
+            </div>
+        }
+    </div>
+</section>

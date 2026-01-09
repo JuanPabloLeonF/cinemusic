@@ -12,8 +12,8 @@ import { StateSerieListSearchService } from '../../../../domain/states/series/st
   styleUrl: './container-information-series.component.css'
 })
 export class ContainerInformationSeriesComponent {
-  private stateSeriesService: StateSeriesService = inject(StateSeriesService);
-  private stateSerieListSearchService: StateSerieListSearchService = inject(StateSerieListSearchService);
+  protected stateSeriesService: StateSeriesService = inject(StateSeriesService);
+  protected stateSerieListSearchService: StateSerieListSearchService = inject(StateSerieListSearchService);
   protected selectedSerie: WritableSignal<Series> = this.stateSeriesService.selectedSerie;
   protected listSeriesSearchDataFiltered: WritableSignal<Series[]> = this.stateSerieListSearchService.listSeriesSearchDataFiltered; 
   
