@@ -16,7 +16,7 @@ export const routes: Routes = [
         loadComponent: () => import('./ui/pages/series/series.component').then((c) => c.SeriesComponent),
         children: [
             {
-                path: "gender",
+                path: "gender/:gender",
                 loadComponent: () => import('./ui/pages/series/section-gender-series/section-gender-series.component').then((c) => c.SectionGenderSeriesComponent)
             }
         ]

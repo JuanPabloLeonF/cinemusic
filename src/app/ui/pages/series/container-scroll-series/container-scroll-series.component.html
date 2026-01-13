@@ -1,7 +1,7 @@
 <section class="container-series">
     <div class="container-gender">
         <p>{{this.gender()}}</p>
-        <app-svg-arrow-section routerLink="/series/gender" color="white" height="1.2rem" width="1.2rem" />
+        <app-svg-arrow-section routerLink="/series/gender/{{this.getGenderNormalized()}}" color="white" height="1.2rem" width="1.2rem" />
     </div>
     <div class="container-scroll-series" #scrollContainer>
         @for (serie of this.listDataSerieFiltered(); track $index) {

@@ -30,6 +30,10 @@ export class ContainerScrollSeriesComponent {
     return listData.filter(serie => serie.gender.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim() === gender.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim());
   })
 
+  public getGenderNormalized(): string {
+    return this.gender().toLowerCase().normalize('NFD').replace(/[^\u0000-\u007F]/g, '');
+  }
+
   public scrollNext() {
     this.scrollContainer.nativeElement.scrollBy({
       left: 480, 

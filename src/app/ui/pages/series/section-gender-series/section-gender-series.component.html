@@ -11,21 +11,25 @@
             colorText="var(--color-gray-white)"
             colorIcon="var(--color-gray-white)"
             colorIconHover="var(--white-color)"
+            (onChangeInputData)="this.stateSectionGenderSeriesService.getSelectedByGenderAndSearch($event)"
             />
         </div>
          <div class="container-selected">
-            <select name="" id="">
-                <option value="">Seleccionar género</option>
-                <option value="accion">Acción</option>
-                <option value="comedia">Comedia</option>
-                <option value="drama">Drama</option>
-                <option value="terror">Terror</option>
-                <option value="ciencia ficcion">Ciencia ficción</option>
-            </select>
+            <app-select-options 
+            inputSelectedOption="{{this.stateSectionGenderSeriesService.genderGlobal()}}"
+            inputBorder="1px solid transparent"
+            inputBorderFocus="1px solid var(--color-gray-white)"
+            inputColor="var(--color-gray-white)"
+            inputWidth="100%"
+            inputHeight="2.5rem"
+            inputBgColor="var(--bg-transparent-black)"
+            [inputListOptions]="this.listGender"
+            (ouputOptionSelected)="this.stateSectionGenderSeriesService.changeGenderGloabal($event)"
+             />
          </div>
     </div>
     <div class="container-list-series">
-        @for (series of this.seriesListData; track $index) {
+        @for (series of this.seriesListData(); track $index) {
             <div class="series-item">
                 <div class="container-img">
                     <img [src]="series.image" [alt]="series.name">

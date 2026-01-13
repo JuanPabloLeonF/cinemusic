@@ -3,6 +3,7 @@ import { Series } from '../../models/series/series';
 import { StateSerieListSearchService } from './state-serie-list-search.service';
 import { SeriesDataService } from '../../services/series/series-data.service';
 import { StateSerieListGendersService } from './state-serie-list-genders.service';
+import { StateSectionGenderSeriesService } from './state-section-gender-series.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class StateSeriesService {
   private seriesDataService: SeriesDataService = inject(SeriesDataService);
   public stateSerieListSearchService: StateSerieListSearchService = inject(StateSerieListSearchService);
   public stateSerieListGendersService: StateSerieListGendersService = inject(StateSerieListGendersService);
+  public stateSectionGenderSeriesService: StateSectionGenderSeriesService = inject(StateSectionGenderSeriesService);
   public selectedSerie: WritableSignal<Series> = signal<Series>({} as Series); 
 
   constructor () {
@@ -26,6 +28,10 @@ export class StateSeriesService {
     effect(() => {
       this.selectedSerie.set(this.stateSerieListSearchService.listSeriesSearchData()[0]);
     });
+
+    effect(() => {
+      this.stateSectionGenderSeriesService.listSeriesData.set(this.seriesDataService.getAllListSeries.signal());
+    })
   }
 
   public changeSelectedSerie(id: String): void {

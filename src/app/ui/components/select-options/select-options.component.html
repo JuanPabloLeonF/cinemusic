@@ -1,0 +1,29 @@
+<div
+ [style.border]="this.inputBorder()"
+ [style.color]="this.inputColor()"
+ [style.width]="this.inputWidth()"
+ [style.height]="this.inputHeight()"
+ [style.background-color]="this.inputBgColor()"
+ [style.border]="this.open() ? this.inputBorderFocus() : this.inputBorder()"
+ class="container-select" 
+ (click)="toggle()"
+ >
+  <div class="selected">
+    {{ this.selected() || 'Seleccionar género' }}
+  </div>
+
+  @if (this.open()) {
+    <div
+        [style.border]="this.inputBorderFocus()"
+        [style.color]="this.inputColor()"
+        [style.background-color]="this.inputBgColor()"
+        class="options">
+        @for (option of this.inputListOptions(); track $index) {
+        <div class="option" (click)="select(option); $event.stopPropagation()">
+            {{ option }}
+        </div>
+        }
+    </div>
+  }
+</div>
+
