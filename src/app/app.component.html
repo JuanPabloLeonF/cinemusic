@@ -1,6 +1,10 @@
 <main class="main" [ngStyle]="this.stateMusic.stateMyListSongsService.activateSection() ? {'overflow-y': 'hidden', 'height': '100dvh'} : {}">
   <i (click)="this.stateNavBarMainService.switchMenu(true)" class="fa-solid fa-bars open-menu"></i>
-  <app-nav-bar-main />
+  @if (!this.routerUtilService.getRouterActuality().includes("/series/serie")) {
+    <app-nav-bar-main />
+  }
   <router-outlet />
-  <app-music-player />
+   @if (!this.routerUtilService.getRouterActuality().includes("/series/serie")) {
+    <app-music-player />
+  }
 </main>

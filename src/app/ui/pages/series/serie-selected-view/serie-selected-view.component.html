@@ -1,0 +1,29 @@
+<section class="section-series-selected-view">
+    <div class="section-main">
+        <div class="section-information">
+            <h2>{{this.serieSelected.name}}</h2>
+            <p>{{this.serieSelected.description}}</p>
+            <div class="container-select">
+                <app-select-options 
+                inputBorder="1px solid transparent"
+                inputBorderFocus="1px solid var(--primary-color)"
+                inputColor="var(--primary-color)"
+                inputWidth="100%"
+                inputHeight="100%"
+                inputBgColor="var(--bg-transparent-black)"
+                [inputListOptions]="this.listOptions"
+                />
+            </div>
+        </div>
+        <div class="section-view">
+            <video src="images/series/spiderman-triler.mp4" controls>
+                <div class="container-controls">
+                    contenedor de los controles
+                </div>
+            </video>
+        </div>
+    </div>
+    <section class="section-scroll">
+        section donde se muuestran cada capitulo en scroll horizontal
+    </section>
+</section>

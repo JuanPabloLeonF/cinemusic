@@ -1,6 +1,6 @@
 import { Directive, ElementRef, inject, input, InputSignal, OnChanges, SimpleChanges, OnDestroy, effect } from '@angular/core';
 import { AnimationBuilder, AnimationPlayer, animate, style } from '@angular/animations';
-import { QueryResponsiveService } from '../../../domain/services/query-responsive.service';
+import { QueryResponsiveService } from '../../../domain/utils/common/query-responsive.service';
 
 @Directive({
   selector: '[appTraslate]',

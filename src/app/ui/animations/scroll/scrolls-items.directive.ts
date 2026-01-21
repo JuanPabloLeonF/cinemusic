@@ -1,5 +1,5 @@
 import { Directive, ElementRef, Renderer2, OnInit, OnDestroy, inject, effect } from '@angular/core';
-import { QueryResponsiveService } from '../../../domain/services/query-responsive.service';
+import { QueryResponsiveService } from '../../../domain/utils/common/query-responsive.service';
 
 @Directive({
   selector: '[appScrollReveal]'

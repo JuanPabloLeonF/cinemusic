@@ -1,6 +1,6 @@
 import { ElementRef, inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { Song, TypePlayEnum } from '../../models/music/songs';
-import { DevicesConfigurationServiceService } from '../../services/devices-configuration-service.service';
+import { DevicesConfigurationServiceService } from '../../utils/common/devices-configuration-service.service';
 
 @Injectable({
   providedIn: 'root'

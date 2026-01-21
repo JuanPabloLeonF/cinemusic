@@ -5,7 +5,7 @@
         </div>
         <h2>{{this.selectedSerie().name}}</h2>
         <p>{{this.selectedSerie().description}}</p>
-        <button type="button">
+        <button [routerLink]="['/series/serie', this.selectedSerie().id]" type="button">
             <app-svg-play width="13%" height="13%" />
             <p>Reproducir</p>
         </button>

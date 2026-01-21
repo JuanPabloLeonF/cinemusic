@@ -10,7 +10,7 @@ import {
   OnDestroy,
   SimpleChanges
 } from '@angular/core';
-import { QueryResponsiveService } from '../../../domain/services/query-responsive.service';
+import { QueryResponsiveService } from '../../../domain/utils/common/query-responsive.service';
 
 @Directive({
   selector: '[appTraslateVerticalDown]'

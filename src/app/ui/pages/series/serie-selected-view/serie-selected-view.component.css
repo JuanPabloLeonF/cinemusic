@@ -1,0 +1,84 @@
+:host-context {
+    display: contents;
+}
+
+.section-series-selected-view {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding: 0.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.section-series-selected-view .section-main {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+}
+
+.section-series-selected-view .section-main .section-information {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.section-series-selected-view .section-main .section-information > h2 {
+    width: 100%;
+    height: auto;
+    max-height: 8rem;
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-weight: bold;
+    font-family: var(--font-secondary);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: -webkit-box;           
+    -webkit-line-clamp: 3;         
+    -webkit-box-orient: vertical;      
+    overflow: hidden;                
+    text-overflow: ellipsis;
+}
+
+.section-series-selected-view .section-main .section-information > p {
+    width: 100%;
+    height: auto;
+    max-height: 12rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    display: -webkit-box;           
+    -webkit-line-clamp: 9;         
+    -webkit-box-orient: vertical;      
+    overflow: hidden;                
+    text-overflow: ellipsis;
+}
+
+.section-series-selected-view .section-main .section-information .container-select {
+    width: 100%;
+    height: 2.5rem;
+}
+
+.section-series-selected-view .section-main .section-view {
+    width: 60%;
+    height: 100%;
+}
+
+.section-series-selected-view .section-main .section-view > video {
+    width: 100%;
+    height: 100%;
+}
+
+.section-series-selected-view .section-scroll {
+    background-color: blue;
+    width: 100%;
+    height: 40%;
+}

@@ -4,10 +4,11 @@ import { InputIconSearchComponent } from "../../../components/input-icon-search/
 import { Series } from '../../../../domain/models/series/series';
 import { StateSeriesService } from '../../../../domain/states/series/state-series.service';
 import { StateSerieListSearchService } from '../../../../domain/states/series/state-serie-list-search.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-container-information-series',
-  imports: [SvgPlayComponent, InputIconSearchComponent],
+  imports: [RouterModule, SvgPlayComponent, InputIconSearchComponent],
   templateUrl: './container-information-series.component.html',
   styleUrl: './container-information-series.component.css'
 })

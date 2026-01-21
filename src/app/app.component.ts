@@ -5,6 +5,7 @@ import { StatesNavbarMainService } from './domain/states/states-navbar-main.serv
 import { MusicPlayerComponent } from "./ui/pages/music/music-player/music-player.component";
 import { NgStyle } from '@angular/common';
 import { StateMusicService } from './domain/states/music/state-music.service';
+import { RouterUtilService } from './domain/utils/common/router-util.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { StateMusicService } from './domain/states/music/state-music.service';
 })
 export class AppComponent {
 
+  protected routerUtilService: RouterUtilService = inject(RouterUtilService);
   protected stateMusic: StateMusicService = inject(StateMusicService);
   protected stateNavBarMainService: StatesNavbarMainService = inject(StatesNavbarMainService);
 }

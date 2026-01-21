@@ -18,6 +18,10 @@ export const routes: Routes = [
             {
                 path: "gender/:gender",
                 loadComponent: () => import('./ui/pages/series/section-gender-series/section-gender-series.component').then((c) => c.SectionGenderSeriesComponent)
+            },
+            {
+                path: "serie/:id",
+                loadComponent: () => import('./ui/pages/series/serie-selected-view/serie-selected-view.component').then((c) => c.SerieSelectedViewComponent)
             }
         ]
     },

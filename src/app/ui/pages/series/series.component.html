@@ -1,4 +1,4 @@
-@if (this.router.url.includes('/series/gender/')) {
+@if (this.routerUtilService.getRouterActuality().includes('/series/gender/') || this.routerUtilService.getRouterActuality().includes('/series/serie/')) {
     <router-outlet />
 } @else {
     <section class="main-series">

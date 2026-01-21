@@ -1,6 +1,6 @@
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { Directive, effect, ElementRef, inject, input, InputSignal, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { QueryResponsiveService } from '../../../domain/services/query-responsive.service';
+import { QueryResponsiveService } from '../../../domain/utils/common/query-responsive.service';
 
 @Directive({
   selector: '[appTraslateVertical]'
