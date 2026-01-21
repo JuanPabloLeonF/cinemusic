@@ -1,0 +1,1 @@
+import{e}from"./chunk-GYN5KFF7.js";import{O as r,U as o}from"./chunk-V72BES3P.js";var i=class t{router=o(e);constructor(){}getRouterActuality(){return this.router.url}static \u0275fac=function(c){return new(c||t)};static \u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})};export{i as a};
