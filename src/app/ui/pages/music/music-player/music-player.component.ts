@@ -107,6 +107,7 @@ export class MusicPlayerComponent implements AfterViewInit {
       )
     }
   }
+  
   protected typePlay(type: string): void {
     if (type == TypePlayEnum.SHUFFLE) {
       this.audioPlayCurrent.shuffle = true;

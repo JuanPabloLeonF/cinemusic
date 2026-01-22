@@ -1,0 +1,157 @@
+:host-context {
+    display: contents;
+}
+
+.section-view {
+    width: 60%;
+    height: 100%;
+    position: relative;
+}
+
+.section-view > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-view > .container-controls {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: var(--bg-transparent-black);
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+    padding: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.section-view > .container-controls > .container-currentime-series {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 0.2rem;
+}
+
+.section-view:hover > .container-controls {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.section-view > .container-controls > .container-currentime-series > .container-time-series {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+    font-size: clamp(0.6rem,1vw,0.8rem);
+    padding: 0 0.5rem;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: transparent;
+    border-radius: 1rem;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    --range-fill-color: var(--primary-color);
+    --range-track-color: #555;
+    --range-progress: 0%;
+    background: linear-gradient(to right, var(--range-fill-color) var(--range-progress), var(--range-track-color) var(--range-progress));
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"] {
+    width: 100%;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 100%;
+    background: var(--primary-color);
+    border: none;
+    margin-top: calc(-0.3rem / 2 + 5px / 2);
+    opacity: 0;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"]:hover::-webkit-slider-thumb {
+    opacity: 1;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"]::-moz-range-thumb {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 100%;
+    background: var(--primary-color);
+    border: none;
+    margin-top: calc(-0.5rem / 2 + 5px / 2);
+    opacity: 0;
+    transition: background 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"]:hover::-moz-range-thumb {
+    opacity: 1;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"]::-moz-range-track {
+    background: transparent;
+    border: none;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.section-view > .container-controls > .container-currentime-series > input[type="range"]::-moz-range-progress {
+    background: transparent;
+}
+
+.container-botton {
+    width: 1.1rem;
+    height: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.section-view > .container-controls > .container-botton-group {
+    width: 7%;
+    height: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fake-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: black;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fake-fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

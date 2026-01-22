@@ -1,0 +1,29 @@
+<div class="section-view" [class.fake-fullscreen]="this.fakeFullscreen">
+    <video #videoRef src="{{this.serieSelected.video}}"></video>
+    <div class="container-controls">
+        <div class="container-currentime-series">
+            <input #timeRangeRef type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.onTimeChange()">
+            <div class="container-time-series">
+                <p>{{this.currentTime}}</p>
+                <p>{{this.totalDuration}}</p>
+            </div>
+        </div> 
+        @if (this.isPlaying) {
+            <div (click)="this.onPause()" class="container-botton">
+                <app-svg-stop width="100%" height="100%" color="var(--primary-color)" />
+            </div>
+        } @else {
+            <div (click)="this.onPlay()" class="container-botton">
+                <app-svg-play width="100%" height="100%" color="var(--primary-color)" />
+            </div>
+        }
+        <div class="container-botton-group">
+            <div class="container-botton">
+                <app-svg-configuration width="100%" height="100%" color="var(--primary-color)" />
+            </div>
+            <div (click)="this.onMaxScreen()" class="container-botton">
+                <app-svg-screen-max width="100%" height="100%" color="var(--primary-color)" />
+            </div>
+        </div>
+    </div>
+</div>

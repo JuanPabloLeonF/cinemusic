@@ -7,3 +7,7 @@ export interface Series {
     gender: string;
     rating: number;
 }
+
+export interface SeriesVideo extends Series {
+    video: string;
+}
