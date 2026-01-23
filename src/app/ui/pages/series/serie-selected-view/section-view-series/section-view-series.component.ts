@@ -5,6 +5,7 @@ import { SvgConfigurationComponent } from "../../../../components/svg-configurat
 import { SvgStopComponent } from "../../../../components/svg-stop/svg-stop.component";
 import { FormsModule } from '@angular/forms';
 import { SeriesVideo } from '../../../../../domain/models/series/series';
+import { NumberFormatStyle } from '@angular/common';
 
 @Component({
   selector: 'app-section-view-series',

@@ -4,10 +4,12 @@ import { SelectOptionsComponent } from "../../../components/select-options/selec
 import { ActivatedRoute } from '@angular/router';
 import { SeriesVideo } from '../../../../domain/models/series/series';
 import { SectionViewSeriesComponent } from "./section-view-series/section-view-series.component";
+import { SectionScrollChaptersSeriesComponent } from "./section-scroll-chapters-series/section-scroll-chapters-series.component";
+import { SvgBackComponent } from "../../../components/svg-back/svg-back.component";
 
 @Component({
   selector: 'app-serie-selected-view',
-  imports: [RouterModule, SelectOptionsComponent, SectionViewSeriesComponent],
+  imports: [RouterModule, SelectOptionsComponent, SectionViewSeriesComponent, SectionScrollChaptersSeriesComponent, SvgBackComponent],
   templateUrl: './serie-selected-view.component.html',
   styleUrl: './serie-selected-view.component.css'
 })

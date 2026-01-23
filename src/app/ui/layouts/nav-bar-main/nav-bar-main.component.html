@@ -8,10 +8,10 @@ appTraslate [appTraslateActive]="this.stateNavBarMainService.activateMenu()"
         <img src="images/logo2.png" alt="logo">
     </div>
     <div class="container-enlaces">
-        <a routerLink="/peliculas" routerLinkActive="active-link">Películas</a>
-        <a routerLink="/series" routerLinkActive="active-link">Series</a>
-        <a routerLink="/music" routerLinkActive="active-link">Música</a>
-        <a routerLink="/comunity" routerLinkActive="active-link">Comunidad</a>
+        <a (click)="this.stateNavBarMainService.switchMenu(false)" routerLink="/peliculas" routerLinkActive="active-link">Películas</a>
+        <a (click)="this.stateNavBarMainService.switchMenu(false)" routerLink="/series" routerLinkActive="active-link">Series</a>
+        <a (click)="this.stateNavBarMainService.switchMenu(false)" routerLink="/music" routerLinkActive="active-link">Música</a>
+        <a (click)="this.stateNavBarMainService.switchMenu(false)" routerLink="/comunity" routerLinkActive="active-link">Comunidad</a>
     </div>
     <div class="container-perfil">
         <div class="container-information-perfil">

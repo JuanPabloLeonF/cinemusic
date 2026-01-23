@@ -1,4 +1,7 @@
 <section class="section-series-selected-view">
+    <div routerLink="/series" class="container-svg">
+        <app-svg-back color="var(--primary-color)" width="100%" height="100%" />
+    </div>
     <div class="section-main">
         <div class="section-information">
             <h2>{{this.serieSelected.name}}</h2>
@@ -17,7 +20,5 @@
         </div>
         <app-section-view-series/>
     </div>
-    <section class="section-scroll">
-        section donde se muestran cada capitulo en scroll horizontal
-    </section>
+    <app-section-scroll-chapters-series/>
 </section>

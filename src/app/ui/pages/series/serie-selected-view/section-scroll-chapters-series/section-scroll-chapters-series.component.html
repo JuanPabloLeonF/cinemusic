@@ -1,0 +1,13 @@
+<section class="section-scroll-chapters-series">
+    <div #scrollContainer class="container-scroll-chapters">
+        @for(chapter of this.listDataChapters; track $index) {
+            <div [class.chapter-selected]="chapter.id === this.chapterSelected.id" class="item-chapter">
+                <img [src]="chapter.image" [alt]="chapter.name">
+            </div>
+        }
+    </div>
+    <div class="container-controls-scroll">
+        <app-svg-arrow-back (click)="scrollBack()" color="white" width="1.7rem" height="1.7rem"/>
+        <app-svg-arrow-next (click)="scrollNext()" color="white" width="1.7rem" height="1.7rem"/>
+    </div>
+</section>

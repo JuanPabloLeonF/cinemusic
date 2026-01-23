@@ -17,8 +17,7 @@ import { StateSeriesService } from '../../../../domain/states/series/state-serie
 })
 export class ContainerScrollSeriesComponent {
   
-  @ViewChild('scrollContainer', { static: true })
-  scrollContainer!: ElementRef<HTMLDivElement>;
+  @ViewChild('scrollContainer', { static: true }) scrollContainer!: ElementRef<HTMLDivElement>;
   public gender: InputSignal<string> = input<string>("");
   protected stateSeriesService: StateSeriesService = inject(StateSeriesService);
   protected stateSerieListGendersService: StateSerieListGendersService = inject(StateSerieListGendersService);

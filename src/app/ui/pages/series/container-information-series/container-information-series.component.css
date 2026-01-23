@@ -105,6 +105,7 @@
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s ease-out;
+    z-index: 3;
 }
 
 .container-information-series .container-information > button:hover {
