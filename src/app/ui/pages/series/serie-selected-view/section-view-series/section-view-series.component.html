@@ -1,5 +1,5 @@
 <div class="section-view" [class.fake-fullscreen]="this.fakeFullscreen">
-    <video #videoRef src="{{this.serieSelected.video}}"></video>
+    <video #videoRef [src]="this.chapterSelected().video"></video>
     <div [class.controlls-fullscrenn]="this.fakeFullscreen" class="container-controls">
         <div class="container-currentime-series">
             <input #timeRangeRef type="range" min="0" max="100" [(ngModel)]="this.timeValue" (input)="this.onTimeChange()">

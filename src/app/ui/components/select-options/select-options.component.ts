@@ -12,7 +12,8 @@ export class SelectOptionsComponent implements OnInit {
   public inputHeight: InputSignal<string> = input<string>("");
   public inputBorder: InputSignal<string> = input<string>("");
   public inputColor: InputSignal<string> = input<string>("");
-  public inputBgColor: InputSignal<string> = input<string>(""); 
+  public inputBgColor: InputSignal<string> = input<string>("");
+  public textInitial: InputSignal<string> = input<string>("Texto inicial"); 
   public inputSelectedOption: InputSignal<string> = input<string>("");
   public inputBorderFocus: InputSignal<string> = input<string>("");
   public inputListOptions: InputSignal<string[]> = input<string[]>([]);

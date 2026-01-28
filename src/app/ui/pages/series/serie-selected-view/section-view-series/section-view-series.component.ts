@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, ViewChild, WritableSignal } from '@angular/core';
 import { SvgPlayComponent } from "../../../../components/svg-play/svg-play.component";
 import { SvgScreenMaxComponent } from "../../../../components/svg-screen-max/svg-screen-max.component";
 import { SvgConfigurationComponent } from "../../../../components/svg-configuration/svg-configuration.component";
 import { SvgStopComponent } from "../../../../components/svg-stop/svg-stop.component";
 import { FormsModule } from '@angular/forms';
-import { SeriesVideo } from '../../../../../domain/models/series/series';
-import { NumberFormatStyle } from '@angular/common';
+import { Chapter } from '../../../../../domain/models/series/series';
+import { StateSerieSelectedViewService } from '../../../../../domain/states/series/state-serie-selected-view.service';
 
 @Component({
   selector: 'app-section-view-series',
@@ -15,16 +15,8 @@ import { NumberFormatStyle } from '@angular/common';
 })
 export class SectionViewSeriesComponent implements AfterViewInit {
 
-  protected serieSelected: SeriesVideo = {
-    "id": "1",
-    "name": "Horizonte Final",
-    "image": "images/series/Spider-Manlejosdecasa.webp",
-    "description": "Un grupo de científicos descubre una señal proveniente de los límites del universo que podría cambiar el destino de la humanidad.",
-    "year": 2021,
-    "gender": "accion",
-    "rating": 8.4,
-    "video": "images/series/spiderman-triler.mp4"
-  }
+  protected stateSerieSelectedViewService: StateSerieSelectedViewService = inject(StateSerieSelectedViewService);
+  protected chapterSelected: WritableSignal<Chapter> = this.stateSerieSelectedViewService.chapterSelected;
 
   @ViewChild('videoRef') videoRef!: ElementRef<HTMLVideoElement>;
   @ViewChild('timeRangeRef') timeRangeRef!: ElementRef<HTMLVideoElement>;

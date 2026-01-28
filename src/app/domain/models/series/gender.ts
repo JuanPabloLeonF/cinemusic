@@ -25,7 +25,7 @@ export enum GenderEnum {
     TALK_SHOW = "CHARLAS",
 }
 
-export const listAllGenders = [
+export const listAllGenders: string[] = [
     GenderEnum.TERROR,
     GenderEnum.COMEDY,
     GenderEnum.DRAMA,

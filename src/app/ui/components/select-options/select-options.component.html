@@ -9,7 +9,7 @@
  (click)="toggle()"
  >
   <div class="selected">
-    {{ this.selected() || 'Seleccionar género' }}
+    {{ this.selected() || this.textInitial() }}
   </div>
 
   @if (this.open()) {
