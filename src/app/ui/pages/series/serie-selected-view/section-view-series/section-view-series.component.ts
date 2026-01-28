@@ -102,25 +102,17 @@ export class SectionViewSeriesComponent implements AfterViewInit {
     }
   }
 
-  protected onMaxScreen2(): void {
-    this.fakeFullscreen = !this.fakeFullscreen;
-  }
-
   protected onMaxScreen(): void {
-  // onMaxScreenenen el elemento contenedor (el que tiene el video y los controles)
-  // Usaremos una referencia al contenedor principal en lugar de solo cambiar una clase
-  const elem = this.videoRef.nativeElement.parentElement; 
+    const elem = this.videoRef.nativeElement.parentElement; 
 
-  if (!document.fullscreenElement) {
-    // Entrar en pantalla completa real
-    elem?.requestFullscreen().catch(err => {
-      console.error(`Error intentando activar fullscreen: ${err.message}`);
-    });
-    this.fakeFullscreen = true;
-  } else {
-    // Salir de pantalla completa
-    document.exitFullscreen();
-    this.fakeFullscreen = false;
-  }
+    if (!document.fullscreenElement) {
+      elem?.requestFullscreen().catch(err => {
+        console.error(`Error intentando activar fullscreen: ${err.message}`);
+      });
+      this.fakeFullscreen = true;
+    } else {
+      document.exitFullscreen();
+      this.fakeFullscreen = false;
+    }
   }
 }
