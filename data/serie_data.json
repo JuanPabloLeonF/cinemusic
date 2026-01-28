@@ -1,0 +1,83 @@
+{
+    "id": "1",
+    "name": "Horizonte Final",
+    "image": "images/series/Spider-Manlejosdecasa.webp",
+    "description": "Un grupo de científicos descubre una señal proveniente de los límites del universo que podría cambiar el destino de la humanidad.",
+    "year": 2021,
+    "gender": "accion",
+    "rating": 8.4,
+    "seasons": [
+        {
+            "id": "1",
+            "name": "Temporada 1",
+            "image": "images/series/Spider-Manlejosdecasa.webp",
+            "description": "La primera temporada de la serie.",
+            "seasonNumber": 1,
+            "chapters": [
+                {
+                    "id": "1",
+                    "name": "Capítulo 1",
+                    "image": "images/series/Spider-Manlejosdecasa.webp",
+                    "description": "El primer capítulo de la primera temporada.",
+                    "chapterNumber": 1,
+                    "idSeason": "1",
+                    "video": "images/series/spiderman-triler.mp4"
+                },
+                {
+                    "id": "2",
+                    "name": "Capítulo 2",
+                    "image": "images/series/Spider-Manlejosdecasa.webp",
+                    "description": "El segundo capítulo de la primera temporada.",
+                    "chapterNumber": 2,
+                    "idSeason": "1",
+                    "video": "images/series/spiderman-triler.mp4"
+                },
+                {
+                    "id": "3",
+                    "name": "Capítulo 3",
+                    "image": "images/series/Spider-Manlejosdecasa.webp",
+                    "description": "El tercer capítulo de la primera temporada.",
+                    "chapterNumber": 3,
+                    "idSeason": "1",
+                    "video": "images/series/spiderman-triler.mp4"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Temporada 2",
+            "image": "images/series/Spider-Manlejosdecasa.webp",
+            "description": "La segunda temporada de la serie.",
+            "seasonNumber": 2,
+            "chapters": [
+                {
+                    "id": "1",
+                    "name": "Capítulo 1",
+                    "image": "images/series/Spider-Manlejosdecasa.webp",
+                    "description": "El primer capítulo de la segunda temporada.",
+                    "chapterNumber": 1,
+                    "idSeason": "2",
+                    "video": "images/series/spiderman-triler.mp4"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Temporada 3",
+            "image": "images/series/Spider-Manlejosdecasa.webp",
+            "description": "La tercera temporada de la serie.",
+            "seasonNumber": 3,
+            "chapters": [
+                {
+                    "id": "1",
+                    "name": "Capítulo 1",
+                    "image": "images/series/Spider-Manlejosdecasa.webp",
+                    "description": "El primer capítulo de la tercera temporada.",
+                    "chapterNumber": 1,
+                    "idSeason": "3",
+                    "video": "images/series/spiderman-triler.mp4"
+                }
+            ]
+        }
+    ]
+}
