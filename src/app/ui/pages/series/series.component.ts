@@ -21,6 +21,7 @@ export class SeriesComponent {
   private stateSeriesService: StateSeriesService = inject(StateSeriesService);
   private stateSerieListGendersService: StateSerieListGendersService = inject(StateSerieListGendersService);
   protected selectedSerie: WritableSignal<Series> = this.stateSeriesService.selectedSerie;
+  
   protected gendersWithSeries = computed(() => {
     const list: Series[] = this.stateSerieListGendersService.listDataSerie();
 
