@@ -1,6 +1,6 @@
-import { Component, computed, ElementRef, inject, input, InputSignal, ViewChild, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, input, InputSignal, ViewChild, WritableSignal } from '@angular/core';
 import { SvgPlayComponent } from "../../../components/svg-play/svg-play.component";
-import { NgClass } from "@angular/common";
+import { NgClass, NgOptimizedImage } from "@angular/common";
 import { Series } from '../../../../domain/models/series/series';
 import { SvgArrowBackComponent } from "../../../components/svg-arrow-back/svg-arrow-back.component";
 import { SvgArrowNextComponent } from "../../../components/svg-arrow-next/svg-arrow-next.component";
@@ -11,9 +11,18 @@ import { StateSeriesService } from '../../../../domain/states/series/state-serie
 
 @Component({
   selector: 'app-container-scroll-series',
-  imports: [SvgPlayComponent, NgClass, SvgArrowBackComponent, SvgArrowNextComponent, SvgArrowSectionComponent, RouterModule],
+  imports: [
+    NgOptimizedImage,
+    SvgPlayComponent, 
+    NgClass, 
+    SvgArrowBackComponent, 
+    SvgArrowNextComponent, 
+    SvgArrowSectionComponent, 
+    RouterModule
+  ],
   templateUrl: './container-scroll-series.component.html',
-  styleUrl: './container-scroll-series.component.css'
+  styleUrl: './container-scroll-series.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerScrollSeriesComponent {
   

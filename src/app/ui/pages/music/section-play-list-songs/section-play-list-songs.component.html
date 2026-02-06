@@ -13,10 +13,10 @@
             typeButton="button" />
         </div>
         <div class="container-body">
-            @for (list of this.stateMusic.stateMyListSongsService.listsListSongs(); track $index) {
+            @for (list of this.stateMusic.stateMyListSongsService.listsListSongs(); track list.id) {
                 <div appScrollReveal (click)="this.getListSongs(list)" class="container-item">
                     <div class="container-img">
-                        <img [src]="list.image" [alt]="list.name">
+                        <img [ngSrc]="list.image" fill [alt]="list.name">
                     </div>
                     <div class="container-information">
                         <h3>{{list.name}}</h3>

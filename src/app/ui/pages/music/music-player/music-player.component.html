@@ -1,8 +1,8 @@
 @if (this.songSelected()) {
     <aside class="music-player" appTraslateVertical [appTraslateVerticalActivate]="this.stateMusicService.stateMusicPlayerService.activateMenu()">
         <div class="container-information-music-player">
-            <div class="contaner-img-player">
-                <img [src]="this.songSelected().image" [alt]="this.songSelected().name">
+            <div class="container-img-player">
+                <img [ngSrc]="this.songSelected().image" fill [alt]="this.songSelected().name">
             </div>
             <div class="container-information">
                 <h2>{{this.songSelected().name}}</h2>
@@ -50,7 +50,7 @@
                 }
             </div>
             <div class="container-img-music-mobile">
-                <img [src]="this.songSelected().image" [alt]="this.songSelected().name">
+                <img [ngSrc]="this.songSelected().image" fill [alt]="this.songSelected().name">
             </div>
             <div class="container-body-mobile">
                 <div class="container-information">

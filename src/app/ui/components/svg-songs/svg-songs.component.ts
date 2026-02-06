@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, input, InputSignal, output, OutputEmitterRef, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, input, InputSignal, output, OutputEmitterRef, WritableSignal } from '@angular/core';
 import { TypeSearchEnum, TypeSvgSearch } from '../../../domain/models/music/category';
 import { StateMusicService } from '../../../domain/states/music/state-music.service';
 
@@ -6,6 +6,7 @@ import { StateMusicService } from '../../../domain/states/music/state-music.serv
   selector: 'app-svg-songs',
   imports: [],
   templateUrl: './svg-songs.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
       `
       :host-context {

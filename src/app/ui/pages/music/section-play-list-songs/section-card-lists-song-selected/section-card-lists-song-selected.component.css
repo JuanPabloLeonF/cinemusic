@@ -203,9 +203,13 @@
     gap: 1rem;
 }
 
-.section-card-list-songs-selected > .container-section > .container-body > table > tbody > tr > td img {
+.container-img-td {
+    position: relative;
     width: 3rem;
     height: 3rem;
+}
+
+.container-img-td > img {
     border-radius: 0.5rem;
 }
 

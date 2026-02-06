@@ -15,7 +15,7 @@
             @for (song of this.stateMusicService.stateSectionAddSongToListService.listAllSongsFiltered(); track $index) {
                 <div appScrollReveal class="container-item-list">
                     <div class="container-img-item-list">
-                        <img [src]="song.image" [alt]="song.name">
+                        <img [ngSrc]="song.image" fill [alt]="song.name">
                     </div>
                     <div class="container-information-item-list">
                         <h2>{{song.name}}</h2>

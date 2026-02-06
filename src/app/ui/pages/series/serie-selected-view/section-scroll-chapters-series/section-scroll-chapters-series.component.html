@@ -1,11 +1,11 @@
 <section class="section-scroll-chapters-series">
     <div #scrollContainer class="container-scroll-chapters">
-        @for(chapter of this.listDataChapters(); track $index) {
+        @for(chapter of this.listDataChapters(); track chapter.id) {
             <div 
             (click)="this.stateSerieSelectedViewService.changeChapterById(chapter.id)" 
             [class.chapter-selected]="chapter.id === this.chapterSelected().id" class="item-chapter"
             >
-                <img [src]="chapter.image" [alt]="chapter.name">
+                <img [ngSrc]="chapter.image" fill [alt]="chapter.name">
             </div>
         }
     </div>

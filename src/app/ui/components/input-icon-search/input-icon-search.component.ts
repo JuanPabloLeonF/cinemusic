@@ -1,10 +1,11 @@
-import { Component, ElementRef, input, InputSignal, output, OutputEmitterRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, input, InputSignal, output, OutputEmitterRef, ViewChild } from '@angular/core';
 import { SvgSearchComponent } from "../svg-search/svg-search.component";
 
 @Component({
   selector: 'app-input-icon-search',
   imports: [SvgSearchComponent],
   templateUrl: './input-icon-search.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
       :host-context {

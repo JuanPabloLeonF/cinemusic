@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SectionMainMusicComponent } from './section-main-music/section-main-music.component';
 import { ContainerBentoGridMusicComponent } from "./container-bento-grid-music/container-bento-grid-music.component";
 import { StateMusicService } from '../../../domain/states/music/state-music.service';
@@ -11,7 +11,8 @@ import { Router, RouterOutlet } from '@angular/router';
     RouterOutlet,
 ],
   templateUrl: './music.component.html',
-  styleUrl: './music.component.css'
+  styleUrl: './music.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicComponent {
   protected stateMusicService: StateMusicService = inject(StateMusicService);

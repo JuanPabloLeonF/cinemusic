@@ -1,9 +1,10 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-tendency',
   imports: [],
   templateUrl: './svg-tendency.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgTendencyComponent {
 

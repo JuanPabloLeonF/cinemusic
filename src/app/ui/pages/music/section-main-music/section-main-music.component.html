@@ -1,11 +1,11 @@
 <section class="section-main-music">
-    @for (song of this.listdataMusic(); track $index) {
+    @for (song of this.listdataMusic(); track song.id) {
         <div appScrollReveal [ngClass]="{'activate-song' : song.isPlaying}" (click)="this.getSong(song)" class="container-item-song">
             <div class="mask-activate">
                 <i class="fa-solid fa-music" appWobble [appWobbleActive]="song.isPlaying" ></i>
             </div>
             <div class="container-img-song">
-                <img [src]="song.image" [alt]="song.name">
+                <img [ngSrc]="song.image" fill [alt]="song.name">
             </div>
             <div class="container-information-song">
                 <h2>{{song.name}}</h2>

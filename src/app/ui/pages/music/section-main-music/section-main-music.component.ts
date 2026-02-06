@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { Song } from '../../../../domain/models/music/songs';
-import { NgClass } from '@angular/common';
+import { NgClass, NgOptimizedImage } from '@angular/common';
 import { WobbleDirective } from '../../../animations/wobble/wobble.directive';
 import { StateMusicService } from '../../../../domain/states/music/state-music.service';
 import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
@@ -8,12 +8,14 @@ import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.
 @Component({
   selector: 'app-section-main-music',
   imports: [
+    NgOptimizedImage,
     NgClass,
     WobbleDirective,
     ScrollRevealDirective
   ],
   templateUrl: './section-main-music.component.html',
-  styleUrl: './section-main-music.component.css'
+  styleUrl: './section-main-music.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionMainMusicComponent implements OnInit {
 

@@ -25,10 +25,10 @@
          />
 
          <div class="container-list-search">
-            @for (serie of this.listSeriesSearchDataFiltered(); track $index) {
+            @for (serie of this.listSeriesSearchDataFiltered(); track serie.id) {
                 <div (click)="this.stateSeriesService.changeSelectedSerie(serie.id)" class="container-item">
                     <div class="container-img-item">
-                        <img [src]="serie.image" [alt]="serie.name">
+                        <img [ngSrc]="serie.image" fill  [alt]="serie.name">
                     </div>
                     <div class="container-info-item">
                         <h2>{{serie.name}}</h2>

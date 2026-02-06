@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { ListSongs } from '../../../../../domain/models/music/play-list';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { StateMusicService } from '../../../../../domain/states/music/state-music.service';
 import { SvgNoteComponent } from "../../../../components/svg-note/svg-note.component";
 import { SvgClockComponent } from "../../../../components/svg-clock/svg-clock.component";
@@ -12,11 +11,12 @@ import { TraslateVerticalDeletedDirective } from '../../../../animations/traslat
 import { SvgStopComponent } from "../../../../components/svg-stop/svg-stop.component";
 import { SvgAddSongListComponent } from "../../../../components/svg-add-song-list/svg-add-song-list.component";
 import { AddSongToListComponent } from "../../add-song-to-list/add-song-to-list.component";
-import { NgStyle } from '@angular/common';
+import { NgOptimizedImage, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-section-card-lists-song-selected',
   imports: [
+    NgOptimizedImage,
     SvgNoteComponent,
     SvgClockComponent,
     SvgPlayComponent,
@@ -30,7 +30,8 @@ import { NgStyle } from '@angular/common';
     NgStyle
 ],
   templateUrl: './section-card-lists-song-selected.component.html',
-  styleUrl: './section-card-lists-song-selected.component.css'
+  styleUrl: './section-card-lists-song-selected.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionCardListsSongSelectedComponent {
   protected stateMusic: StateMusicService = inject(StateMusicService);

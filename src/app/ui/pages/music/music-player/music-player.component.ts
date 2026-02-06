@@ -1,7 +1,7 @@
-import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal, HostListener, signal } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, inject, WritableSignal, HostListener, signal, ChangeDetectionStrategy } from '@angular/core';
 import { Song, TypePlayEnum } from '../../../../domain/models/music/songs';
 import { FormsModule } from '@angular/forms';
-import { NgClass } from '@angular/common';
+import { NgClass, NgOptimizedImage } from '@angular/common';
 import { StateMusicService } from '../../../../domain/states/music/state-music.service';
 import { TraslateVerticalDirective } from '../../../animations/traslate/traslate-vertical.directive';
 import { TraslateVerticalDownDirective } from '../../../animations/traslate/traslate-vertical-down.directive';
@@ -14,9 +14,10 @@ interface AudioPlayCurrent {
 
 @Component({
   selector: 'app-music-player',
-  imports: [FormsModule, NgClass, TraslateVerticalDirective, TraslateVerticalDownDirective],
+  imports: [NgOptimizedImage,FormsModule, NgClass, TraslateVerticalDirective, TraslateVerticalDownDirective],
   templateUrl: './music-player.component.html',
-  styleUrl: './music-player.component.css'
+  styleUrl: './music-player.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MusicPlayerComponent implements AfterViewInit {
 

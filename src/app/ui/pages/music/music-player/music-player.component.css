@@ -75,14 +75,13 @@
     color: var(--primary-color);
 }
 
-.music-player .container-information-music-player .contaner-img-player {
+.music-player .container-information-music-player .container-img-player {
     width: 3rem;
     height: 3rem;
+    position: relative;
 }
 
-.music-player .container-information-music-player .contaner-img-player > img {
-    width: 100%;
-    height: 100%;
+.music-player .container-information-music-player .container-img-player > img {
     object-fit: cover;
 }
 
@@ -258,15 +257,16 @@
 
     .music-player .container-mobile .container-img-music-mobile {
         width: 100%;
-        height: 52%;
+        height: 25rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
 
     .music-player .container-mobile .container-img-music-mobile > img {
         width: 100%;
-        height: 80%;
+        height: 100%;
         object-fit: cover;
     }
 

@@ -1,16 +1,18 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SvgPlayComponent } from "../../../../components/svg-play/svg-play.component";
 import { StateMusicService } from '../../../../../domain/states/music/state-music.service';
 import { Gender } from '../../../../../domain/models/music/gender';
 import { NumberAbbrevPipe } from '../../../../../domain/pipes/number-abbrev.pipe';
 import { Song } from '../../../../../domain/models/music/songs';
 import { TypeSearch, TypeSearchEnum } from '../../../../../domain/models/music/category';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-section-trends',
-  imports: [SvgPlayComponent, NumberAbbrevPipe],
+  imports: [NgOptimizedImage, SvgPlayComponent, NumberAbbrevPipe],
   templateUrl: './section-trends.component.html',
-  styleUrl: './section-trends.component.css'
+  styleUrl: './section-trends.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionTrendsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);

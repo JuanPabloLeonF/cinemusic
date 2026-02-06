@@ -1,4 +1,4 @@
-import { Component, inject, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, WritableSignal } from '@angular/core';
 import { InputIconSearchComponent } from "../../../../components/input-icon-search/input-icon-search.component";
 import { TypeSearch } from '../../../../../domain/models/music/category';
 import { StateMusicService } from '../../../../../domain/states/music/state-music.service';
@@ -11,7 +11,8 @@ import { Song } from '../../../../../domain/models/music/songs';
   selector: 'app-section-search',
   imports: [InputIconSearchComponent, SvgSongsComponent, SvgSingerComponent, SvgGenderComponent],
   templateUrl: './section-search.component.html',
-  styleUrl: './section-search.component.css'
+  styleUrl: './section-search.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionSearchComponent {
 

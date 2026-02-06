@@ -29,7 +29,7 @@
          </div>
     </div>
     <div class="container-list-series">
-        @for (series of this.seriesListData(); track $index) {
+        @for (series of this.seriesListData(); track series.id) {
             <div [routerLink]="['/series/serie', series.id]" class="series-item">
                 <div class="container-img">
                     <img [src]="series.image" [alt]="series.name">

@@ -1,11 +1,12 @@
-import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 import { TypeSearch, TypeSearchEnum } from '../../../domain/models/music/category';
 
 @Component({
   selector: 'app-input-search-generic',
   imports: [],
   templateUrl: './input-search-generic.component.html',
-  styleUrl: './input-search-generic.component.css'
+  styleUrl: './input-search-generic.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputSearchGenericComponent {
 

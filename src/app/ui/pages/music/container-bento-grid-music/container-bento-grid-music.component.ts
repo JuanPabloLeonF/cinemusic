@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionNewsComponent } from './section-news/section-news.component';
 import { SectionArtistsComponent } from "./section-artists/section-artists.component";
 import { SectionTrendsComponent } from "./section-trends/section-trends.component";
@@ -19,7 +19,8 @@ import { SectionOtherComponent } from "./section-other/section-other.component";
     SectionOtherComponent
 ],
   templateUrl: './container-bento-grid-music.component.html',
-  styleUrl: './container-bento-grid-music.component.css'
+  styleUrl: './container-bento-grid-music.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerBentoGridMusicComponent {
 

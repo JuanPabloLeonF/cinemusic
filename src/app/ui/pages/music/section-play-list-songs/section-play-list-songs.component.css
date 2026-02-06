@@ -69,6 +69,7 @@
     min-width: 5.5rem;
     height: 100%;
     border-radius: 1rem;
+    position: relative;
 }
 
 .section-play-list-songs > .section-container > .container-body > .container-item > .container-img-play {
@@ -88,8 +89,6 @@
 }
 
 .section-play-list-songs > .section-container > .container-body > .container-item > .container-img > img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 1rem;
 }

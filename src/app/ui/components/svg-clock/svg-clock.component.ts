@@ -1,9 +1,10 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-clock',
   imports: [],
   templateUrl: './svg-clock.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgClockComponent {
   public width: InputSignal<string> = input<string>("2rem");

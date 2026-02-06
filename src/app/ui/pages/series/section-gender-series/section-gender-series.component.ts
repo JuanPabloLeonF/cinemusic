@@ -1,4 +1,4 @@
-import { Component, inject, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, WritableSignal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { InputIconSearchComponent } from "../../../components/input-icon-search/input-icon-search.component";
 import { Series } from '../../../../domain/models/series/series';
@@ -10,7 +10,8 @@ import { StateSectionGenderSeriesService } from '../../../../domain/states/serie
   selector: 'app-section-gender-series',
   imports: [RouterModule, InputIconSearchComponent, SelectOptionsComponent],
   templateUrl: './section-gender-series.component.html',
-  styleUrl: './section-gender-series.component.css'
+  styleUrl: './section-gender-series.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionGenderSeriesComponent {
 

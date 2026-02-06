@@ -1,9 +1,10 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-close',
   imports: [],
   templateUrl: './svg-close.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgCloseComponent {
   public width: InputSignal<string> = input<string>("2rem");

@@ -1,10 +1,11 @@
-import { Component, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal, OnInit, output, OutputEmitterRef, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-select-options',
   imports: [],
   templateUrl: './select-options.component.html',
-  styleUrl: './select-options.component.css'
+  styleUrl: './select-options.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectOptionsComponent implements OnInit {
 

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, inject, ViewChild, WritableSignal } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, inject, ViewChild, WritableSignal } from '@angular/core';
 import { SvgPlayComponent } from "../../../../components/svg-play/svg-play.component";
 import { SvgScreenMaxComponent } from "../../../../components/svg-screen-max/svg-screen-max.component";
 import { SvgConfigurationComponent } from "../../../../components/svg-configuration/svg-configuration.component";
@@ -11,7 +11,8 @@ import { StateSerieSelectedViewService } from '../../../../../domain/states/seri
   selector: 'app-section-view-series',
   imports: [SvgPlayComponent, SvgScreenMaxComponent, SvgConfigurationComponent, SvgStopComponent, FormsModule],
   templateUrl: './section-view-series.component.html',
-  styleUrl: './section-view-series.component.css'
+  styleUrl: './section-view-series.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionViewSeriesComponent implements AfterViewInit {
 

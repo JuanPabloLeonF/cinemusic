@@ -1,4 +1,4 @@
-import { Component, inject, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, WritableSignal } from '@angular/core';
 import { SvgPlayListComponent } from "../../../../components/svg-play-list/svg-play-list.component";
 import { SvgHeartComponent } from "../../../../components/svg-heart/svg-heart.component";
 import { SvgNoteComponent } from "../../../../components/svg-note/svg-note.component";
@@ -9,7 +9,8 @@ import { RouterModule } from '@angular/router';
   selector: 'app-section-play-lists',
   imports: [SvgPlayListComponent, SvgHeartComponent, SvgNoteComponent, RouterModule],
   templateUrl: './section-play-lists.component.html',
-  styleUrl: './section-play-lists.component.css'
+  styleUrl: './section-play-lists.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionPlayListsComponent {
   protected stateMusicService: StateMusicService = inject(StateMusicService);

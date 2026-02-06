@@ -2,7 +2,9 @@
     <router-outlet />
 } @else {
     <section class="main-series">
-        <img [src]="this.selectedSerie().image" [alt]="this.selectedSerie().name" class="bg-series">
+        <div class="container-img-main-series">
+            <img [ngSrc]="this.selectedSerie().image" fill [alt]="this.selectedSerie().name" class="bg-series">
+        </div>
         <app-container-information-series/>
         @for (gender of this.gendersWithSeries(); track $index) {
             <app-container-scroll-series [gender]="gender" />

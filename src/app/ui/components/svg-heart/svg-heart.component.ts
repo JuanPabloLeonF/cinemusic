@@ -1,10 +1,11 @@
 import { NgClass } from '@angular/common';
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-heart',
   imports: [NgClass],
   templateUrl: './svg-heart.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
     :host-context {

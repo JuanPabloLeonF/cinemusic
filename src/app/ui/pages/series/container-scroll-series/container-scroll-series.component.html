@@ -20,7 +20,7 @@
                                 <app-svg-play width="100%" height="100%" color="black"/>
                             </div>
                         </div>
-                        <img [src]="serie.image" [alt]="serie.name">
+                        <img [ngSrc]="serie.image" fill [alt]="serie.name">
                 </div>
             } @empty {
                 <p class="container-item-series-empty">

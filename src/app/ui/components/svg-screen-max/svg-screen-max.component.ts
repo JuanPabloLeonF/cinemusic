@@ -1,9 +1,10 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-screen-max',
   imports: [],
   templateUrl: './svg-screen-max.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
       `
       :host-context {

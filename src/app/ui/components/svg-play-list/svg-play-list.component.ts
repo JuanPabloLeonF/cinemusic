@@ -1,9 +1,10 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-play-list',
   imports: [],
   templateUrl: './svg-play-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
       `
       :host-context {

@@ -1,4 +1,4 @@
-import { Component, inject, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, WritableSignal } from '@angular/core';
 import { ButtonGenericComponent } from "../../../components/button-generic/button-generic.component";
 import { ListSongs } from '../../../../domain/models/music/play-list';
 import { SvgPlayComponent } from "../../../components/svg-play/svg-play.component";
@@ -11,10 +11,12 @@ import { SvgBackComponent } from "../../../components/svg-back/svg-back.componen
 import { FormularyCreateListMusicComponent } from "../formulary-create-list-music/formulary-create-list-music.component";
 import { RouterModule } from '@angular/router';
 import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.directive';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-section-play-list-songs',
   imports: [
+    NgOptimizedImage,
     ButtonGenericComponent, 
     SvgPlayComponent, 
     SvgNoteComponent, 
@@ -24,10 +26,11 @@ import { ScrollRevealDirective } from '../../../animations/scroll/scrolls-items.
     SvgBackComponent, 
     FormularyCreateListMusicComponent,
     RouterModule,
-    ScrollRevealDirective
+    ScrollRevealDirective,
 ],
   templateUrl: './section-play-list-songs.component.html',
-  styleUrl: './section-play-list-songs.component.css'
+  styleUrl: './section-play-list-songs.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionPLayListSongsComponent {
   protected stateMusic: StateMusicService = inject(StateMusicService);

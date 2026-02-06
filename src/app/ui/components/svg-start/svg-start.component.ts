@@ -1,9 +1,10 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal } from '@angular/core';
 
 @Component({
   selector: 'app-svg-start',
   imports: [],
   templateUrl: './svg-start.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SvgStartComponent {
   public width: InputSignal<string> = input<string>("100%");

@@ -1,10 +1,11 @@
-import { Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, InputSignal, output, OutputEmitterRef } from '@angular/core';
 
 @Component({
   selector: 'app-button-generic',
   imports: [],
   templateUrl: './button-generic.component.html',
-  styleUrl: './button-generic.component.css'
+  styleUrl: './button-generic.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonGenericComponent {
   public width: InputSignal<String> = input<String>('100%');

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ButtonGenericComponent } from "../../../../components/button-generic/button-generic.component";
 import { SvgStartComponent } from "../../../../components/svg-start/svg-start.component";
 import { StateMusicService } from '../../../../../domain/states/music/state-music.service';
@@ -6,12 +6,14 @@ import { Artis } from '../../../../../domain/models/music/artis';
 import { NumberAbbrevPipe } from "../../../../../domain/pipes/number-abbrev.pipe";
 import { TypeSearch, TypeSearchEnum } from '../../../../../domain/models/music/category';
 import { Song } from '../../../../../domain/models/music/songs';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-section-artists',
-  imports: [ButtonGenericComponent, SvgStartComponent, NumberAbbrevPipe],
+  imports: [NgOptimizedImage, ButtonGenericComponent, SvgStartComponent, NumberAbbrevPipe],
   templateUrl: './section-artists.component.html',
-  styleUrl: './section-artists.component.css'
+  styleUrl: './section-artists.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SectionArtistsComponent {
   private stateMusicService: StateMusicService = inject(StateMusicService);

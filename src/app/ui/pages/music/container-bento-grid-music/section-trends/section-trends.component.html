@@ -1,5 +1,5 @@
 <section class="section-trends">
-    <img [src]="this.selectedGender.image" [alt]="this.selectedGender.name">
+    <img [ngSrc]="this.selectedGender.image" fill [alt]="this.selectedGender.name">
     <h3>Genero musical mas escuchado</h3>
     <p>{{this.selectedGender.name}} - {{this.selectedGender.numberPerson | numberAbbrev}} oyentes</p>
     <div>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarMainComponent } from "./ui/layouts/nav-bar-main/nav-bar-main.component";
 import { StatesNavbarMainService } from './domain/states/states-navbar-main.service';
@@ -11,7 +11,8 @@ import { RouterUtilService } from './domain/utils/common/router-util.service';
   selector: 'app-root',
   imports: [RouterOutlet, NavBarMainComponent, MusicPlayerComponent, NgStyle],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
 

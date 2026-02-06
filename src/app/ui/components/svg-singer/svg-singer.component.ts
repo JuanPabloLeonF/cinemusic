@@ -1,4 +1,4 @@
-import { Component, inject, input, InputSignal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, InputSignal, WritableSignal } from '@angular/core';
 import { TypeSearchEnum, TypeSvgSearch } from '../../../domain/models/music/category';
 import { StateMusicService } from '../../../domain/states/music/state-music.service';
 
@@ -6,6 +6,7 @@ import { StateMusicService } from '../../../domain/states/music/state-music.serv
   selector: 'app-svg-singer',
   imports: [],
   templateUrl: './svg-singer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
       `
       :host-context {

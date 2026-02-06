@@ -1,4 +1,4 @@
-import { Component, inject, WritableSignal} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, WritableSignal} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SelectOptionsComponent } from "../../../components/select-options/select-options.component";
 import { ActivatedRoute } from '@angular/router';
@@ -12,7 +12,8 @@ import { StateSerieSelectedViewService } from '../../../../domain/states/series/
   selector: 'app-serie-selected-view',
   imports: [RouterModule, SelectOptionsComponent, SectionViewSeriesComponent, SectionScrollChaptersSeriesComponent, SvgBackComponent],
   templateUrl: './serie-selected-view.component.html',
-  styleUrl: './serie-selected-view.component.css'
+  styleUrl: './serie-selected-view.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SerieSelectedViewComponent {
 

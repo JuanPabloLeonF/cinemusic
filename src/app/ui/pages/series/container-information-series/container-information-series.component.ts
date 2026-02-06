@@ -1,16 +1,18 @@
-import { Component, inject, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, WritableSignal } from '@angular/core';
 import { SvgPlayComponent } from "../../../components/svg-play/svg-play.component";
 import { InputIconSearchComponent } from "../../../components/input-icon-search/input-icon-search.component";
 import { Series } from '../../../../domain/models/series/series';
 import { StateSeriesService } from '../../../../domain/states/series/state-series.service';
 import { StateSerieListSearchService } from '../../../../domain/states/series/state-serie-list-search.service';
 import { RouterModule } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-container-information-series',
-  imports: [RouterModule, SvgPlayComponent, InputIconSearchComponent],
+  imports: [NgOptimizedImage, RouterModule, SvgPlayComponent, InputIconSearchComponent],
   templateUrl: './container-information-series.component.html',
-  styleUrl: './container-information-series.component.css'
+  styleUrl: './container-information-series.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContainerInformationSeriesComponent {
   protected stateSeriesService: StateSeriesService = inject(StateSeriesService);

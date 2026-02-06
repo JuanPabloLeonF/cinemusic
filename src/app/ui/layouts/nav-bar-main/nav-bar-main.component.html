@@ -5,7 +5,7 @@ appTraslate [appTraslateActive]="this.stateNavBarMainService.activateMenu()"
 >
     <i (click)="this.stateNavBarMainService.switchMenu(false)" class="fa-solid fa-x close-menu"></i>
     <div class="container-logo">
-        <img src="images/logo2.png" alt="logo">
+        <img ngSrc="images/logo2.png" fill alt="logo" priority >
     </div>
     <div class="container-enlaces">
         <a (click)="this.stateNavBarMainService.switchMenu(false)" routerLink="/peliculas" routerLinkActive="active-link">Películas</a>
@@ -19,7 +19,7 @@ appTraslate [appTraslateActive]="this.stateNavBarMainService.activateMenu()"
             <p>Premium</p>
         </div>
         <div class="container-img-perfil">
-            <img src="images/bg-music.png" alt="perfil">
+            <img ngSrc="images/bg-music.png" fill alt="perfil">
         </div>
     </div>
 </nav>

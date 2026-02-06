@@ -1,4 +1,4 @@
-import { Component, computed, inject, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, WritableSignal } from '@angular/core';
 import { Series } from '../../../domain/models/series/series';
 import { ContainerInformationSeriesComponent } from "./container-information-series/container-information-series.component";
 import { ContainerScrollSeriesComponent } from "./container-scroll-series/container-scroll-series.component";
@@ -7,12 +7,14 @@ import { listAllGenders } from '../../../domain/models/series/gender';
 import { StateSerieListGendersService } from '../../../domain/states/series/state-serie-list-genders.service';
 import { RouterOutlet } from "@angular/router";
 import { RouterUtilService } from '../../../domain/utils/common/router-util.service';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-series',
-  imports: [ContainerInformationSeriesComponent, ContainerScrollSeriesComponent, RouterOutlet],
+  imports: [NgOptimizedImage, ContainerInformationSeriesComponent, ContainerScrollSeriesComponent, RouterOutlet],
   templateUrl: './series.component.html',
-  styleUrl: './series.component.css'
+  styleUrl: './series.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SeriesComponent {
 
